@@ -5,7 +5,15 @@
   "author": "Ajay Bura (ajbura)",
   "scripts": {
     "start": "webpack serve",
-    "build": "webpack --config webpack.config.js"
+    "build": "webpack --config webpack.config.js",
+    "lint": "yarn check:eslint && yarn check:prettier",
+    "check:eslint": "eslint src/*",
+    "check:prettier": "prettier --check src/*",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": "eslint",
+    "*": "prettier --ignore-unknown --check"
   },
   "devDependencies": {
     "@babel/core": "^7.18.5",
@@ -24,6 +32,8 @@
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
     "html-webpack-plugin": "^5.5.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.2",
     "prettier": "2.7.1",
     "ts-loader": "^9.3.0",
     "typescript": "^4.7.4",

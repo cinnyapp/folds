@@ -15,10 +15,13 @@ module.exports = {
   plugins: ["react", "@typescript-eslint"],
   rules: {
     "import/prefer-default-export": "off",
-    "react/jsx-filename-extension": ["error", {
-      "extensions": [".tsx", ".jsx"]
-    }],
+    "react/jsx-filename-extension": [
+      "error",
+      {
+        extensions: [".tsx", ".jsx"],
+      },
+    ],
     "import/extensions": "off",
-    "import/no-unresolved": "off"
+    "import/no-unresolved": "off",
   },
 };
