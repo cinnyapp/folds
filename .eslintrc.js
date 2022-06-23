@@ -3,7 +3,7 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ["plugin:react/recommended", "airbnb", "prettier"],
+  extends: ["plugin:react/recommended", "airbnb", "prettier", "plugin:storybook/recommended"],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaFeatures: {
@@ -23,5 +23,20 @@ module.exports = {
     ],
     "import/extensions": "off",
     "import/no-unresolved": "off",
+    "react/function-component-definition": [
+      "error",
+      {
+        namedComponents: ["arrow-function"],
+        unnamedComponents: ["arrow-function"],
+      },
+    ],
+    "react/require-default-props": "off",
+    "react/jsx-props-no-spreading": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        devDependencies: true,
+      },
+    ],
   },
 };

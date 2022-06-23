@@ -1,5 +1,5 @@
 {
-  "name": "cinny-blocks",
+  "name": "folds",
   "version": "0.0.1",
   "private": true,
   "author": "Ajay Bura (ajbura)",
@@ -8,8 +8,11 @@
     "build": "webpack --config webpack.config.js",
     "lint": "yarn check:eslint && yarn check:prettier",
     "check:eslint": "eslint src/*",
-    "check:prettier": "prettier --check src/*",
-    "prepare": "husky install"
+    "check:prettier": "prettier --check .",
+    "fix:prettier": "prettier --write .",
+    "prepare": "husky install",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": "eslint",
@@ -19,6 +22,14 @@
     "@babel/core": "^7.18.5",
     "@babel/preset-env": "^7.18.2",
     "@babel/preset-react": "^7.17.12",
+    "@storybook/addon-actions": "^6.5.9",
+    "@storybook/addon-essentials": "^6.5.9",
+    "@storybook/addon-interactions": "^6.5.9",
+    "@storybook/addon-links": "^6.5.9",
+    "@storybook/builder-webpack5": "^6.5.9",
+    "@storybook/manager-webpack5": "^6.5.9",
+    "@storybook/react": "^6.5.9",
+    "@storybook/testing-library": "^0.0.13",
     "@types/react": "^18.0.14",
     "@types/react-dom": "^18.0.5",
     "@typescript-eslint/eslint-plugin": "^5.29.0",
@@ -31,6 +42,7 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "eslint-plugin-storybook": "^0.5.12",
     "html-webpack-plugin": "^5.5.0",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.2",
