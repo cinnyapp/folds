@@ -7,16 +7,16 @@ export const { styled, css, globalCss, theme, createTheme, keyframes, getCssText
         Inter: "Arial, sans-serif",
       },
       fontSizes: {
-        D400: "44px",
+        D400: "45px",
 
-        H1: "34px",
-        H2: "24px",
+        H1: "35px",
+        H2: "25px",
         H3: "20px",
         H4: "18px",
         H5: "16px",
         H6: "14px",
 
-        T400: "16px",
+        T400: "15px",
         T300: "14px",
         T200: "12px",
 
@@ -29,16 +29,16 @@ export const { styled, css, globalCss, theme, createTheme, keyframes, getCssText
         C400: "12px",
       },
       lineHeights: {
-        D400: "50px",
+        D400: "52px",
 
-        H1: "36px",
-        H2: "28px",
-        H3: "24px",
-        H4: "22px",
-        H5: "20px",
+        H1: "40px",
+        H2: "30px",
+        H3: "26px",
+        H4: "24px",
+        H5: "22px",
         H6: "18px",
 
-        T400: "24px",
+        T400: "22px",
         T300: "20px",
         T200: "18px",
 
@@ -98,8 +98,8 @@ export const { styled, css, globalCss, theme, createTheme, keyframes, getCssText
         300: "4px",
         400: "8px",
         500: "12px",
-        round: "50%",
-        pill: "9999px",
+        Round: "50%",
+        Pill: "9999px",
       },
       borderWidths: {
         0: "0",
