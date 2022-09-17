@@ -21,4 +21,6 @@ const Template: ComponentStory<typeof Icon> = (args) => <StorybookIconGroup {...
 export const Group = Template.bind({});
 Group.args = {
   filled: false,
+  size: 400,
+  color: "black",
 };

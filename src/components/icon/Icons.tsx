@@ -1,6 +1,7 @@
 import React from "react";
 
-export const Icons: Record<string, (filled?: boolean) => JSX.Element> = {
+export type IconSrc = (filled?: boolean) => JSX.Element;
+export const Icons: Record<string, IconSrc> = {
   Home: (filled) =>
     filled ? (
       <path

@@ -117,10 +117,10 @@ export const { styled, css, globalCss, theme, createTheme, keyframes, getCssText
         Max: "999",
       },
       shadows: {
-        100: "0px 1px 2px rgba(0, 0, 0, 0.2)",
-        200: "0px 1px 6px rgba(0, 0, 0, 0.2)",
-        300: "0px 2px 8px rgba(0, 0, 0, 0.2)",
-        400: "0px 4px 16px rgba(0, 0, 0, 0.2)",
+        E100: "0px 1px 2px rgba(0, 0, 0, 0.2)",
+        E200: "0px 1px 6px rgba(0, 0, 0, 0.2)",
+        E300: "0px 2px 8px rgba(0, 0, 0, 0.2)",
+        E400: "0px 4px 16px rgba(0, 0, 0, 0.2)",
       },
       sizes: {
         X50: "16px",
