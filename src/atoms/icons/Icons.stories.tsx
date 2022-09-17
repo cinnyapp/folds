@@ -1,7 +1,15 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { Icon, StorybookIconGroup } from "./index";
+import { Icon, IconProps, Icons } from "./index";
+
+const StorybookIconGroup = (props: Omit<IconProps, "src">) => (
+  <div style={{ display: "flex", flexWrap: "wrap", gap: "100px", padding: "100px" }}>
+    {Object.keys(Icons).map((key) => (
+      <Icon key={key} src={Icons[key]} {...props} />
+    ))}
+  </div>
+);
 
 export default {
   title: "Atoms/Icons",
