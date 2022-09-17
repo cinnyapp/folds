@@ -4,9 +4,20 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { Icon, IconProps, Icons } from "./index";
 
 const StorybookIconGroup = (props: Omit<IconProps, "src">) => (
-  <div style={{ display: "flex", flexWrap: "wrap", gap: "100px", padding: "100px" }}>
+  <div
+    style={{
+      display: "flex",
+      flexDirection: "column",
+      flexWrap: "wrap",
+      gap: "32px",
+      padding: "100px",
+    }}
+  >
     {Object.keys(Icons).map((key) => (
-      <Icon key={key} src={Icons[key]} {...props} />
+      <div style={{ display: "flex", gap: "24px", alignItems: "center" }} key={key}>
+        <Icon src={Icons[key]} {...props} />
+        <span style={{ fontFamily: "arial", fontSize: "14px" }}>{key}</span>
+      </div>
     ))}
   </div>
 );
