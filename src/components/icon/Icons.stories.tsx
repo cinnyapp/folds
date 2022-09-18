@@ -3,24 +3,17 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import { Icon, IconProps, Icons } from ".";
 import { Text } from "../text";
+import { Box } from "../box";
 
 const StorybookIconGroup = (props: Omit<IconProps, "src">) => (
-  <div
-    style={{
-      display: "flex",
-      flexDirection: "column",
-      flexWrap: "wrap",
-      gap: "32px",
-      padding: "100px",
-    }}
-  >
+  <Box css={{ d: "flex", fxD: "column", fxW: "wrap", gap: "$700", p: "100px" }}>
     {Object.keys(Icons).map((key) => (
-      <div style={{ display: "flex", gap: "24px", alignItems: "center" }} key={key}>
+      <Box css={{ d: "flex", gap: "24px", alI: "center" }} key={key}>
         <Icon src={Icons[key]} {...props} />
         <Text>{key}</Text>
-      </div>
+      </Box>
     ))}
-  </div>
+  </Box>
 );
 
 export default {
