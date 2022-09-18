@@ -1,12 +1,12 @@
 import React from "react";
-import { styled } from "../../config";
+import { CSS, styled, VariantProps } from "../../config";
 
-import { XSize } from "../types";
 import { IconSrc } from "./Icons";
 
 const StyledIcon = styled("svg", {
   width: "$$IconSize",
   height: "$$IconSize",
+  color: "currentColor",
   variants: {
     size: {
       50: {
@@ -37,20 +37,19 @@ const StyledIcon = styled("svg", {
   },
 });
 
+type IconVariants = VariantProps<typeof StyledIcon>;
 export interface IconProps extends React.SVGAttributes<SVGElement> {
-  color?: string;
+  css?: CSS;
   filled?: boolean;
-  size?: XSize;
   src: IconSrc;
 }
-export const Icon = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", filled = false, size, src, ...props }, ref) => (
+export const Icon = React.forwardRef<SVGSVGElement, IconProps & IconVariants>(
+  ({ css, filled = false, src, ...props }, ref) => (
     <StyledIcon
-      size={size}
       viewBox="0 0 24 24"
       fill="none"
-      color={color}
       xmlns="http://www.w3.org/2000/svg"
+      css={css}
       {...props}
       ref={ref}
     >

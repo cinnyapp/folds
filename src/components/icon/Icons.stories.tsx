@@ -33,5 +33,5 @@ export const Group = Template.bind({});
 Group.args = {
   filled: false,
   size: 400,
-  color: "black",
+  css: { color: "black" },
 };
