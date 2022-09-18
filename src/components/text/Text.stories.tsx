@@ -17,7 +17,7 @@ const loremIpsumHeading = "Lorem ipsum dolor sit amet consectetur adipisicing el
 export const Typography = () => (
   <Text size="D400">
     Display{" "}
-    <Text as="span" size="inherit" css={{ fontWeight: "$800" }}>
+    <Text as="span" size="inherit" css={{ fW: "$800" }}>
       Typography
     </Text>
   </Text>

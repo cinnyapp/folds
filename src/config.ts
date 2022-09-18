@@ -229,6 +229,139 @@ export const {
     ...Stitches.defaultThemeMap,
     opacity: "opacity",
   },
+  media: {
+    hover: "(any-hover: hover)",
+  },
+  utils: {
+    p: (value: Stitches.PropertyValue<"padding">) => ({
+      padding: value,
+    }),
+    pT: (value: Stitches.PropertyValue<"paddingTop">) => ({
+      paddingTop: value,
+    }),
+    pR: (value: Stitches.PropertyValue<"paddingRight">) => ({
+      paddingRight: value,
+    }),
+    pB: (value: Stitches.PropertyValue<"paddingBottom">) => ({
+      paddingBottom: value,
+    }),
+    pL: (value: Stitches.PropertyValue<"paddingLeft">) => ({
+      paddingLeft: value,
+    }),
+    pX: (value: Stitches.PropertyValue<"paddingLeft">) => ({
+      paddingLeft: value,
+      paddingRight: value,
+    }),
+    pY: (value: Stitches.PropertyValue<"paddingTop">) => ({
+      paddingTop: value,
+      paddingBottom: value,
+    }),
+
+    m: (value: Stitches.PropertyValue<"margin">) => ({
+      margin: value,
+    }),
+    mT: (value: Stitches.PropertyValue<"marginTop">) => ({
+      marginTop: value,
+    }),
+    mR: (value: Stitches.PropertyValue<"marginRight">) => ({
+      marginRight: value,
+    }),
+    mB: (value: Stitches.PropertyValue<"marginBottom">) => ({
+      marginBottom: value,
+    }),
+    mL: (value: Stitches.PropertyValue<"marginLeft">) => ({
+      marginLeft: value,
+    }),
+    mX: (value: Stitches.PropertyValue<"marginLeft">) => ({
+      marginLeft: value,
+      marginRight: value,
+    }),
+    mY: (value: Stitches.PropertyValue<"marginTop">) => ({
+      marginTop: value,
+      marginBottom: value,
+    }),
+
+    d: (value: Stitches.PropertyValue<"display">) => ({ display: value }),
+    po: (value: Stitches.PropertyValue<"position">) => ({ position: value }),
+
+    fxD: (value: Stitches.PropertyValue<"flexDirection">) => ({ flexDirection: value }),
+    fxW: (value: Stitches.PropertyValue<"flexWrap">) => ({ flexWrap: value }),
+
+    juC: (value: Stitches.PropertyValue<"justifyContent">) => ({ justifyContent: value }),
+    alI: (value: Stitches.PropertyValue<"alignItems">) => ({ alignItems: value }),
+    alC: (value: Stitches.PropertyValue<"alignContent">) => ({ alignContent: value }),
+    alS: (value: Stitches.PropertyValue<"alignSelf">) => ({ alignSelf: value }),
+
+    fx: (value: Stitches.PropertyValue<"flex">) => ({ flex: value }),
+    fxG: (value: Stitches.PropertyValue<"flexGrow">) => ({ flexGrow: value }),
+    fxS: (value: Stitches.PropertyValue<"flexShrink">) => ({ flexShrink: value }),
+    fxB: (value: Stitches.PropertyValue<"flexBasis">) => ({ flexBasis: value }),
+
+    w: (value: Stitches.PropertyValue<"width">) => ({
+      width: value,
+    }),
+    h: (value: Stitches.PropertyValue<"height">) => ({
+      height: value,
+    }),
+    size: (value: Stitches.PropertyValue<"width">) => ({
+      width: value,
+      height: value,
+    }),
+    minSize: (value: Stitches.PropertyValue<"minWidth">) => ({
+      minWidth: value,
+      minHeight: value,
+    }),
+    maxSize: (value: Stitches.PropertyValue<"maxWidth">) => ({
+      maxWidth: value,
+      maxHeight: value,
+    }),
+
+    c: (value: Stitches.PropertyValue<"color">) => ({
+      color: value,
+    }),
+
+    b: (value: Stitches.PropertyValue<"background">) => ({
+      background: value,
+    }),
+    bC: (value: Stitches.PropertyValue<"backgroundColor">) => ({
+      backgroundColor: value,
+    }),
+    bI: (value: Stitches.PropertyValue<"backgroundImage">) => ({
+      backgroundImage: value,
+    }),
+
+    bo: (value: Stitches.PropertyValue<"border">) => ({
+      border: value,
+    }),
+
+    boR: (value: Stitches.PropertyValue<"borderRadius">) => ({
+      borderRadius: value,
+    }),
+
+    bxS: (value: Stitches.PropertyValue<"boxShadow">) => ({ boxShadow: value }),
+
+    tA: (value: Stitches.PropertyValue<"textAlign">) => ({ textAlign: value }),
+    tT: (value: Stitches.PropertyValue<"textTransform">) => ({ textTransform: value }),
+    tD: (value: Stitches.PropertyValue<"textDecoration">) => ({ textDecoration: value }),
+    tO: (value: Stitches.PropertyValue<"textOverflow">) => ({ textOverflow: value }),
+
+    fS: (value: Stitches.PropertyValue<"fontSize">) => ({ fontSize: value }),
+    fW: (value: Stitches.PropertyValue<"fontWeight">) => ({ fontWeight: value }),
+    fSt: (value: Stitches.PropertyValue<"fontStyle">) => ({ fontStyle: value }),
+
+    lH: (value: Stitches.PropertyValue<"lineHeight">) => ({ lineHeight: value }),
+    lS: (value: Stitches.PropertyValue<"letterSpacing">) => ({ letterSpacing: value }),
+
+    userSelect: (value: Stitches.PropertyValue<"userSelect">) => ({
+      WebkitUserSelect: value,
+      userSelect: value,
+    }),
+
+    appearance: (value: Stitches.PropertyValue<"appearance">) => ({
+      WebkitAppearance: value,
+      appearance: value,
+    }),
+  },
 });
 
 export type CSS = Stitches.CSS<typeof config>;
