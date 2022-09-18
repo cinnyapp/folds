@@ -1,7 +1,8 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { Icon, IconProps, Icons } from "./index";
+import { Icon, IconProps, Icons } from ".";
+import { Text } from "../text";
 
 const StorybookIconGroup = (props: Omit<IconProps, "src">) => (
   <div
@@ -16,14 +17,14 @@ const StorybookIconGroup = (props: Omit<IconProps, "src">) => (
     {Object.keys(Icons).map((key) => (
       <div style={{ display: "flex", gap: "24px", alignItems: "center" }} key={key}>
         <Icon src={Icons[key]} {...props} />
-        <span style={{ fontFamily: "arial", fontSize: "14px" }}>{key}</span>
+        <Text>{key}</Text>
       </div>
     ))}
   </div>
 );
 
 export default {
-  title: "Atoms/Icons",
+  title: "Icons",
   component: StorybookIconGroup,
 } as ComponentMeta<typeof Icon>;
 

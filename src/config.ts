@@ -1,4 +1,5 @@
 import * as Stitches from "@stitches/react";
+import "@fontsource/inter/variable.css";
 
 export type { VariantProps } from "@stitches/react";
 
@@ -16,7 +17,7 @@ export const {
 } = Stitches.createStitches({
   theme: {
     fonts: {
-      Inter: "Arial, sans-serif",
+      Inter: "InterVariable, 'Inter', -apple-system, 'Segoe UI', 'Helvetica', 'Arial', sans-serif",
     },
     fontSizes: {
       D400: "45px",
@@ -225,8 +226,19 @@ export const {
     },
   },
   themeMap: {
+    ...Stitches.defaultThemeMap,
     opacity: "opacity",
   },
 });
 
 export type CSS = Stitches.CSS<typeof config>;
+
+export const globalStyles = globalCss({
+  "*, *::before, *::after": {
+    boxSizing: "border-box",
+  },
+  body: {
+    fontFamily: "$Inter",
+  },
+});
+globalStyles();
