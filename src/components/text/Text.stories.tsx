@@ -29,6 +29,7 @@ export const Heading3 = () => <Text size="H3">{loremIpsumHeading}</Text>;
 export const Heading4 = () => <Text size="H4">{loremIpsumHeading}</Text>;
 export const Heading5 = () => <Text size="H5">{loremIpsumHeading}</Text>;
 export const Heading6 = () => <Text size="H6">{loremIpsumHeading}</Text>;
+export const Text500 = () => <Text size="T500">{loremIpsum}</Text>;
 export const Text400 = () => <Text size="T400">{loremIpsum}</Text>;
 export const Text300 = () => <Text size="T300">{loremIpsum}</Text>;
 export const Text200 = () => <Text size="T200">{loremIpsum}</Text>;

@@ -17,19 +17,19 @@ export const Text = styled("p", {
         fontSize: "$H1",
         lineHeight: "$H1",
         letterSpacing: "$H1",
-        fontWeight: "$800",
+        fontWeight: "$600",
       },
       H2: {
         fontSize: "$H2",
         lineHeight: "$H2",
         letterSpacing: "$H2",
-        fontWeight: "$700",
+        fontWeight: "$600",
       },
       H3: {
         fontSize: "$H3",
         lineHeight: "$H3",
         letterSpacing: "$H3",
-        fontWeight: "$700",
+        fontWeight: "$600",
       },
       H4: {
         fontSize: "$H4",
@@ -48,6 +48,11 @@ export const Text = styled("p", {
         lineHeight: "$H6",
         letterSpacing: "$H6",
         fontWeight: "$600",
+      },
+      T500: {
+        fontSize: "$T500",
+        lineHeight: "$T500",
+        letterSpacing: "$T500",
       },
       T400: {
         fontSize: "$T400",
