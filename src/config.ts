@@ -147,12 +147,7 @@ export const {
       X500: "28px",
       X600: "32px",
     },
-    opacity: {
-      P400: 1,
-      P300: 0.9,
-      P200: 0.75,
-      Disabled: 0.3,
-    },
+    transitions: {},
     colors: {
       BackgroundContainer: "#F2F2F2",
       BackgroundContainerHover: "#E5E5E5",
@@ -226,11 +221,23 @@ export const {
       CriticalContainerActive: "#F3CFCF",
       CriticalContainerLine: "#F0C3C3",
       OnCriticalContainer: "#890A0A",
+
+      FocusRing: "rgba(0 0 0 / 50%)",
+    },
+    opacity: {
+      P500: 1,
+      P400: 0.9,
+      P300: 0.75,
+      Disabled: 0.38,
+    },
+    outline: {
+      FocusRing: "$borderWidths$600 solid $colors$FocusRing",
     },
   },
   themeMap: {
     ...Stitches.defaultThemeMap,
     opacity: "opacity",
+    outline: "outline",
   },
   media: {
     hover: "(any-hover: hover)",
