@@ -3,6 +3,7 @@ import { styled } from "../../config";
 export const Text = styled("p", {
   margin: 0,
   padding: 0,
+  color: "inherit",
 
   variants: {
     size: {
@@ -107,8 +108,31 @@ export const Text = styled("p", {
         fontStyle: "italic",
       },
     },
+    truncate: {
+      true: {
+        overflow: "hidden",
+        whiteSpace: "nowrap",
+        textOverflow: "ellipsis",
+      },
+    },
+    priority: {
+      inherit: {},
+      initial: {
+        opacity: 1,
+      },
+      500: {
+        opacity: "$P500",
+      },
+      400: {
+        opacity: "$P400",
+      },
+      300: {
+        opacity: "$P300",
+      },
+    },
   },
   defaultVariants: {
     size: "T400",
+    priority: "inherit",
   },
 });
