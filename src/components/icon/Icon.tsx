@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef, SVGAttributes } from "react";
 import { CSS, styled, VariantProps } from "../../config";
 
 import { IconSrc } from "./Icons";
@@ -38,12 +38,12 @@ const StyledIcon = styled("svg", {
 });
 
 type IconVariants = VariantProps<typeof StyledIcon>;
-export interface IconProps extends React.SVGAttributes<SVGElement> {
+export interface IconProps extends SVGAttributes<SVGElement> {
   css?: CSS;
   filled?: boolean;
   src: IconSrc;
 }
-export const Icon = React.forwardRef<SVGSVGElement, IconProps & IconVariants>(
+export const Icon = forwardRef<SVGSVGElement, IconProps & IconVariants>(
   ({ css, filled = false, src, ...props }, ref) => (
     <StyledIcon
       focusable="false"
