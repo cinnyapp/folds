@@ -65,18 +65,12 @@ const getVariant = (variant: MainColor) => ({
       transform: "translateX(23px)",
       backgroundColor: `$On${variant}`,
       color: `$${variant}`,
-      animation: `${SwitchOnThumbAnime} 300ms ease-in-out`,
+      animation: `${SwitchOnThumbAnime} 150ms ease-in-out`,
     },
-  },
-
-  "&:focus-visible": {
-    outline: "$FocusRing",
   },
 });
 
 const StyledSwitch = styled("button", {
-  $$SwitchWidth: "44px",
-  $$SwitchHeight: "24px",
   padding: 0,
   margin: 0,
   background: "transparent",
@@ -86,8 +80,8 @@ const StyledSwitch = styled("button", {
 
   display: "inline-flex",
   alignItems: "center",
-  width: "$$SwitchWidth",
-  height: "$$SwitchHeight",
+  width: 44,
+  height: 24,
   boxShadow: "inset 0 0 0 $borderWidths$400 CurrentColor",
   color: "CurrentColor",
   borderRadius: "$Pill",
@@ -114,8 +108,12 @@ const StyledSwitch = styled("button", {
   "&[aria-checked=false]": {
     opacity: "$P300",
     "& > span": {
-      animation: `${SwitchOffThumbAnime} 300ms ease-in-out`,
+      animation: `${SwitchOffThumbAnime} 150ms ease-in-out`,
     },
+  },
+
+  "&:focus-visible": {
+    outline: "$FocusRing",
   },
 
   "&[disabled], &[aria-disabled=true]": {
@@ -133,13 +131,16 @@ const StyledSwitch = styled("button", {
     },
   },
   defaultVariants: {
-    variant: "Secondary",
+    variant: "Primary",
   },
 });
 
 type SwitchVariant = VariantProps<typeof StyledSwitch>;
 export interface SwitchProps
-  extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "value" | "onChange" | "children"> {
+  extends Omit<
+    ButtonHTMLAttributes<HTMLButtonElement>,
+    "value" | "onClick" | "onChange" | "children"
+  > {
   value?: boolean;
   onChange?: (on: boolean) => void;
   css?: CSS;
