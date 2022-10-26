@@ -1,5 +1,5 @@
 import React, { ButtonHTMLAttributes, forwardRef } from "react";
-import { CSS, styled, VariantProps } from "../../config";
+import { CSS, styled, toRem, VariantProps } from "../../config";
 import { Icon, Icons } from "../icon";
 import { MainColor } from "../types";
 
@@ -10,10 +10,10 @@ const getVariant = (variant: MainColor) => ({
     boxShadow: "none",
 
     "& > span": {
-      width: 18,
-      height: 18,
+      width: toRem(18),
+      height: toRem(18),
       borderColor: "CurrentColor",
-      transform: "translateX(23px)",
+      transform: `translateX(${toRem(23)})`,
       backgroundColor: `$On${variant}`,
       color: `$${variant}`,
     },
@@ -30,21 +30,21 @@ const StyledSwitch = styled("button", {
 
   display: "inline-flex",
   alignItems: "center",
-  width: 44,
-  height: 24,
+  width: toRem(44),
+  height: toRem(24),
   boxShadow: "inset 0 0 0 $borderWidths$400 CurrentColor",
   color: "CurrentColor",
   borderRadius: "$Pill",
   cursor: "pointer",
 
   "& > span": {
-    width: 14,
-    height: 14,
+    width: toRem(14),
+    height: toRem(14),
     display: "inline-flex",
     justifyContent: "center",
     alignItems: "center",
 
-    transform: "translateX(5px)",
+    transform: `translateX(${toRem(5)})`,
     backgroundColor: "CurrentColor",
     borderRadius: "$Pill",
     borderWidth: "$500",

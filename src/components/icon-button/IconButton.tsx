@@ -1,4 +1,4 @@
-import { styled } from "../../config";
+import { styled, toRem } from "../../config";
 import { ContainerColor } from "../types";
 
 const getVariant = (variant: ContainerColor) => ({
@@ -45,16 +45,16 @@ export const IconButton = styled("button", {
   variants: {
     size: {
       600: {
-        padding: "16px",
+        padding: toRem(16),
       },
       500: {
-        padding: "12px",
+        padding: toRem(12),
       },
       400: {
-        padding: "8px",
+        padding: toRem(8),
       },
       300: {
-        padding: "4px",
+        padding: toRem(4),
       },
     },
     variant: {
