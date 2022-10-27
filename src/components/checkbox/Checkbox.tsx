@@ -19,6 +19,7 @@ const StyledCheckbox = styled("span", {
   margin: "0",
   width: "$$CheckboxSize",
   height: "$$CheckboxSize",
+  WebkitTapHighlightColor: "transparent",
 
   display: "inline-flex",
   alignItems: "center",
@@ -100,15 +101,13 @@ const StyledCheckbox = styled("span", {
 
 type CheckboxVariant = VariantProps<typeof StyledCheckbox>;
 interface CheckboxProps extends Omit<HTMLAttributes<HTMLInputElement>, "children" | "onChange"> {
-  className?: string;
   defaultChecked?: boolean;
   checked?: boolean;
-  onChange?: (checked: boolean) => void;
   css?: CSS;
 }
 
 export const Checkbox = forwardRef<HTMLSpanElement, CheckboxVariant & CheckboxProps>(
-  ({ className, variant, size, style, css, defaultChecked, checked, onChange, ...props }, ref) => (
+  ({ className, variant, size, style, css, ...props }, ref) => (
     <StyledCheckbox
       className={className}
       variant={variant}
@@ -117,19 +116,7 @@ export const Checkbox = forwardRef<HTMLSpanElement, CheckboxVariant & CheckboxPr
       ref={ref}
       css={css}
     >
-      <input
-        type="checkbox"
-        {...props}
-        defaultChecked={defaultChecked}
-        checked={checked}
-        onChange={
-          onChange
-            ? (evt) => {
-                onChange(evt.target.checked);
-              }
-            : undefined
-        }
-      />
+      <input type="checkbox" {...props} />
       <Icon aria-hidden size={size} src={Icons.Check} />
     </StyledCheckbox>
   )
