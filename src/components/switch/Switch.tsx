@@ -12,7 +12,6 @@ const getVariant = (variant: MainColor) => ({
     "& > span": {
       width: toRem(18),
       height: toRem(18),
-      borderColor: "CurrentColor",
       transform: `translateX(${toRem(23)})`,
       backgroundColor: `$On${variant}`,
       color: `$${variant}`,
@@ -47,7 +46,6 @@ const StyledSwitch = styled("button", {
     transform: `translateX(${toRem(5)})`,
     backgroundColor: "CurrentColor",
     borderRadius: "$Pill",
-    borderWidth: "$500",
   },
 
   "&[aria-checked=false]": {
