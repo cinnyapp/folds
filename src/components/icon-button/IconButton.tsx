@@ -4,6 +4,11 @@ import { ContainerColor } from "../types";
 const getVariant = (variant: ContainerColor) => ({
   backgroundColor: `$${variant}Container`,
   color: `$On${variant}Container`,
+
+  "&[aria-pressed=true]": {
+    backgroundColor: `$${variant}ContainerActive`,
+  },
+
   "@hover": {
     "&:hover": {
       backgroundColor: `$${variant}ContainerHover`,
@@ -14,9 +19,6 @@ const getVariant = (variant: ContainerColor) => ({
     outline: "$FocusRing",
   },
   "&:active": {
-    backgroundColor: `$${variant}ContainerActive`,
-  },
-  "&[aria-pressed=true]": {
     backgroundColor: `$${variant}ContainerActive`,
   },
 });
