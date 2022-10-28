@@ -36,7 +36,6 @@ const Template: ComponentStory<typeof Chip> = (args) => (
     <Text as="span" size="T200">
       Attachment
     </Text>
-    <Icon size="50" src={Icons.Cross} />
   </Chip>
 );
 
@@ -46,4 +45,5 @@ Surface.args = {
   "aria-selected": false,
   "aria-label": "Apply attachment filter",
   size: 400,
+  after: <Icon size="50" src={Icons.Cross} />,
 };
