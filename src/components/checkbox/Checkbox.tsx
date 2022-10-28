@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, forwardRef } from "react";
+import React, { AllHTMLAttributes, forwardRef } from "react";
 
 import { CSS, styled, VariantProps } from "../../config";
 import { Icon, Icons } from "../icon";
@@ -100,7 +100,7 @@ const StyledCheckbox = styled("span", {
 });
 
 type CheckboxVariant = VariantProps<typeof StyledCheckbox>;
-interface CheckboxProps extends Omit<HTMLAttributes<HTMLInputElement>, "children" | "onChange"> {
+interface CheckboxProps extends Omit<AllHTMLAttributes<HTMLInputElement>, "children" | "onChange"> {
   defaultChecked?: boolean;
   checked?: boolean;
   css?: CSS;

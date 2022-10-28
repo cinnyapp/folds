@@ -1,4 +1,4 @@
-import React, { forwardRef, HTMLAttributes } from "react";
+import React, { forwardRef, AllHTMLAttributes } from "react";
 import { CSS, styled, VariantProps } from "../../config";
 import { MainColor } from "../types";
 
@@ -88,7 +88,7 @@ const StyledRadioButton = styled("input", {
 
 type RadioButtonVariant = VariantProps<typeof StyledRadioButton>;
 
-interface RadioButtonProps extends Omit<HTMLAttributes<HTMLInputElement>, "type" | "onChange"> {
+interface RadioButtonProps extends Omit<AllHTMLAttributes<HTMLInputElement>, "type" | "onChange"> {
   defaultChecked?: boolean;
   checked?: boolean;
   css?: CSS;
