@@ -24,6 +24,15 @@ export const Badge = styled("span", {
   alignItems: "center",
   borderRadius: "$300",
 
+  "&:focus-visible": {
+    outline: "$FocusRing",
+  },
+
+  "&[disabled], &[aria-disabled=true]": {
+    opacity: "$Disabled",
+    cursor: "not-allowed",
+  },
+
   variants: {
     variant: {
       Primary: getVariant("Primary"),
