@@ -1,7 +1,7 @@
-import { styled, toRem } from "../../config";
+import { CSS, styled, toRem } from "../../config";
 import { ContainerColor } from "../types";
 
-const getVariant = (variant: ContainerColor) => ({
+const getVariant = (variant: ContainerColor): CSS => ({
   backgroundColor: `$${variant}Container`,
   color: `$On${variant}Container`,
 

@@ -2,7 +2,7 @@ import React, { ButtonHTMLAttributes, forwardRef, ReactNode } from "react";
 import { CSS, styled, toRem, VariantProps } from "../../config";
 import { ContainerColor } from "../types";
 
-const getVariant = (variant: ContainerColor) => ({
+const getVariant = (variant: ContainerColor): CSS => ({
   $$ChipBorderColor: `$colors$${variant}ContainerLine`,
   color: `$On${variant}Container`,
   backgroundColor: `$${variant}Container`,

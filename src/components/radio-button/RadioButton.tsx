@@ -2,7 +2,7 @@ import React, { forwardRef, AllHTMLAttributes } from "react";
 import { CSS, styled, VariantProps } from "../../config";
 import { MainColor } from "../types";
 
-const getVariant = (variant: MainColor) => ({
+const getVariant = (variant: MainColor): CSS => ({
   color: `$${variant}`,
 });
 

@@ -3,7 +3,7 @@ import { CSS, styled, toRem, VariantProps } from "../../config";
 import { Icon, Icons } from "../icon";
 import { MainColor } from "../types";
 
-const getVariant = (variant: MainColor) => ({
+const getVariant = (variant: MainColor): CSS => ({
   "&[aria-checked=true]": {
     backgroundColor: `$${variant}`,
     color: `$On${variant}`,

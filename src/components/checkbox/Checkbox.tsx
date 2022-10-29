@@ -4,7 +4,7 @@ import { CSS, styled, VariantProps } from "../../config";
 import { Icon, Icons } from "../icon";
 import { MainColor } from "../types";
 
-const getVariant = (variant: MainColor) => ({
+const getVariant = (variant: MainColor): CSS => ({
   "input[type=checkbox]:checked": {
     boxShadow: "none",
     backgroundColor: `$${variant}`,
