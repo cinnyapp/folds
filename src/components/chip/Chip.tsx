@@ -1,6 +1,6 @@
-import React, { ButtonHTMLAttributes, forwardRef, ReactNode } from "react";
+import React, { ElementType, ReactNode } from "react";
 import { CSS, styled, toRem, VariantProps } from "../../config";
-import { ContainerColor } from "../types";
+import { AsComponentProps, ContainerColor } from "../types";
 
 const getVariant = (variant: ContainerColor): CSS => ({
   $$ChipBorderColor: `$colors$${variant}ContainerLine`,
@@ -96,23 +96,27 @@ export const StyledChip = styled("button", {
 
 type ChipVariant = VariantProps<typeof StyledChip>;
 
-interface ChipProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  before?: ReactNode;
-  after?: ReactNode;
-  css?: CSS;
-}
+const defaultElement = "button";
+type ChipProps<E extends ElementType = typeof defaultElement> = ChipVariant &
+  AsComponentProps<E> & {
+    before?: ReactNode;
+    after?: ReactNode;
+    css?: CSS;
+  };
 
-export const Chip = forwardRef<HTMLButtonElement, ChipProps & ChipVariant>(
-  ({ before, after, children, ...props }, ref) => (
-    <StyledChip
-      data-ui-before={before ? true : undefined}
-      data-ui-after={after ? true : undefined}
-      {...props}
-      ref={ref}
-    >
-      {before}
-      {children}
-      {after}
-    </StyledChip>
-  )
+export const Chip = <E extends ElementType = typeof defaultElement>({
+  before,
+  after,
+  children,
+  ...props
+}: ChipProps<E>) => (
+  <StyledChip
+    data-ui-before={before ? true : undefined}
+    data-ui-after={after ? true : undefined}
+    {...props}
+  >
+    {before}
+    {children}
+    {after}
+  </StyledChip>
 );

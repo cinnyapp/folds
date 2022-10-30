@@ -142,14 +142,12 @@ type ButtonProps<E extends ElementType = typeof defaultElement> = ButtonVariant 
   };
 
 export const Button = <E extends ElementType = typeof defaultElement>({
-  as,
   before,
   after,
   children,
   ...props
 }: ButtonProps<E>) => (
   <StyledButton
-    as={as}
     data-ui-before={before ? true : undefined}
     data-ui-after={after ? true : undefined}
     {...props}
