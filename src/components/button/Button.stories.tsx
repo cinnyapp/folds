@@ -31,7 +31,6 @@ const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 export const Primary = Template.bind({});
 Primary.args = {
   size: 400,
-  as: "a",
   before: <Icon size="200" src={Icons.Plus} />,
   children: (
     <Text as="span" size="B400">

@@ -386,5 +386,8 @@ export const globalStyles = globalCss({
   body: {
     fontFamily: "$Inter",
   },
+  "input, textarea, button": {
+    fontFamily: "inherit",
+  },
 });
 globalStyles();
