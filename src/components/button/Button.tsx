@@ -21,7 +21,7 @@ export const StyledButton = styled("button", {
   padding: 0,
   appearance: "none",
   WebkitTapHighlightColor: "transparent",
-  border: "none",
+  border: "0 solid currentColor",
   boxShadow: "none",
 
   display: "inline-flex",
@@ -99,28 +99,28 @@ export const StyledButton = styled("button", {
       Solid: {
         backgroundColor: "$$ButtonVariant",
         color: "$$ButtonOnVariant",
+        borderColor: "$$ButtonVariantLine",
         $$ButtonHoverColor: "$$ButtonVariantHover",
         $$ButtonActiveColor: "$$ButtonVariantActive",
-        $$ButtonBorderColor: "$$ButtonVariantLine",
       },
       Soft: {
         backgroundColor: "$$ButtonVariantContainer",
         color: "$$ButtonOnVariantContainer",
+        borderColor: "$$ButtonVariantContainerLine",
         $$ButtonHoverColor: "$$ButtonVariantContainerHover",
         $$ButtonActiveColor: "$$ButtonVariantContainerActive",
-        $$ButtonBorderColor: "$$ButtonVariantContainerLine",
       },
       None: {
         backgroundColor: "inherit",
         color: "$$ButtonVariant",
+        borderColor: "$$ButtonVariant",
         $$ButtonHoverColor: "$$ButtonVariantContainerHover",
         $$ButtonActiveColor: "$$ButtonVariantContainerActive",
-        $$ButtonBorderColor: "$$ButtonVariant",
       },
     },
     outlined: {
       true: {
-        boxShadow: "inset 0 0 0 $borderWidths$400 $$ButtonBorderColor",
+        borderWidth: "$400",
       },
     },
   },

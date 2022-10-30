@@ -12,9 +12,9 @@ const getVariant = (variant: MainColor): CSS => ({
 });
 
 export const Badge = styled("span", {
-  border: "none",
   appearance: "none",
   WebkitTapHighlightColor: "transparent",
+  border: "0 solid currentColor",
   boxShadow: "none",
 
   margin: 0,
@@ -45,17 +45,17 @@ export const Badge = styled("span", {
       Solid: {
         backgroundColor: "$$BadgeVariant",
         color: "$$BadgeOnVariant",
-        $$BadgeBorderColor: "$$BadgeVariantLine",
+        borderColor: "$$BadgeVariantLine",
       },
       Soft: {
         backgroundColor: "$$BadgeVariantContainer",
         color: "$$BadgeOnVariantContainer",
-        $$BadgeBorderColor: "$$BadgeVariantContainerLine",
+        borderColor: "$$BadgeVariantContainerLine",
       },
     },
     outlined: {
       true: {
-        boxShadow: "inset 0 0 0 $borderWidths$300 $$BadgeBorderColor",
+        borderWidth: "$300",
       },
     },
   },

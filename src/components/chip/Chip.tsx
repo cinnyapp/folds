@@ -31,6 +31,7 @@ export const StyledChip = styled("button", {
   margin: 0,
   background: "transparent",
   border: "none",
+  boxShadow: "none",
   appearance: "none",
   WebkitTapHighlightColor: "transparent",
 
@@ -83,7 +84,7 @@ export const StyledChip = styled("button", {
     },
     outlined: {
       true: {
-        boxShadow: "inset 0 0 0 $borderWidths$400 $$ChipBorderColor",
+        border: "$borderWidths$400 solid $$ChipBorderColor",
       },
     },
   },
