@@ -231,6 +231,7 @@ export const {
       P500: 1,
       P400: 0.9,
       P300: 0.75,
+      Placeholder: 0.5,
       Disabled: 0.38,
     },
     outline: {
@@ -388,6 +389,14 @@ export const globalStyles = globalCss({
   },
   "input, textarea, button": {
     fontFamily: "inherit",
+    color: "inherit",
+    fontSize: "inherit",
+    lineHeight: "inherit",
+    letterSpacing: "inherit",
+  },
+  "input::placeholder": {
+    color: "inherit",
+    opacity: "$Placeholder",
   },
 });
 globalStyles();

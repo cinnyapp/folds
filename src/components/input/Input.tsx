@@ -1,12 +1,23 @@
-import React, { ElementType, ReactNode } from "react";
+import React, { AllHTMLAttributes, forwardRef, ReactNode } from "react";
 import { CSS, styled, toRem, VariantProps } from "../../config";
-import { AsComponentProps, ContainerColor } from "../types";
+import { ContainerColor } from "../types";
 
 const getVariant = (variant: ContainerColor): CSS => ({
+  color: `$On${variant}Container`,
   backgroundColor: `$${variant}Container`,
+  $$InputBorderColor: `$colors$${variant}ContainerLine`,
+
+  "&:has(input:focus)": {
+    boxShadow: "inset 0 0 0 $borderWidths$600 $$InputBorderColor",
+  },
+  "@supports not selector(:has(input:focus))": {
+    "&:focus-within": {
+      boxShadow: "inset 0 0 0 $borderWidths$600 $$InputBorderColor",
+    },
+  },
 });
 
-export const StyledInput = styled("div", {
+export const StyledInput = styled("span", {
   "&, & input": {
     padding: 0,
     margin: 0,
@@ -16,13 +27,22 @@ export const StyledInput = styled("div", {
   },
   display: "flex",
   flexWrap: "wrap",
+  alignItems: "center",
   borderRadius: "$400",
 
   "& input": {
+    height: "100%",
     minWidth: 0,
     flexGrow: 1,
     backgroundColor: "transparent",
-    borderRadius: "inherit",
+    "&:focus": {
+      outline: "none",
+    },
+  },
+
+  "&[disabled], &[aria-disabled=true]": {
+    opacity: "$Disabled",
+    cursor: "not-allowed",
   },
 
   variants: {
@@ -38,31 +58,39 @@ export const StyledInput = styled("div", {
     },
     size: {
       300: {
+        padding: "0 $200",
+        gap: "$100",
+        height: toRem(32),
         "& input": {
-          padding: "0 $200",
-          height: toRem(32),
           fontSize: "$T200",
           lineHeight: "$T200",
           letterSpacing: "$T200",
         },
       },
       400: {
+        padding: "0 $300",
+        gap: "$200",
+        height: toRem(40),
         "& input": {
-          padding: "0 $300",
-          height: toRem(40),
           fontSize: "$T300",
           lineHeight: "$T300",
           letterSpacing: "$T300",
         },
       },
       500: {
+        padding: "0 $400",
+        gap: "$300",
+        height: toRem(48),
         "& input": {
-          padding: "0 $400",
-          height: toRem(48),
           fontSize: "$T400",
           lineHeight: "$T400",
           letterSpacing: "$T400",
         },
+      },
+    },
+    outlined: {
+      true: {
+        boxShadow: "inset 0 0 0 $borderWidths$400 $$InputBorderColor",
       },
     },
   },
@@ -73,34 +101,28 @@ export const StyledInput = styled("div", {
 });
 
 type InputVariant = VariantProps<typeof StyledInput>;
+interface InputProps extends AllHTMLAttributes<HTMLInputElement> {
+  before?: ReactNode;
+  after?: ReactNode;
+  css?: CSS;
+}
 
-const defaultElement = "div";
-type InputProps<E extends ElementType = typeof defaultElement> = InputVariant &
-  AsComponentProps<E> & {
-    before?: ReactNode;
-    after?: ReactNode;
-    css?: CSS;
-  };
-
-export const Input = <E extends ElementType = typeof defaultElement>({
-  as,
-  className,
-  variant,
-  size,
-  before,
-  after,
-  ...props
-}: InputProps<E>) => (
-  <StyledInput
-    as={as}
-    className={className}
-    variant={variant}
-    size={size}
-    data-ui-before={before ? true : undefined}
-    data-ui-after={after ? true : undefined}
-  >
-    {before}
-    <input {...props} />
-    {after}
-  </StyledInput>
+export const Input = forwardRef<HTMLSpanElement, InputProps & InputVariant>(
+  ({ className, style, css, variant, size, outlined, before, after, ...props }, ref) => (
+    <StyledInput
+      className={className}
+      style={style}
+      variant={variant}
+      size={size}
+      outlined={outlined}
+      data-ui-before={before ? true : undefined}
+      data-ui-after={after ? true : undefined}
+      css={css}
+      ref={ref}
+    >
+      {before}
+      <input {...props} />
+      {after}
+    </StyledInput>
+  )
 );
