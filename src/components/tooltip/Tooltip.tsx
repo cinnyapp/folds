@@ -6,7 +6,7 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { CSS, styled, toRem } from "../../config";
+import { CSS, keyframes, styled, toRem } from "../../config";
 import { Box } from "../box";
 import { Portal } from "../portal";
 import { ContainerColor } from "../types";
@@ -17,6 +17,15 @@ const getVariant = (variant: ContainerColor): CSS => ({
   color: `$On${variant}Container`,
 });
 
+const TooltipScaleAnime = keyframes({
+  "0%": {
+    transform: "translateY(4px)",
+  },
+  "100%": {
+    transform: "translateY(0)",
+  },
+});
+
 export const Tooltip = styled("div", {
   margin: 0,
   padding: `${toRem(6)} $300`,
@@ -24,6 +33,7 @@ export const Tooltip = styled("div", {
   borderRadius: "$400",
   display: "inline-flex",
   alignItems: "center",
+  animation: `${TooltipScaleAnime} 200ms`,
 
   variants: {
     variant: {
