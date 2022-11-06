@@ -1,7 +1,10 @@
 import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { Tooltip } from "./Tooltip";
+import { Tooltip, TooltipProvider } from "./Tooltip";
 import { Text } from "../text";
+import { IconButton } from "../icon-button";
+import { Icon, Icons } from "../icon";
+import { Box } from "../box";
 
 export default {
   title: "Tooltip",
@@ -30,3 +33,25 @@ Surface.args = {
   variant: "Success",
   children: <Text size="T300">Tooltip</Text>,
 };
+
+export const Interactive = () => (
+  <Box css={{ p: "100px" }}>
+    <TooltipProvider
+      position="bottom"
+      align="start"
+      tooltip={
+        <Tooltip>
+          <Text truncate size="T300">
+            Tooltip is Long
+          </Text>
+        </Tooltip>
+      }
+    >
+      {(ref) => (
+        <IconButton variant="Success" size="600" ref={ref}>
+          <Icon src={Icons.Info} />
+        </IconButton>
+      )}
+    </TooltipProvider>
+  </Box>
+);
