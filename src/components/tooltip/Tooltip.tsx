@@ -19,7 +19,7 @@ const getVariant = (variant: ContainerColor): CSS => ({
 
 const TooltipScaleAnime = keyframes({
   "0%": {
-    transform: "translateY(4px)",
+    transform: "translateY(2px)",
   },
   "100%": {
     transform: "translateY(0)",
@@ -33,7 +33,7 @@ export const Tooltip = styled("div", {
   borderRadius: "$400",
   display: "inline-flex",
   alignItems: "center",
-  animation: `${TooltipScaleAnime} 200ms`,
+  animation: `${TooltipScaleAnime} 100ms`,
 
   variants: {
     variant: {
@@ -52,7 +52,7 @@ export const Tooltip = styled("div", {
   },
 });
 
-export const useTooltip = (position: Position, align: Align, offset: number) => {
+export const useTooltip = (position: Position, align: Align, offset: number, delay: number) => {
   const triggerRef = useRef<unknown>(null);
   const toolTipRef = useRef<HTMLDivElement>(null);
 
@@ -61,8 +61,9 @@ export const useTooltip = (position: Position, align: Align, offset: number) => 
   useEffect(() => {
     const trigger = triggerRef.current as HTMLElement;
     const tooltip = toolTipRef.current;
+    let timeoutId: number;
 
-    const openTooltip = () => {
+    const openTooltip = (evt: Event) => {
       const css = getRelativeFixedPosition(trigger, position, align, offset);
       if (tooltip) {
         tooltip.style.top = css.top;
@@ -71,9 +72,11 @@ export const useTooltip = (position: Position, align: Align, offset: number) => 
         tooltip.style.left = css.left;
         tooltip.style.transform = css.transform;
       }
-      setOpen(true);
+      if (evt.type === "focus") setOpen(true);
+      else timeoutId = window.setTimeout(() => setOpen(true), delay);
     };
     const closeTooltip = () => {
+      clearTimeout(timeoutId);
       setOpen(false);
     };
 
@@ -85,6 +88,7 @@ export const useTooltip = (position: Position, align: Align, offset: number) => 
         tooltip.children.length > 0
       ) {
         evt.preventDefault();
+        clearTimeout(timeoutId);
         setOpen(false);
       }
     };
@@ -94,14 +98,17 @@ export const useTooltip = (position: Position, align: Align, offset: number) => 
     trigger?.addEventListener("focus", openTooltip);
     trigger?.addEventListener("blur", closeTooltip);
     document.addEventListener("keydown", onKeyDown);
+    trigger?.addEventListener("click", closeTooltip);
     return () => {
+      clearTimeout(timeoutId);
       trigger?.removeEventListener("mouseenter", openTooltip);
       trigger?.removeEventListener("mouseleave", closeTooltip);
       trigger?.removeEventListener("focus", openTooltip);
       trigger?.removeEventListener("blur", closeTooltip);
       document.removeEventListener("keydown", onKeyDown);
+      trigger?.removeEventListener("click", closeTooltip);
     };
-  }, [position, align, offset]);
+  }, [position, align, offset, delay]);
 
   return {
     open,
@@ -114,6 +121,7 @@ interface TooltipProviderProps {
   position?: Position;
   align?: Align;
   offset?: number;
+  delay?: number;
   tooltip: ReactNode;
   children: (ref: MutableRefObject<null>) => ReactElement;
 }
@@ -121,10 +129,11 @@ export const TooltipProvider = ({
   position = "top",
   align = "center",
   offset = 10,
+  delay = 200,
   tooltip,
   children,
 }: TooltipProviderProps) => {
-  const { open, toolTipRef, triggerRef } = useTooltip(position, align, offset);
+  const { open, toolTipRef, triggerRef } = useTooltip(position, align, offset, delay);
 
   return (
     <>
