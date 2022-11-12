@@ -1,14 +1,13 @@
-import React, { ElementType } from "react";
 import { styled } from "@stitches/react";
-import { AsComponentProps, ContainerColor } from "../types";
-import { CSS } from "../../config";
+import { ContainerColor } from "../types";
+import { CSS, toRem } from "../../config";
 
 const getVariant = (variant: ContainerColor): CSS => ({
   $$ScrollTrackColor: `$colors$${variant}ContainerHover`,
   $$ScrollThumbColor: `$colors$${variant}ContainerLine`,
 });
 
-const StyledScroll = styled("div", {
+export const Scroll = styled("div", {
   padding: "0",
   margin: "0",
   width: "100%",
@@ -19,7 +18,7 @@ const StyledScroll = styled("div", {
   "&::-webkit-scrollbar-thumb": {
     backgroundColor: "transparent",
     borderRadius: "$Pill",
-    minHeight: 30,
+    minHeight: toRem(35),
   },
   "&::-webkit-scrollbar-track": {
     backgroundColor: "transparent",
@@ -59,6 +58,11 @@ const StyledScroll = styled("div", {
         },
       },
     },
+    hideTrack: {
+      true: {
+        $$ScrollTrackColor: "transparent",
+      },
+    },
     size: {
       0: {
         scrollbarWidth: "none",
@@ -69,18 +73,22 @@ const StyledScroll = styled("div", {
       300: {
         scrollbarWidth: "thin",
         "&::-webkit-scrollbar": {
-          width: 8,
-          height: 8,
+          width: toRem(8),
+          height: toRem(8),
+        },
+        "&::-webkit-scrollbar-thumb, &::-webkit-scrollbar-track": {
+          border: `${toRem(2)} solid transparent`,
+          backgroundClip: "padding-box",
         },
       },
       400: {
         scrollbarWidth: "auto",
         "&::-webkit-scrollbar": {
-          width: 16,
-          height: 16,
+          width: toRem(16),
+          height: toRem(16),
         },
         "&::-webkit-scrollbar-thumb, &::-webkit-scrollbar-track": {
-          border: "4px solid transparent",
+          border: `${toRem(4)} solid transparent`,
           backgroundClip: "padding-box",
         },
       },
@@ -104,17 +112,3 @@ const StyledScroll = styled("div", {
     direction: "Vertical",
   },
 });
-
-const defaultElement = "div";
-type ScrollProps<E extends ElementType = typeof defaultElement> = AsComponentProps<E> & {
-  css?: CSS;
-};
-
-export const Scroll = <E extends ElementType = typeof defaultElement>({
-  children,
-  ...props
-}: ScrollProps<E>) => {
-  const a = "";
-  console.log(a);
-  return <StyledScroll {...props}>{children}</StyledScroll>;
-};

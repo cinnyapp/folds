@@ -20,6 +20,9 @@ export default {
         "Critical",
       ],
     },
+    hideTrack: {
+      control: "boolean",
+    },
     visibility: {
       control: "select",
       options: ["Always", "Hover"],
@@ -41,7 +44,7 @@ const Template: ComponentStory<typeof Scroll> = (args) => <Scroll {...args} />;
 export const Vertical = Template.bind({});
 Vertical.args = {
   visibility: "Always",
-  size: 300,
+  size: 400,
   css: { height: 500 },
-  children: <Box css={{ height: 1000 }} />,
+  children: <Box css={{ height: 1000, background: "rgba(0, 0, 0, .1)" }} />,
 };
