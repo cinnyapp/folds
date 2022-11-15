@@ -54,13 +54,13 @@ export const Tooltip = styled("div", {
 
 export const useTooltip = (position: Position, align: Align, offset: number, delay: number) => {
   const triggerRef = useRef<unknown>(null);
-  const toolTipRef = useRef<HTMLDivElement>(null);
+  const tooltipRef = useRef<HTMLDivElement>(null);
 
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const trigger = triggerRef.current as HTMLElement;
-    const tooltip = toolTipRef.current;
+    const tooltip = tooltipRef.current;
     let timeoutId: number;
 
     const openTooltip = (evt: Event) => {
@@ -113,7 +113,7 @@ export const useTooltip = (position: Position, align: Align, offset: number, del
   return {
     open,
     triggerRef,
-    toolTipRef,
+    tooltipRef,
   };
 };
 
@@ -123,7 +123,7 @@ interface TooltipProviderProps {
   offset?: number;
   delay?: number;
   tooltip: ReactNode;
-  children: (ref: MutableRefObject<null>) => ReactElement;
+  children: (triggerRef: MutableRefObject<null>) => ReactElement;
 }
 export const TooltipProvider = ({
   position = "top",
@@ -133,7 +133,7 @@ export const TooltipProvider = ({
   tooltip,
   children,
 }: TooltipProviderProps) => {
-  const { open, toolTipRef, triggerRef } = useTooltip(position, align, offset, delay);
+  const { open, tooltipRef, triggerRef } = useTooltip(position, align, offset, delay);
 
   return (
     <>
@@ -141,7 +141,7 @@ export const TooltipProvider = ({
       <Portal>
         <Box
           role="tooltip"
-          ref={toolTipRef}
+          ref={tooltipRef}
           css={{
             display: "inline-block",
             position: "fixed",
