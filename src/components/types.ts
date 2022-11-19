@@ -1,4 +1,9 @@
-import { ComponentPropsWithRef, ElementType, PropsWithChildren } from "react";
+import {
+  ComponentPropsWithoutRef,
+  ComponentPropsWithRef,
+  ElementType,
+  PropsWithChildren,
+} from "react";
 
 export type MainColor = "Primary" | "Secondary" | "Success" | "Warning" | "Critical";
 
@@ -12,10 +17,14 @@ export type ContainerColor =
   | "Warning"
   | "Critical";
 
+export type RefOfType<E extends ElementType> = ComponentPropsWithRef<E>["ref"];
+
 type AsProp<E extends ElementType> = {
   as?: E;
 };
 
 export type AsComponentProps<E extends ElementType> = PropsWithChildren<
-  ComponentPropsWithRef<E> & AsProp<E>
->;
+  ComponentPropsWithoutRef<E> & AsProp<E>
+> & {
+  ref?: RefOfType<E>;
+};

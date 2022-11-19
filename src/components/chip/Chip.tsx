@@ -1,6 +1,6 @@
-import React, { ElementType, ReactNode } from "react";
+import React, { ElementType, forwardRef, ReactElement, ReactNode } from "react";
 import { CSS, styled, toRem, VariantProps } from "../../config";
-import { AsComponentProps, ContainerColor } from "../types";
+import { AsComponentProps, ContainerColor, RefOfType } from "../types";
 
 const getVariant = (variant: ContainerColor): CSS => ({
   $$ChipBorderColor: `$colors$${variant}ContainerLine`,
@@ -104,19 +104,22 @@ type ChipProps<E extends ElementType = typeof defaultElement> = ChipVariant &
     css?: CSS;
   };
 
-export const Chip = <E extends ElementType = typeof defaultElement>({
-  before,
-  after,
-  children,
-  ...props
-}: ChipProps<E>) => (
-  <StyledChip
-    data-ui-before={before ? true : undefined}
-    data-ui-after={after ? true : undefined}
-    {...props}
-  >
-    {before}
-    {children}
-    {after}
-  </StyledChip>
+export const Chip: <E extends ElementType = typeof defaultElement>(
+  props: ChipProps<E>
+) => ReactElement | null = forwardRef(
+  <E extends ElementType = typeof defaultElement>(
+    { before, after, children, ...props }: ChipProps<E>,
+    ref: RefOfType<E>
+  ) => (
+    <StyledChip
+      data-ui-before={before ? true : undefined}
+      data-ui-after={after ? true : undefined}
+      {...props}
+      ref={ref}
+    >
+      {before}
+      {children}
+      {after}
+    </StyledChip>
+  )
 );

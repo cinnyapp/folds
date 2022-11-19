@@ -1,6 +1,6 @@
-import React, { ElementType, ReactNode } from "react";
+import React, { ElementType, forwardRef, ReactElement, ReactNode } from "react";
 import { CSS, styled, toRem, VariantProps } from "../../config";
-import { AsComponentProps, MainColor } from "../types";
+import { AsComponentProps, MainColor, RefOfType } from "../types";
 
 const getVariant = (variant: MainColor): CSS => ({
   $$ButtonVariant: `$colors$${variant}`,
@@ -141,19 +141,22 @@ type ButtonProps<E extends ElementType = typeof defaultElement> = ButtonVariant 
     css?: CSS;
   };
 
-export const Button = <E extends ElementType = typeof defaultElement>({
-  before,
-  after,
-  children,
-  ...props
-}: ButtonProps<E>) => (
-  <StyledButton
-    data-ui-before={before ? true : undefined}
-    data-ui-after={after ? true : undefined}
-    {...props}
-  >
-    {before}
-    {children}
-    {after}
-  </StyledButton>
+export const Button: <E extends ElementType = typeof defaultElement>(
+  props: ButtonProps<E>
+) => ReactElement | null = forwardRef(
+  <E extends ElementType = typeof defaultElement>(
+    { before, after, children, ...props }: ButtonProps<E>,
+    ref: RefOfType<E>
+  ) => (
+    <StyledButton
+      data-ui-before={before ? true : undefined}
+      data-ui-after={after ? true : undefined}
+      {...props}
+      ref={ref}
+    >
+      {before}
+      {children}
+      {after}
+    </StyledButton>
+  )
 );
