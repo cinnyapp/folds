@@ -51,6 +51,7 @@ module.exports = {
     ],
     "react/require-default-props": "off",
     "react/jsx-props-no-spreading": "off",
+    "react/no-unstable-nested-components": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "error",
 

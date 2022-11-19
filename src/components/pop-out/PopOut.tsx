@@ -1,6 +1,5 @@
 import React, {
   MutableRefObject,
-  ReactElement,
   ReactNode,
   useCallback,
   useEffect,
@@ -15,12 +14,12 @@ interface PopOutProps {
   position?: Position;
   align?: Align;
   offset?: number;
-  content: ReactNode;
+  content: (open: boolean, toggleOpen: (value?: boolean) => void) => ReactNode;
   children: (
     anchorRef: MutableRefObject<null>,
     open: boolean,
     toggleOpen: (value?: boolean) => void
-  ) => ReactElement;
+  ) => ReactNode;
 }
 export const PopOut = ({
   position = "bottom",
@@ -79,10 +78,9 @@ export const PopOut = ({
             position: "fixed",
             maxWidth: "100vw",
             zIndex: "$200",
-            pointerEvents: "none",
           }}
         >
-          {open && content}
+          {open && content(open, toggleOpen)}
         </Box>
       </Portal>
     </>

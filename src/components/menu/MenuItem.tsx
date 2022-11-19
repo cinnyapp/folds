@@ -27,6 +27,7 @@ const StyledMenuItem = styled("button", {
   border: "0 solid currentColor",
   boxShadow: "none",
 
+  width: "100%",
   height: toRem(40),
   padding: "0 $400",
   display: "flex",

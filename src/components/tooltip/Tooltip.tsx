@@ -1,11 +1,4 @@
-import React, {
-  MutableRefObject,
-  ReactElement,
-  ReactNode,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { MutableRefObject, ReactNode, useEffect, useRef, useState } from "react";
 import { CSS, keyframes, styled, toRem } from "../../config";
 import { Box } from "../box";
 import { Portal } from "../portal";
@@ -123,7 +116,7 @@ interface TooltipProviderProps {
   offset?: number;
   delay?: number;
   tooltip: ReactNode;
-  children: (triggerRef: MutableRefObject<null>) => ReactElement;
+  children: (triggerRef: MutableRefObject<null>) => ReactNode;
 }
 export const TooltipProvider = ({
   position = "top",
