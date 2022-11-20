@@ -1,12 +1,12 @@
 import React from "react";
 import { ComponentMeta } from "@storybook/react";
-import { Button } from "../button";
 import { Text } from "../text";
 import { PopOut } from "./PopOut";
 import { Box } from "../box";
 import { Menu, MenuItem } from "../menu";
 import { Header } from "../header";
 import { Icon, Icons } from "../icon";
+import { IconButton } from "../icon-button";
 
 export default {
   title: "PopOut",
@@ -37,9 +37,9 @@ export const Interactive = () => (
       )}
     >
       {(ref, open, toggleOpen) => (
-        <Button type="button" onClick={() => toggleOpen()} ref={ref}>
-          {open ? "Close" : "Open"}
-        </Button>
+        <IconButton variant="SurfaceVariant" onClick={() => toggleOpen()} ref={ref}>
+          <Icon src={Icons.VerticalDots} />
+        </IconButton>
       )}
     </PopOut>
   </Box>

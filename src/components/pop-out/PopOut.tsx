@@ -47,25 +47,48 @@ export const PopOut = ({
     }
   }, [position, align, offset]);
 
-  const triggerPopOut = (state: boolean) => {
-    if (state) {
-      positionPopOut();
-      setOpen(true);
-    } else {
-      setOpen(false);
-    }
-  };
+  const triggerPopOut = useCallback(
+    (state: boolean) => {
+      if (state) {
+        positionPopOut();
+        setOpen(true);
+      } else {
+        setOpen(false);
+      }
+    },
+    [positionPopOut]
+  );
 
   const toggleOpen = (value?: boolean) => {
     triggerPopOut(value ?? !open);
   };
 
   useEffect(() => {
+    const handleKeyDown = (evt: KeyboardEvent) => {
+      if (evt.key === "Escape") {
+        evt.preventDefault();
+        triggerPopOut(false);
+      }
+    };
+    const handleClickOutside = (evt: MouseEvent) => {
+      if (
+        evt.target === anchorRef.current ||
+        (anchorRef.current as HTMLElement)?.contains(evt.target as Node)
+      )
+        return;
+      if (popOutRef.current?.contains(evt.target as Node)) return;
+      triggerPopOut(false);
+    };
+
     window.addEventListener("resize", positionPopOut);
+    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("click", handleClickOutside);
     return () => {
       window.removeEventListener("resize", positionPopOut);
+      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("click", handleClickOutside);
     };
-  }, [positionPopOut]);
+  }, [positionPopOut, triggerPopOut]);
 
   return (
     <>
