@@ -29,12 +29,11 @@ export const Line = styled("div", {
       Horizontal: {
         borderBottomStyle: "solid",
         height: 0,
-        width: "100%",
       },
       Vertical: {
         borderLeftStyle: "solid",
         width: 0,
-        height: "100%",
+        flexDirection: "column",
       },
     },
     size: {

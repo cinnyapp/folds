@@ -16,7 +16,7 @@ const getVariant = (variant: MainColor): CSS => ({
   $$ButtonOnVariantContainer: `$colors$On${variant}Container`,
 });
 
-export const StyledButton = styled("button", {
+const StyledButton = styled("button", {
   margin: 0,
   padding: 0,
   appearance: "none",
@@ -160,3 +160,5 @@ export const Button: <E extends ElementType = typeof defaultElement>(
     </StyledButton>
   )
 );
+
+Button.toString = () => StyledButton.toString();
