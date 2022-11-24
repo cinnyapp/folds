@@ -149,6 +149,8 @@ export const {
       X400: toRem(24),
       X500: toRem(28),
       X600: toRem(32),
+
+      DialogWidth: toRem(380),
     },
     transitions: {},
     colors: {
