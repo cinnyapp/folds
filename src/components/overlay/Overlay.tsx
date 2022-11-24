@@ -1,0 +1,56 @@
+import React, { forwardRef, HTMLAttributes, ReactNode } from "react";
+import { CSS, keyframes, styled } from "../../config";
+import { Box } from "../box";
+import { Portal } from "../portal";
+
+const OverlayBackDropAnime = keyframes({
+  "0%": {
+    opacity: "0",
+  },
+  "100%": {
+    opacity: ".5",
+  },
+});
+
+export const OverlayBackDrop = styled("div", {
+  position: "fixed",
+  top: 0,
+  right: 0,
+  bottom: 0,
+  left: 0,
+  zIndex: -1,
+  backgroundColor: "black",
+  opacity: ".5",
+  animation: `${OverlayBackDropAnime} 100ms`,
+});
+
+interface OverlayProps extends Omit<HTMLAttributes<HTMLDivElement>, "children"> {
+  css?: CSS;
+  open: boolean;
+  backdrop?: ReactNode;
+  children?: ReactNode;
+}
+
+export const Overlay = forwardRef<HTMLDivElement, OverlayProps>(
+  ({ open, backdrop, children, ...props }, ref) => (
+    <Portal>
+      {open ? (
+        <Box
+          css={{
+            position: "fixed",
+            top: 0,
+            right: 0,
+            bottom: 0,
+            left: 0,
+            zIndex: "$400",
+          }}
+          {...props}
+          ref={ref}
+        >
+          {backdrop}
+          {children}
+        </Box>
+      ) : null}
+    </Portal>
+  )
+);
