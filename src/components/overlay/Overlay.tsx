@@ -24,6 +24,13 @@ export const OverlayBackDrop = styled("div", {
   animation: `${OverlayBackDropAnime} 100ms`,
 });
 
+export const OverlayCenter = styled("div", {
+  height: "100%",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+});
+
 interface OverlayProps extends Omit<HTMLAttributes<HTMLDivElement>, "children"> {
   css?: CSS;
   open: boolean;
