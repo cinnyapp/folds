@@ -4,15 +4,15 @@ import { Overlay, OverlayBackDrop, OverlayCenter } from "../overlay";
 import { Text } from "../text";
 import { Icon, Icons } from "../icon";
 import { IconButton } from "../icon-button";
-import { Dialog } from "./Dialog";
+import { Modal } from "./Modal";
 import { Header } from "../header";
 import { Button } from "../button";
 import { Box } from "../box";
 
 export default {
-  title: "Dialog",
-  component: Dialog,
-} as ComponentMeta<typeof Dialog>;
+  title: "Modal",
+  component: Modal,
+} as ComponentMeta<typeof Modal>;
 
 export const Surface = () => {
   const [open, setOpen] = useState(false);
@@ -28,10 +28,10 @@ export const Surface = () => {
             if (evt.currentTarget === evt.target) setOpen(false);
           }}
         >
-          <Dialog>
+          <Modal size="300">
             <Header size="600" css={{ p: "0 $500", mT: "$100" }}>
               <Text size="H4" truncate>
-                Dialog
+                Modal
               </Text>
             </Header>
             <Box css={{ p: "0 $500 $500", d: "flex", fxD: "column", gap: "$500" }}>
@@ -44,7 +44,7 @@ export const Surface = () => {
                 <Text size="B400">Cancel</Text>
               </Button>
             </Box>
-          </Dialog>
+          </Modal>
         </OverlayCenter>
       </Overlay>
     </>

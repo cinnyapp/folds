@@ -7,7 +7,7 @@ const getVariant = (variant: ContainerColor): CSS => ({
   border: `$borderWidths$300 solid $colors$${variant}ContainerLine`,
 });
 
-const DialogOpenAnime = keyframes({
+const ModalOpenAnime = keyframes({
   "0%": {
     transform: "translateY(5px)",
   },
@@ -16,13 +16,13 @@ const DialogOpenAnime = keyframes({
   },
 });
 
-export const Dialog = styled("div", {
+export const Modal = styled("div", {
   borderRadius: "$400",
-  boxShadow: "$E400",
+  boxShadow: "$E300",
   width: "100%",
-  maxWidth: "$DialogWidth",
+  height: "100%",
   overflow: "hidden",
-  animation: `${DialogOpenAnime} 200ms`,
+  animation: `${ModalOpenAnime} 200ms`,
 
   variants: {
     variant: {
@@ -35,8 +35,28 @@ export const Dialog = styled("div", {
       Warning: getVariant("Warning"),
       Critical: getVariant("Critical"),
     },
+    size: {
+      300: {
+        maxWidth: "$ModalWidth300",
+        maxHeight: "$ModalHeight300",
+      },
+      400: {
+        maxWidth: "$ModalWidth400",
+        maxHeight: "$ModalHeight400",
+      },
+      500: {
+        maxWidth: "$ModalWidth500",
+        maxHeight: "$ModalHeight500",
+      },
+    },
+    flexHeight: {
+      true: {
+        height: "unset",
+      },
+    },
   },
   defaultVariants: {
     variant: "Surface",
+    size: 400,
   },
 });

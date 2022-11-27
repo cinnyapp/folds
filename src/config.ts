@@ -151,6 +151,13 @@ export const {
       X600: toRem(32),
 
       DialogWidth: toRem(380),
+      ModalHeight300: toRem(580),
+      ModalHeight400: toRem(684),
+      ModalHeight500: toRem(684),
+      ModalWidth300: toRem(460),
+      ModalWidth400: toRem(524),
+      ModalWidth500: toRem(802),
+      ModalDrawerWidth: toRem(222),
     },
     transitions: {},
     colors: {
