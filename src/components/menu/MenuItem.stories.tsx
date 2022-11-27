@@ -21,6 +21,10 @@ export default {
         "Critical",
       ],
     },
+    radii: {
+      control: "select",
+      options: ["inherit", 0, 300, 400, 500, "Pill"],
+    },
   },
 } as ComponentMeta<typeof MenuItem>;
 

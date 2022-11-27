@@ -59,9 +59,30 @@ const StyledMenuItem = styled("button", {
       Warning: getVariant("Warning"),
       Critical: getVariant("Critical"),
     },
+    radii: {
+      inherit: {
+        borderRadius: "inherit",
+      },
+      0: {
+        borderRadius: "$0",
+      },
+      300: {
+        borderRadius: "$300",
+      },
+      400: {
+        borderRadius: "$400",
+      },
+      500: {
+        borderRadius: "$500",
+      },
+      Pill: {
+        borderRadius: "$Pill",
+      },
+    },
   },
   defaultVariants: {
     variant: "Surface",
+    radii: 0,
   },
 });
 
