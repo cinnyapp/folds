@@ -1,7 +1,15 @@
 import React, { forwardRef, HTMLAttributes, ReactNode } from "react";
 import { CSS, keyframes, styled } from "../../config";
-import { Box } from "../box";
 import { Portal } from "../portal";
+
+const StyledOverlay = styled("div", {
+  position: "fixed",
+  top: 0,
+  right: 0,
+  bottom: 0,
+  left: 0,
+  zIndex: "$400",
+});
 
 const OverlayBackDropAnime = keyframes({
   "0%": {
@@ -42,21 +50,10 @@ export const Overlay = forwardRef<HTMLDivElement, OverlayProps>(
   ({ open, backdrop, children, ...props }, ref) => (
     <Portal>
       {open ? (
-        <Box
-          css={{
-            position: "fixed",
-            top: 0,
-            right: 0,
-            bottom: 0,
-            left: 0,
-            zIndex: "$400",
-          }}
-          {...props}
-          ref={ref}
-        >
+        <StyledOverlay {...props} ref={ref}>
           {backdrop}
           {children}
-        </Box>
+        </StyledOverlay>
       ) : null}
     </Portal>
   )

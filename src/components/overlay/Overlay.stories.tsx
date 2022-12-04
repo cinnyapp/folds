@@ -19,7 +19,7 @@ export const Surface = () => {
       <IconButton variant="SurfaceVariant" onClick={() => setOpen(!open)}>
         <Icon src={Icons.VerticalDots} />
       </IconButton>
-      <Overlay open={open} backdrop={<OverlayBackDrop />}>
+      <Overlay css={{ padding: "4px" }} open={open} backdrop={<OverlayBackDrop />}>
         <OverlayCenter onClick={() => setOpen(false)}>
           <Tooltip>
             <Text truncate size="T300">
