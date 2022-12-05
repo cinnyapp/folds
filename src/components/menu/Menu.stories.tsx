@@ -5,6 +5,7 @@ import { Icon, Icons } from "../icon";
 import { Text } from "../text";
 import { Menu } from "./Menu";
 import { MenuItem } from "./MenuItem";
+import { Box } from "../box";
 
 export default {
   title: "Menu",
@@ -22,15 +23,17 @@ Surface.args = {
           Options
         </Text>
       </Header>
-      <MenuItem before={<Icon size="100" src={Icons.Pencil} />}>
-        <Text size="B400">Menu Item 1</Text>
-      </MenuItem>
-      <MenuItem before={<Icon size="100" src={Icons.Pencil} />}>
-        <Text size="B400">Menu Item 2</Text>
-      </MenuItem>
-      <MenuItem before={<Icon size="100" src={Icons.Pencil} />}>
-        <Text size="B400">Menu Item 3</Text>
-      </MenuItem>
+      <Box css={{ p: "$100" }}>
+        <MenuItem radii="300" before={<Icon size="100" src={Icons.Pencil} />}>
+          <Text size="B400">Menu Item 1</Text>
+        </MenuItem>
+        <MenuItem radii="300" before={<Icon size="100" src={Icons.Pencil} />}>
+          <Text size="B400">Menu Item 2</Text>
+        </MenuItem>
+        <MenuItem radii="300" before={<Icon size="100" src={Icons.Pencil} />}>
+          <Text size="B400">Menu Item 3</Text>
+        </MenuItem>
+      </Box>
     </Menu>
   ),
 };
