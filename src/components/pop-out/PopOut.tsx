@@ -1,27 +1,18 @@
-import React, {
-  MutableRefObject,
-  ReactNode,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { MutableRefObject, ReactNode, useCallback, useEffect, useRef } from "react";
 import { Box } from "../box";
 import { Portal } from "../portal";
 import { Align, getRelativeFixedPosition, Position } from "../util";
 
 interface PopOutProps {
+  open: boolean;
   position?: Position;
   align?: Align;
   offset?: number;
-  content: (open: boolean, toggleOpen: (value?: boolean) => void) => ReactNode;
-  children: (
-    anchorRef: MutableRefObject<null>,
-    open: boolean,
-    toggleOpen: (value?: boolean) => void
-  ) => ReactNode;
+  content: ReactNode;
+  children: (anchorRef: MutableRefObject<null>) => ReactNode;
 }
 export const PopOut = ({
+  open,
   position = "bottom",
   align = "center",
   offset = 10,
@@ -30,8 +21,6 @@ export const PopOut = ({
 }: PopOutProps) => {
   const anchorRef = useRef<unknown>(null);
   const popOutRef = useRef<HTMLDivElement>(null);
-
-  const [open, setOpen] = useState(false);
 
   const positionPopOut = useCallback(() => {
     const anchor = anchorRef.current as HTMLElement;
@@ -47,64 +36,34 @@ export const PopOut = ({
     }
   }, [position, align, offset]);
 
-  const triggerPopOut = useCallback(
-    (state: boolean) => {
-      if (state) {
-        positionPopOut();
-        setOpen(true);
-      } else {
-        setOpen(false);
-      }
-    },
-    [positionPopOut]
-  );
-
-  const toggleOpen = (value?: boolean) => {
-    triggerPopOut(value ?? !open);
-  };
-
   useEffect(() => {
-    const handleKeyDown = (evt: KeyboardEvent) => {
-      if (evt.key === "Escape") {
-        evt.preventDefault();
-        triggerPopOut(false);
-      }
-    };
-    const handleClickOutside = (evt: MouseEvent) => {
-      if (
-        evt.target === anchorRef.current ||
-        (anchorRef.current as HTMLElement)?.contains(evt.target as Node)
-      )
-        return;
-      if (popOutRef.current?.contains(evt.target as Node)) return;
-      triggerPopOut(false);
-    };
-
     window.addEventListener("resize", positionPopOut);
-    document.addEventListener("keydown", handleKeyDown);
-    document.addEventListener("click", handleClickOutside);
     return () => {
       window.removeEventListener("resize", positionPopOut);
-      document.removeEventListener("keydown", handleKeyDown);
-      document.removeEventListener("click", handleClickOutside);
     };
-  }, [positionPopOut, triggerPopOut]);
+  }, [positionPopOut]);
+
+  useEffect(() => {
+    if (open) positionPopOut();
+  }, [open, positionPopOut]);
 
   return (
     <>
-      {children(anchorRef as MutableRefObject<null>, open, toggleOpen)}
+      {children(anchorRef as MutableRefObject<null>)}
       <Portal>
-        <Box
-          ref={popOutRef}
-          css={{
-            display: "inline-block",
-            position: "fixed",
-            maxWidth: "100vw",
-            zIndex: "$200",
-          }}
-        >
-          {open && content(open, toggleOpen)}
-        </Box>
+        {open && (
+          <Box
+            ref={popOutRef}
+            css={{
+              display: "inline-block",
+              position: "fixed",
+              maxWidth: "100vw",
+              zIndex: "$200",
+            }}
+          >
+            {content}
+          </Box>
+        )}
       </Portal>
     </>
   );
