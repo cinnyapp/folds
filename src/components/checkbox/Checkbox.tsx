@@ -21,6 +21,7 @@ const StyledCheckbox = styled("span", {
   height: "$$CheckboxSize",
   WebkitTapHighlightColor: "transparent",
 
+  flexShrink: "0",
   display: "inline-flex",
   alignItems: "center",
   justifyContent: "center",

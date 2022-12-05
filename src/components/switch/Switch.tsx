@@ -27,6 +27,7 @@ const StyledSwitch = styled("button", {
   appearance: "none",
   WebkitTapHighlightColor: "transparent",
 
+  flexShrink: "0",
   display: "inline-flex",
   alignItems: "center",
   width: toRem(44),

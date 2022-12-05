@@ -6,6 +6,7 @@ import { IconSrc } from "./Icons";
 const StyledIcon = styled("svg", {
   width: "$$IconSize",
   height: "$$IconSize",
+  flexShrink: "0",
   color: "currentColor",
   variants: {
     size: {

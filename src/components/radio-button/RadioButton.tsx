@@ -19,6 +19,7 @@ const StyledRadioButton = styled("input", {
   borderRadius: "$Round",
   boxShadow: "inset 0 0 0 $borderWidths$400 CurrentColor",
   cursor: "pointer",
+  flexShrink: "0",
   display: "inline-flex",
   alignItems: "center",
   justifyContent: "center",
