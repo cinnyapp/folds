@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import FocusTrap from "focus-trap-react";
 import { ComponentMeta } from "@storybook/react";
 import { Overlay, OverlayBackDrop, OverlayCenter } from "../overlay";
 import { Text } from "../text";
@@ -23,28 +24,32 @@ export const Surface = () => {
         <Icon src={Icons.VerticalDots} />
       </IconButton>
       <Overlay open={open} backdrop={<OverlayBackDrop />}>
-        <OverlayCenter
-          onClick={(evt) => {
-            if (evt.currentTarget === evt.target) setOpen(false);
-          }}
-        >
-          <Dialog>
-            <Header size="600" css={{ p: "0 $500", mT: "$100" }}>
-              <Text size="H4" truncate>
-                Dialog
-              </Text>
-            </Header>
-            <Box css={{ p: "0 $500 $500", d: "flex", fxD: "column", gap: "$500" }}>
-              <Text size="T300">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lacinia ornare lectus
-                mauris in vel at pretium, eget. Viverra dignissim faucibus volutpat in mauris. Nulla
-                dui lacus ut ullamcorper fermentum tincidunt a cras.
-              </Text>
-              <Button variant="Secondary" fill="Soft" onClick={() => setOpen(false)}>
-                <Text size="B400">Cancel</Text>
-              </Button>
-            </Box>
-          </Dialog>
+        <OverlayCenter>
+          <FocusTrap
+            focusTrapOptions={{
+              initialFocus: false,
+              onDeactivate: () => setOpen(false),
+              clickOutsideDeactivates: true,
+            }}
+          >
+            <Dialog>
+              <Header size="600" css={{ p: "0 $500", mT: "$100" }}>
+                <Text size="H4" truncate>
+                  Dialog
+                </Text>
+              </Header>
+              <Box css={{ p: "0 $500 $500", d: "flex", fxD: "column", gap: "$500" }}>
+                <Text size="T300">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lacinia ornare lectus
+                  mauris in vel at pretium, eget. Viverra dignissim faucibus volutpat in mauris.
+                  Nulla dui lacus ut ullamcorper fermentum tincidunt a cras.
+                </Text>
+                <Button variant="Secondary" fill="Soft" onClick={() => setOpen(false)}>
+                  <Text size="B400">Cancel</Text>
+                </Button>
+              </Box>
+            </Dialog>
+          </FocusTrap>
         </OverlayCenter>
       </Overlay>
     </>
