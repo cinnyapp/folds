@@ -148,7 +148,7 @@ export const {
       X300: toRem(22),
       X400: toRem(24),
       X500: toRem(28),
-      X600: toRem(32),
+      X600: toRem(36),
 
       DialogWidth: toRem(380),
       ModalHeight300: toRem(580),
