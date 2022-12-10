@@ -27,6 +27,8 @@ export const Interactive = () => {
               initialFocus: false,
               onDeactivate: () => setOpen(false),
               clickOutsideDeactivates: true,
+              isKeyForward: (evt: KeyboardEvent) => evt.key === "ArrowDown",
+              isKeyBackward: (evt: KeyboardEvent) => evt.key === "ArrowUp",
             }}
           >
             <Menu css={{ p: "$100" }}>

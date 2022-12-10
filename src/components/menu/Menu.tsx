@@ -9,7 +9,6 @@ const getVariant = (variant: ContainerColor): CSS => ({
 export const Menu = styled("div", {
   borderRadius: "$400",
   boxShadow: "$E200",
-  zIndex: "$200",
   overflow: "hidden",
 
   variants: {
