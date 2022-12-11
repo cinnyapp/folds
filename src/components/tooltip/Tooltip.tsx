@@ -45,7 +45,7 @@ export const Tooltip = styled("div", {
   },
 });
 
-export const useTooltip = (position: Position, align: Align, offset: number, delay: number) => {
+const useTooltip = (position: Position, align: Align, offset: number, delay: number) => {
   const triggerRef = useRef<unknown>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
 

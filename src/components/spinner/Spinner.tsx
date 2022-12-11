@@ -100,15 +100,14 @@ const StyledSpinner = styled("span", {
 
 type SpinnerVariant = VariantProps<typeof StyledSpinner>;
 
-interface SpinnerProps extends AllHTMLAttributes<HTMLSpanElement> {
-  css?: CSS;
-}
+type SpinnerProps = AllHTMLAttributes<HTMLSpanElement> &
+  SpinnerVariant & {
+    css?: CSS;
+  };
 
-export const Spinner = forwardRef<HTMLSpanElement, SpinnerProps & SpinnerVariant>(
-  ({ ...props }, ref) => (
-    <StyledSpinner {...props} ref={ref}>
-      <SpinnerSvg />
-    </StyledSpinner>
-  )
-);
+export const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>(({ ...props }, ref) => (
+  <StyledSpinner {...props} ref={ref}>
+    <SpinnerSvg />
+  </StyledSpinner>
+));
 Spinner.toString = () => StyledSpinner.toString();

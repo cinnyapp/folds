@@ -17,7 +17,7 @@ const getVariant = (variant: ContainerColor): CSS => ({
   },
 });
 
-export const StyledInput = styled("span", {
+const StyledInput = styled("span", {
   "&, & input": {
     padding: 0,
     margin: 0,
@@ -101,13 +101,14 @@ export const StyledInput = styled("span", {
 });
 
 type InputVariant = VariantProps<typeof StyledInput>;
-interface InputProps extends AllHTMLAttributes<HTMLInputElement> {
-  before?: ReactNode;
-  after?: ReactNode;
-  css?: CSS;
-}
+type InputProps = AllHTMLAttributes<HTMLInputElement> &
+  InputVariant & {
+    before?: ReactNode;
+    after?: ReactNode;
+    css?: CSS;
+  };
 
-export const Input = forwardRef<HTMLSpanElement, InputProps & InputVariant>(
+export const Input = forwardRef<HTMLSpanElement, InputProps>(
   ({ className, style, css, variant, size, outlined, before, after, ...props }, ref) => (
     <StyledInput
       className={className}
@@ -126,3 +127,5 @@ export const Input = forwardRef<HTMLSpanElement, InputProps & InputVariant>(
     </StyledInput>
   )
 );
+
+Input.toString = () => StyledInput.toString();

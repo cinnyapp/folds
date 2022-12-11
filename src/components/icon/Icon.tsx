@@ -39,12 +39,13 @@ const StyledIcon = styled("svg", {
 });
 
 type IconVariants = VariantProps<typeof StyledIcon>;
-export interface IconProps extends SVGAttributes<SVGElement> {
-  css?: CSS;
-  filled?: boolean;
-  src: IconSrc;
-}
-export const Icon = forwardRef<SVGSVGElement, IconProps & IconVariants>(
+type IconProps = SVGAttributes<SVGElement> &
+  IconVariants & {
+    css?: CSS;
+    filled?: boolean;
+    src: IconSrc;
+  };
+export const Icon = forwardRef<SVGSVGElement, IconProps>(
   ({ css, filled = false, src, ...props }, ref) => (
     <StyledIcon
       focusable="false"

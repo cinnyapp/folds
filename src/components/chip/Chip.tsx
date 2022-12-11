@@ -26,7 +26,7 @@ const getVariant = (variant: ContainerColor): CSS => ({
   },
 });
 
-export const StyledChip = styled("button", {
+const StyledChip = styled("button", {
   padding: 0,
   margin: 0,
   background: "transparent",
@@ -123,3 +123,5 @@ export const Chip: <E extends ElementType = typeof defaultElement>(
     </StyledChip>
   )
 );
+
+Chip.toString = () => StyledChip.toString();

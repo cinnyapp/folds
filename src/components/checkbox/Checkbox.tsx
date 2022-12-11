@@ -101,13 +101,14 @@ const StyledCheckbox = styled("span", {
 });
 
 type CheckboxVariant = VariantProps<typeof StyledCheckbox>;
-interface CheckboxProps extends Omit<AllHTMLAttributes<HTMLInputElement>, "children" | "onChange"> {
-  defaultChecked?: boolean;
-  checked?: boolean;
-  css?: CSS;
-}
+type CheckboxProps = Omit<AllHTMLAttributes<HTMLInputElement>, "children" | "onChange"> &
+  CheckboxVariant & {
+    defaultChecked?: boolean;
+    checked?: boolean;
+    css?: CSS;
+  };
 
-export const Checkbox = forwardRef<HTMLSpanElement, CheckboxVariant & CheckboxProps>(
+export const Checkbox = forwardRef<HTMLSpanElement, CheckboxProps>(
   ({ className, variant, size, style, css, ...props }, ref) => (
     <StyledCheckbox
       className={className}
@@ -122,3 +123,5 @@ export const Checkbox = forwardRef<HTMLSpanElement, CheckboxVariant & CheckboxPr
     </StyledCheckbox>
   )
 );
+
+Checkbox.toString = () => StyledCheckbox.toString();

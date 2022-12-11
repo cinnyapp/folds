@@ -77,16 +77,16 @@ const StyledSwitch = styled("button", {
 });
 
 type SwitchVariant = VariantProps<typeof StyledSwitch>;
-export interface SwitchProps
-  extends Omit<
-    ButtonHTMLAttributes<HTMLButtonElement>,
-    "value" | "onClick" | "onChange" | "children"
-  > {
-  value?: boolean;
-  onChange?: (on: boolean) => void;
-  css?: CSS;
-}
-export const Switch = forwardRef<HTMLButtonElement, SwitchProps & SwitchVariant>(
+type SwitchProps = Omit<
+  ButtonHTMLAttributes<HTMLButtonElement>,
+  "value" | "onClick" | "onChange" | "children"
+> &
+  SwitchVariant & {
+    value?: boolean;
+    onChange?: (on: boolean) => void;
+    css?: CSS;
+  };
+export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(
   ({ value = false, onChange, ...props }, ref) => {
     const handleClick = () => onChange?.(!value);
 
@@ -99,3 +99,5 @@ export const Switch = forwardRef<HTMLButtonElement, SwitchProps & SwitchVariant>
     );
   }
 );
+
+Switch.toString = () => StyledSwitch.toString();

@@ -89,12 +89,15 @@ const StyledRadioButton = styled("input", {
 
 type RadioButtonVariant = VariantProps<typeof StyledRadioButton>;
 
-interface RadioButtonProps extends Omit<AllHTMLAttributes<HTMLInputElement>, "type" | "onChange"> {
-  defaultChecked?: boolean;
-  checked?: boolean;
-  css?: CSS;
-}
+type RadioButtonProps = Omit<AllHTMLAttributes<HTMLInputElement>, "type" | "onChange"> &
+  RadioButtonVariant & {
+    defaultChecked?: boolean;
+    checked?: boolean;
+    css?: CSS;
+  };
 
-export const RadioButton = forwardRef<HTMLInputElement, RadioButtonProps & RadioButtonVariant>(
-  ({ ...props }, ref) => <StyledRadioButton {...props} type="radio" ref={ref} />
-);
+export const RadioButton = forwardRef<HTMLInputElement, RadioButtonProps>(({ ...props }, ref) => (
+  <StyledRadioButton {...props} type="radio" ref={ref} />
+));
+
+RadioButton.toString = () => StyledRadioButton.toString();

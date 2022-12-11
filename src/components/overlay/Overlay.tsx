@@ -39,7 +39,7 @@ export const OverlayCenter = styled("div", {
   justifyContent: "center",
 });
 
-interface OverlayProps extends Omit<HTMLAttributes<HTMLDivElement>, "children"> {
+export interface OverlayProps extends Omit<HTMLAttributes<HTMLDivElement>, "children"> {
   css?: CSS;
   open: boolean;
   backdrop?: ReactNode;

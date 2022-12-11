@@ -1,12 +1,3 @@
-import React from "react";
-import { createRoot } from "react-dom/client";
+export * from "./config";
 
-import { App } from "./App";
-
-const container = document.getElementById("root");
-if (!container) {
-  throw Error("Unable to find root container.");
-}
-
-const root = createRoot(container);
-root.render(<App />);
+export * from "./components";

@@ -115,3 +115,5 @@ export const MenuItem: <E extends ElementType = typeof defaultElement>(
     </StyledMenuItem>
   )
 );
+
+MenuItem.toString = () => StyledMenuItem.toString();
