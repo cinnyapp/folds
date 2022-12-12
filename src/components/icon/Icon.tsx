@@ -39,7 +39,7 @@ const StyledIcon = styled("svg", {
 });
 
 type IconVariants = VariantProps<typeof StyledIcon>;
-type IconProps = SVGAttributes<SVGElement> &
+export type IconProps = SVGAttributes<SVGElement> &
   IconVariants & {
     css?: CSS;
     filled?: boolean;
