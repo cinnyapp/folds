@@ -11,6 +11,7 @@
     "check:eslint": "eslint src/*",
     "check:prettier": "prettier --check .",
     "fix:prettier": "prettier --write .",
+    "typecheck": "tsc --noEmit",
     "prepare": "husky install",
     "commit": "git-cz",
     "storybook": "start-storybook -p 6006",
