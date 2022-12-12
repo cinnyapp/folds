@@ -13,7 +13,7 @@ src
 .prettierrc.json
 index.html
 tsconfig.json
-webpack.config.json
+webpack.config.js
 yarn.lock
 yarn-error.log
 .DS_Store
