@@ -1,0 +1,51 @@
+name: Node.js CI
+
+on:
+  pull_request:
+    branches: "*"
+  workflow_dispatch:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3.1.0
+      - name: Setup node
+        uses: actions/setup-node@v3.5.1
+        with:
+          node-version: 18.12.1
+          cache: "yarn"
+      - run: yarn install --frozen-lockfile
+      - run: yarn lint
+
+  typecheck:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3.1.0
+      - name: Setup node
+        uses: actions/setup-node@v3.5.1
+        with:
+          node-version: 18.12.1
+          cache: "yarn"
+      - run: yarn install --frozen-lockfile
+      - run: yarn typecheck
+
+  publish:
+    runs-on: ubuntu-latest
+    if: ${{ github.ref == 'refs/heads/main' }}
+    needs: [lint, typecheck]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3.1.0
+      - name: Setup node
+        uses: actions/setup-node@v3.5.1
+        with:
+          node-version: 18.12.1
+          cache: "yarn"
+      - run: yarn install --frozen-lockfile
+      - run: yarn semantic-release
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
