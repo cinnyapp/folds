@@ -16,8 +16,7 @@
     "commit": "git-cz",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "semantic-release-pre": "semantic-release pre --branches main",
-    "semantic-release-post": "semantic-release post --branches main"
+    "semantic-release": "semantic-release --branches main"
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": "eslint",

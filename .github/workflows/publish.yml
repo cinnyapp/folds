@@ -45,10 +45,8 @@ jobs:
           node-version: 18.12.1
           cache: "yarn"
       - run: yarn install --frozen-lockfile
-      - run: npm run semantic-release-pre
-      - run: npm run build
-      - run: npm publish
-      - run: npm run semantic-release-post
+      - run: yarn build
+      - run: yarn semantic-release
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
