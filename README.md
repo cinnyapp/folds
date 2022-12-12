@@ -14,5 +14,5 @@ yarn storybook # Serve a development version
 To build the package:
 
 ```
-yarn build
+yarn build # Build package into dist directory
 ```
