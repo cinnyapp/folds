@@ -28,7 +28,8 @@
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": "eslint",
-    "*": "prettier --ignore-unknown --check"
+    "*.{ts,tsx}": "tsc --noEmit",
+    "*": "prettier --ignore-unknown --write"
   },
   "repository": {
     "type": "git",
@@ -46,7 +47,6 @@
     "@babel/preset-env": "^7.18.2",
     "@babel/preset-react": "^7.17.12",
     "@semantic-release/changelog": "^6.0.2",
-    "@semantic-release/git": "^10.0.1",
     "@storybook/addon-actions": "^6.5.9",
     "@storybook/addon-essentials": "^6.5.9",
     "@storybook/addon-interactions": "^6.5.9",
