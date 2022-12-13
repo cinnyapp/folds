@@ -9,6 +9,7 @@
     "dist",
     "LICENSE",
     "README.md",
+    "CHANGELOG.md",
     "package.json"
   ],
   "scripts": {
@@ -23,11 +24,22 @@
     "commit": "git-cz",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "semantic-release": "semantic-release --branches main"
+    "semantic-release": "semantic-release"
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": "eslint",
     "*": "prettier --ignore-unknown --check"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cinnyapp/folds.git"
+  },
+  "dependencies": {
+    "@fontsource/inter": "^4.5.12",
+    "@stitches/react": "^1.2.8",
+    "focus-trap-react": "^10.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.18.5",
@@ -67,20 +79,22 @@
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.9.2"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/cinnyapp/folds.git"
-  },
-  "dependencies": {
-    "@fontsource/inter": "^4.5.12",
-    "@stitches/react": "^1.2.8",
-    "focus-trap-react": "^10.0.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "release": {
+    "branches": [
+      "main"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/github",
+      "@semantic-release/git"
+    ]
   }
 }
