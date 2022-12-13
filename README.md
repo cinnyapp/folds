@@ -1,5 +1,8 @@
 # Folds
 
+<a href="https://npmjs.com/package/folds">
+        <img alt="Npm package" src="https://img.shields.io/npm/v/folds?label=folds&logo=npm&style=social"></a>
+
 Folds is the design system made for Cinny matrix client.
 
 ## Local development
