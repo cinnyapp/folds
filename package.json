@@ -2,10 +2,12 @@
   "name": "folds",
   "version": "0.0.0-development",
   "author": "Ajay Bura (ajbura)",
+  "license": "Apache-2.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist",
+    "LICENSE",
     "README.md",
     "package.json"
   ],
