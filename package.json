@@ -71,7 +71,7 @@
     "html-webpack-plugin": "^5.5.0",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.2",
-    "prettier": "2.7.1",
+    "prettier": "2.8.1",
     "semantic-release": "^19.0.5",
     "ts-loader": "^9.3.0",
     "typescript": "4.7.4",
