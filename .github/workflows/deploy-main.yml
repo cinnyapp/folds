@@ -1,0 +1,39 @@
+name: Deploy to Netlify (main)
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-to-netlify:
+    name: "Deploy to Netlify"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3.2.0
+      - name: Setup node
+        uses: actions/setup-node@v3.5.1
+        with:
+          node-version: 18.12.1
+          cache: "yarn"
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - run: yarn lint
+      - run: yarn typecheck
+      - name: Build storybook
+        run: yarn build-storybook
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@ac1cb16858bada08a9c71a81240a85cfc3f72913
+        with:
+          publish-dir: storybook-static
+          deploy-message: "Main deploy ${{ github.sha }}"
+          enable-commit-comment: false
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          production-deploy: true
+          github-deployment-environment: nightly
+          github-deployment-description: "Nightly deployment on each commit to main branch"
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID_FOLDS_SB }}
+        timeout-minutes: 1
