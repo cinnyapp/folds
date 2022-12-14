@@ -4,7 +4,7 @@
 
 - fix shieldsio badge ([b27dda1](https://github.com/cinnyapp/folds/commit/b27dda1550364288899b3d15c4de0df3c0dea5cc))
 
-# 1.0.0 (2022-12-13)
+## 1.0.0 (2022-12-13)
 
 ### Bug Fixes
 
