@@ -1,4 +1,5 @@
 name: Check PR title
+
 on:
   pull_request_target:
     types:
@@ -11,6 +12,6 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: aslafy-z/conventional-pr-title-action@v3.0.0
+      - uses: aslafy-z/conventional-pr-title-action@4dc0053b09491ee22af894d8a5960089061a8cdc
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

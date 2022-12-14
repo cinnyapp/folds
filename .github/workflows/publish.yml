@@ -1,4 +1,4 @@
-name: Node.js CI
+name: Lint, Types and Deploy
 
 on:
   pull_request:
