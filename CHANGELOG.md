@@ -1,3 +1,9 @@
+## [1.0.2](https://github.com/cinnyapp/folds/compare/v1.0.1...v1.0.2) (2022-12-21)
+
+### Bug Fixes
+
+- typescript config ([8044c40](https://github.com/cinnyapp/folds/commit/8044c40ff1a8ff4ba8da312a209f7f15dbc1ed4b))
+
 ## [1.0.1](https://github.com/cinnyapp/folds/compare/v1.0.0...v1.0.1) (2022-12-13)
 
 ### Bug Fixes
