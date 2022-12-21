@@ -6,8 +6,11 @@ module.exports = {
   entry: "./src/index",
   devtool: "source-map",
   output: {
+    library: {
+      name: "folds",
+      type: "umd",
+    },
     filename: "index.js",
-    libraryTarget: "umd",
     path: path.resolve(__dirname, "dist"),
     clean: true,
   },
