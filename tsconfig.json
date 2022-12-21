@@ -18,6 +18,6 @@
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true
   },
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules", "dist", "storybook-static"],
   "include": ["src"]
 }
