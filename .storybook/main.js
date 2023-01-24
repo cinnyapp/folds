@@ -7,6 +7,14 @@ module.exports = {
   ],
   framework: "@storybook/react",
   core: {
-    builder: "@storybook/builder-webpack5",
+    builder: "@storybook/builder-vite",
+  },
+  features: {
+    storyStoreV7: true,
+  },
+  async viteFinal(config) {
+    return require("vite").mergeConfig(config, {
+      plugins: [require("@vanilla-extract/vite-plugin").vanillaExtractPlugin()],
+    });
   },
 };

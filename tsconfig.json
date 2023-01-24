@@ -13,6 +13,9 @@
     "noImplicitAny": true,
     "allowJs": true,
     "isolatedModules": false,
+    "skipLibCheck": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
 
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
