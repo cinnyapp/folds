@@ -1,117 +1,40 @@
-import React, { ElementType, forwardRef, ReactElement, ReactNode } from "react";
-import { CSS, styled, toRem, VariantProps } from "../../config";
-import { AsComponentProps, ContainerColor, RefOfType } from "../types";
+import classNames from "classnames";
+import React, { ReactNode } from "react";
+import { as } from "../as";
 
-const getVariant = (variant: ContainerColor): CSS => ({
-  $$ChipBorderColor: `$colors$${variant}ContainerLine`,
-  color: `$On${variant}Container`,
-  backgroundColor: `$${variant}Container`,
+import * as css from "./Chip.css";
 
-  "&[aria-selected=true], &[aria-pressed=true]": {
-    boxShadow: "none",
-    backgroundColor: `$${variant}ContainerActive`,
-  },
+type ChipProps = {
+  before?: ReactNode;
+  after?: ReactNode;
+};
 
-  "@hover": {
-    "&:hover": {
-      backgroundColor: `$${variant}ContainerHover`,
+export const Chip = as<"button", ChipProps & css.ChipVariants>(
+  (
+    {
+      as: AsChip = "button",
+      className,
+      variant,
+      size,
+      outlined,
+      radii,
+      before,
+      after,
+      children,
+      ...props
     },
-  },
-  "&:focus-visible": {
-    backgroundColor: `$${variant}ContainerHover`,
-    outline: "$FocusRing",
-  },
-  "&:active": {
-    backgroundColor: `$${variant}ContainerActive`,
-  },
-});
-
-const StyledChip = styled("button", {
-  padding: 0,
-  margin: 0,
-  background: "transparent",
-  border: "none",
-  boxShadow: "none",
-  appearance: "none",
-  WebkitTapHighlightColor: "transparent",
-
-  display: "inline-flex",
-  alignItems: "center",
-  height: "$$ChipSize",
-  color: "CurrentColor",
-  borderRadius: "$400",
-  cursor: "pointer",
-
-  "&[disabled], &[aria-disabled=true]": {
-    opacity: "$Disabled",
-    cursor: "not-allowed",
-  },
-
-  variants: {
-    variant: {
-      Background: getVariant("Background"),
-      Surface: getVariant("Surface"),
-      SurfaceVariant: getVariant("SurfaceVariant"),
-      Primary: getVariant("Primary"),
-      Secondary: getVariant("Secondary"),
-      Success: getVariant("Success"),
-      Warning: getVariant("Warning"),
-      Critical: getVariant("Critical"),
-    },
-    size: {
-      400: {
-        $$ChipSize: toRem(24),
-        padding: "0 $300",
-        gap: "$100",
-        "&[data-ui-before=true]": {
-          paddingLeft: "$200",
-        },
-        "&[data-ui-after=true]": {
-          paddingRight: "$200",
-        },
-      },
-      500: {
-        $$ChipSize: toRem(32),
-        padding: "0 $400",
-        gap: "$200",
-        "&[data-ui-before=true]": {
-          paddingLeft: "$300",
-        },
-        "&[data-ui-after=true]": {
-          paddingRight: "$300",
-        },
-      },
-    },
-    outlined: {
-      true: {
-        border: "$borderWidths$400 solid $$ChipBorderColor",
-      },
-    },
-  },
-  defaultVariants: {
-    variant: "Surface",
-    size: 400,
-  },
-});
-
-type ChipVariant = VariantProps<typeof StyledChip>;
-
-const defaultElement = "button";
-type ChipProps<E extends ElementType = typeof defaultElement> = ChipVariant &
-  AsComponentProps<E> & {
-    before?: ReactNode;
-    after?: ReactNode;
-    css?: CSS;
-  };
-
-export const Chip: <E extends ElementType = typeof defaultElement>(
-  props: ChipProps<E>
-) => ReactElement | null = forwardRef(
-  <E extends ElementType = typeof defaultElement>(
-    { before, after, children, ...props }: ChipProps<E>,
-    ref: RefOfType<E>
+    ref
   ) => (
-    <StyledChip
+    <AsChip
+      className={classNames(
+        css.Chip({
+          variant,
+          size,
+          outlined,
+          radii,
+        }),
+        className
+      )}
       data-ui-before={before ? true : undefined}
       data-ui-after={after ? true : undefined}
       {...props}
@@ -120,8 +43,6 @@ export const Chip: <E extends ElementType = typeof defaultElement>(
       {before}
       {children}
       {after}
-    </StyledChip>
+    </AsChip>
   )
 );
-
-Chip.toString = () => StyledChip.toString();
