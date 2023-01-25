@@ -1,40 +1,14 @@
-import { CSS, styled, toRem } from "../../config";
-import { ContainerColor } from "../types";
+import classNames from "classnames";
+import React from "react";
+import { as } from "../as";
+import * as css from "./Header.css";
 
-const getVariant = (variant: ContainerColor): CSS => ({
-  backgroundColor: `$${variant}Container`,
-  color: `$On${variant}Container`,
-  border: `0 solid $${variant}ContainerLine`,
-});
-
-export const Header = styled("header", {
-  padding: 0,
-  margin: 0,
-  border: "none",
-  display: "flex",
-  alignItems: "center",
-
-  variants: {
-    variant: {
-      Background: getVariant("Background"),
-      Surface: getVariant("Surface"),
-      SurfaceVariant: getVariant("SurfaceVariant"),
-      Primary: getVariant("Primary"),
-      Secondary: getVariant("Secondary"),
-      Success: getVariant("Success"),
-      Warning: getVariant("Warning"),
-      Critical: getVariant("Critical"),
-    },
-    size: {
-      300: { height: toRem(32) },
-      400: { height: toRem(40) },
-      500: { height: toRem(48) },
-      600: { height: toRem(54) },
-      700: { height: toRem(64) },
-    },
-  },
-  defaultVariants: {
-    variant: "Surface",
-    size: 400,
-  },
-});
+export const Header = as<"header", css.HeaderVariants>(
+  ({ as: AsHeader = "header", className, variant, size, ...props }, ref) => (
+    <AsHeader
+      className={classNames(css.Header({ variant, size }), className)}
+      {...props}
+      ref={ref}
+    />
+  )
+);
