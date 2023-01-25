@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import FocusTrap from "focus-trap-react";
 import { ComponentMeta } from "@storybook/react";
-import { Overlay, OverlayBackDrop, OverlayCenter } from "../overlay";
+import { Overlay, OverlayBackdrop, OverlayCenter } from "../overlay";
 import { Text } from "../text";
 import { Icon, Icons } from "../icon";
 import { IconButton } from "../icon-button";
@@ -9,6 +9,7 @@ import { Dialog } from "./Dialog";
 import { Header } from "../header";
 import { Button } from "../button";
 import { Box } from "../box";
+import { config } from "../../theme/config.css";
 
 export default {
   title: "Dialog",
@@ -23,7 +24,7 @@ export const Surface = () => {
       <IconButton variant="SurfaceVariant" onClick={() => setOpen(!open)}>
         <Icon src={Icons.VerticalDots} />
       </IconButton>
-      <Overlay open={open} backdrop={<OverlayBackDrop />}>
+      <Overlay open={open} backdrop={<OverlayBackdrop />}>
         <OverlayCenter>
           <FocusTrap
             focusTrapOptions={{
@@ -33,12 +34,19 @@ export const Surface = () => {
             }}
           >
             <Dialog>
-              <Header size="600" css={{ p: "0 $500", mT: "$100" }}>
+              <Header
+                size="600"
+                style={{ padding: `0 ${config.space.S500}`, marginTop: config.space.S100 }}
+              >
                 <Text size="H4" truncate>
                   Dialog
                 </Text>
               </Header>
-              <Box css={{ p: "0 $500 $500", d: "flex", fxD: "column", gap: "$500" }}>
+              <Box
+                direction="Column"
+                gap="500"
+                style={{ padding: `0 ${config.space.S500} ${config.space.S500}` }}
+              >
                 <Text size="T300">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lacinia ornare lectus
                   mauris in vel at pretium, eget. Viverra dignissim faucibus volutpat in mauris.
