@@ -1,49 +1,19 @@
+import classNames from "classnames";
 import React, { MutableRefObject, ReactNode, useEffect, useRef, useState } from "react";
-import { CSS, keyframes, styled, toRem } from "../../config";
-import { Box } from "../box";
+import { as } from "../as";
 import { Portal } from "../portal";
-import { ContainerColor } from "../types";
 import { Align, getRelativeFixedPosition, Position } from "../util";
+import * as css from "./Tooltip.css";
 
-const getVariant = (variant: ContainerColor): CSS => ({
-  backgroundColor: `$${variant}Container`,
-  color: `$On${variant}Container`,
-});
-
-const TooltipScaleAnime = keyframes({
-  "0%": {
-    transform: "translateY(2px)",
-  },
-  "100%": {
-    transform: "translateY(0)",
-  },
-});
-
-export const Tooltip = styled("div", {
-  margin: 0,
-  padding: `${toRem(6)} $300`,
-  boxShadow: "$E200",
-  borderRadius: "$400",
-  display: "inline-flex",
-  alignItems: "center",
-  animation: `${TooltipScaleAnime} 100ms`,
-
-  variants: {
-    variant: {
-      Background: getVariant("Background"),
-      Surface: getVariant("Surface"),
-      SurfaceVariant: getVariant("SurfaceVariant"),
-      Primary: getVariant("Primary"),
-      Secondary: getVariant("Secondary"),
-      Success: getVariant("Success"),
-      Warning: getVariant("Warning"),
-      Critical: getVariant("Critical"),
-    },
-  },
-  defaultVariants: {
-    variant: "Surface",
-  },
-});
+export const Tooltip = as<"div", css.TooltipVariants>(
+  ({ as: AsTooltip = "div", className, variant, radii, ...props }, ref) => (
+    <AsTooltip
+      className={classNames(css.Tooltip({ variant, radii }), className)}
+      {...props}
+      ref={ref}
+    />
+  )
+);
 
 const useTooltip = (position: Position, align: Align, offset: number, delay: number) => {
   const triggerRef = useRef<unknown>(null);
@@ -57,13 +27,13 @@ const useTooltip = (position: Position, align: Align, offset: number, delay: num
     let timeoutId: number;
 
     const openTooltip = (evt: Event) => {
-      const css = getRelativeFixedPosition(trigger, position, align, offset);
+      const pos = getRelativeFixedPosition(trigger, position, align, offset);
       if (tooltip) {
-        tooltip.style.top = css.top;
-        tooltip.style.right = css.right;
-        tooltip.style.bottom = css.bottom;
-        tooltip.style.left = css.left;
-        tooltip.style.transform = css.transform;
+        tooltip.style.top = pos.top;
+        tooltip.style.right = pos.right;
+        tooltip.style.bottom = pos.bottom;
+        tooltip.style.left = pos.left;
+        tooltip.style.transform = pos.transform;
       }
       if (evt.type === "focus") setOpen(true);
       else timeoutId = window.setTimeout(() => setOpen(true), delay);
@@ -132,10 +102,10 @@ export const TooltipProvider = ({
     <>
       {children(triggerRef as MutableRefObject<null>)}
       <Portal>
-        <Box
+        <div
           role="tooltip"
           ref={tooltipRef}
-          css={{
+          style={{
             display: "inline-block",
             position: "fixed",
             maxWidth: "100vw",
@@ -144,7 +114,7 @@ export const TooltipProvider = ({
           }}
         >
           {open && tooltip}
-        </Box>
+        </div>
       </Portal>
     </>
   );
