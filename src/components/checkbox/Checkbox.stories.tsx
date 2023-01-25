@@ -13,7 +13,7 @@ export default {
     },
     size: {
       control: "select",
-      options: [50, 100, 200, 300, 400, 500, 600],
+      options: ["50", "100", "200", "300", "400", "500", "600"],
     },
   },
 } as ComponentMeta<typeof Checkbox>;
