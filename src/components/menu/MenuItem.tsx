@@ -1,109 +1,20 @@
-import React, { ElementType, forwardRef, ReactElement, ReactNode } from "react";
-import { CSS, styled, toRem, VariantProps } from "../../config";
-import { AsComponentProps, ContainerColor, RefOfType } from "../types";
+import classNames from "classnames";
+import React, { ReactNode } from "react";
+import { as } from "../as";
+import * as css from "./MenuItem.css";
 
-const getVariant = (variant: ContainerColor): CSS => ({
-  backgroundColor: `$${variant}Container`,
-  color: `$On${variant}Container`,
+type MenuItemProps = {
+  before?: ReactNode;
+  after?: ReactNode;
+};
 
-  "@hover": {
-    "&:hover": {
-      backgroundColor: `$${variant}ContainerHover`,
-    },
-  },
-  "&:focus-visible": {
-    backgroundColor: `$${variant}ContainerHover`,
-    outline: "$FocusRing",
-  },
-  "&:active": {
-    backgroundColor: `$${variant}ContainerActive`,
-  },
-});
-
-const StyledMenuItem = styled("button", {
-  margin: 0,
-  appearance: "none",
-  WebkitTapHighlightColor: "transparent",
-  border: "0 solid currentColor",
-  boxShadow: "none",
-
-  width: "100%",
-  height: toRem(40),
-  padding: "0 $400",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "start",
-  gap: "$200",
-  cursor: "pointer",
-
-  "&[data-ui-before=true]": {
-    paddingLeft: "$300",
-  },
-  "&[data-ui-after=true]": {
-    paddingRight: "$300",
-  },
-
-  "&[disabled], &[aria-disabled=true]": {
-    opacity: "$Disabled",
-    cursor: "not-allowed",
-  },
-
-  variants: {
-    variant: {
-      Background: getVariant("Background"),
-      Surface: getVariant("Surface"),
-      SurfaceVariant: getVariant("SurfaceVariant"),
-      Primary: getVariant("Primary"),
-      Secondary: getVariant("Secondary"),
-      Success: getVariant("Success"),
-      Warning: getVariant("Warning"),
-      Critical: getVariant("Critical"),
-    },
-    radii: {
-      inherit: {
-        borderRadius: "inherit",
-      },
-      0: {
-        borderRadius: "$0",
-      },
-      300: {
-        borderRadius: "$300",
-      },
-      400: {
-        borderRadius: "$400",
-      },
-      500: {
-        borderRadius: "$500",
-      },
-      Pill: {
-        borderRadius: "$Pill",
-      },
-    },
-  },
-  defaultVariants: {
-    variant: "Surface",
-    radii: 0,
-  },
-});
-
-const defaultElement = "button";
-type MenuItemVariant = VariantProps<typeof StyledMenuItem>;
-
-type MenuItemProps<E extends ElementType = typeof defaultElement> = MenuItemVariant &
-  AsComponentProps<E> & {
-    before?: ReactNode;
-    after?: ReactNode;
-    css?: CSS;
-  };
-
-export const MenuItem: <E extends ElementType = typeof defaultElement>(
-  props: MenuItemProps<E>
-) => ReactElement | null = forwardRef(
-  <E extends ElementType = typeof defaultElement>(
-    { before, after, children, ...props }: MenuItemProps<E>,
-    ref: RefOfType<E>
+export const MenuItem = as<"button", MenuItemProps & css.MenuItemVariants>(
+  (
+    { as: AsMenuItem = "button", className, variant, radii, before, after, children, ...props },
+    ref
   ) => (
-    <StyledMenuItem
+    <AsMenuItem
+      className={classNames(css.MenuItem({ variant, radii }), className)}
       data-ui-before={before ? true : undefined}
       data-ui-after={after ? true : undefined}
       {...props}
@@ -112,8 +23,6 @@ export const MenuItem: <E extends ElementType = typeof defaultElement>(
       {before}
       {children}
       {after}
-    </StyledMenuItem>
+    </AsMenuItem>
   )
 );
-
-MenuItem.toString = () => StyledMenuItem.toString();
