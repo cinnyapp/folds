@@ -1,103 +1,33 @@
 import React, { ButtonHTMLAttributes, forwardRef } from "react";
-import { CSS, styled, toRem, VariantProps } from "../../config";
+import classNames from "classnames";
 import { Icon, Icons } from "../icon";
-import { MainColor } from "../types";
+import * as css from "./Switch.css";
 
-const getVariant = (variant: MainColor): CSS => ({
-  "&[aria-checked=true]": {
-    backgroundColor: `$${variant}`,
-    color: `$On${variant}`,
-    boxShadow: "none",
-
-    "& > span": {
-      width: toRem(18),
-      height: toRem(18),
-      transform: `translateX(${toRem(23)})`,
-      backgroundColor: `$On${variant}`,
-      color: `$${variant}`,
-    },
-  },
-});
-
-const StyledSwitch = styled("button", {
-  padding: 0,
-  margin: 0,
-  background: "transparent",
-  border: "none",
-  appearance: "none",
-  WebkitTapHighlightColor: "transparent",
-
-  flexShrink: "0",
-  display: "inline-flex",
-  alignItems: "center",
-  width: toRem(44),
-  height: toRem(24),
-  boxShadow: "inset 0 0 0 $borderWidths$400 CurrentColor",
-  color: "CurrentColor",
-  borderRadius: "$Pill",
-  cursor: "pointer",
-
-  "& > span": {
-    width: toRem(14),
-    height: toRem(14),
-    display: "inline-flex",
-    justifyContent: "center",
-    alignItems: "center",
-
-    transform: `translateX(${toRem(5)})`,
-    backgroundColor: "CurrentColor",
-    borderRadius: "$Pill",
-  },
-
-  "&[aria-checked=false]": {
-    opacity: "$P300",
-  },
-
-  "&:focus-visible": {
-    outline: "$FocusRing",
-  },
-
-  "&[disabled], &[aria-disabled=true]": {
-    opacity: "$Disabled",
-    cursor: "not-allowed",
-  },
-
-  variants: {
-    variant: {
-      Primary: getVariant("Primary"),
-      Secondary: getVariant("Secondary"),
-      Success: getVariant("Success"),
-      Warning: getVariant("Warning"),
-      Critical: getVariant("Critical"),
-    },
-  },
-  defaultVariants: {
-    variant: "Primary",
-  },
-});
-
-type SwitchVariant = VariantProps<typeof StyledSwitch>;
 type SwitchProps = Omit<
   ButtonHTMLAttributes<HTMLButtonElement>,
-  "value" | "onClick" | "onChange" | "children"
-> &
-  SwitchVariant & {
-    value?: boolean;
-    onChange?: (on: boolean) => void;
-    css?: CSS;
-  };
-export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(
-  ({ value = false, onChange, ...props }, ref) => {
+  "value" | "onClick" | "onChange" | "children" | "role"
+> & {
+  value?: boolean;
+  onChange?: (on: boolean) => void;
+};
+export const Switch = forwardRef<HTMLButtonElement, SwitchProps & css.SwitchVariants>(
+  ({ className, variant, value = false, onChange, ...props }, ref) => {
     const handleClick = () => onChange?.(!value);
 
     return (
-      <StyledSwitch role="switch" aria-checked={value} onClick={handleClick} {...props} ref={ref}>
-        <span aria-hidden>
+      <button
+        className={classNames(css.Switch({ variant }), className)}
+        role="switch"
+        type="button"
+        aria-checked={value}
+        onClick={handleClick}
+        {...props}
+        ref={ref}
+      >
+        <span className={css.SwitchThumb} aria-hidden>
           <Icon src={Icons.Check} size="100" />
         </span>
-      </StyledSwitch>
+      </button>
     );
   }
 );
-
-Switch.toString = () => StyledSwitch.toString();
