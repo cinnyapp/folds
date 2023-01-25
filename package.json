@@ -27,7 +27,7 @@
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": "eslint",
-    "*.{ts,tsx}": "bash -c 'npm run typecheck'",
+    "*.{ts,tsx}": "npm run typecheck",
     "*": "prettier --ignore-unknown --write"
   },
   "repository": {
