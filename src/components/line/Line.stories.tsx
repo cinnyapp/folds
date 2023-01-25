@@ -26,7 +26,7 @@ export default {
     },
     size: {
       control: "select",
-      options: [300, 400, 500, 600, 700],
+      options: ["300", "400", "500", "600", "700"],
     },
   },
 } as ComponentMeta<typeof Line>;
