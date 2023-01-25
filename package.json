@@ -14,7 +14,7 @@
   ],
   "scripts": {
     "build": "vite build",
-    "lint": "yarn check:eslint && yarn check:prettier",
+    "lint": "npm run check:eslint && npm run check:prettier",
     "check:eslint": "eslint src/*",
     "check:prettier": "prettier --check .",
     "fix:prettier": "prettier --write .",
