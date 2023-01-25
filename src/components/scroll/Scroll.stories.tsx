@@ -1,6 +1,5 @@
 import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { Box } from "../box";
 import { Scroll } from "./Scroll";
 
 export default {
@@ -30,7 +29,7 @@ export default {
 
     size: {
       control: "select",
-      options: [0, 300, 400],
+      options: ["0", "300", "400"],
     },
     direction: {
       control: "select",
@@ -44,7 +43,7 @@ const Template: ComponentStory<typeof Scroll> = (args) => <Scroll {...args} />;
 export const Vertical = Template.bind({});
 Vertical.args = {
   visibility: "Always",
-  size: 400,
-  css: { height: 500 },
-  children: <Box css={{ height: 1000, background: "rgba(0, 0, 0, .1)" }} />,
+  size: "400",
+  style: { height: 500 },
+  children: <div style={{ height: 1000, background: "rgba(0, 0, 0, .1)" }} />,
 };
