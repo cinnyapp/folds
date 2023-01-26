@@ -1,3 +1,5 @@
+import "@fontsource/inter/variable.css";
+
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
