@@ -1,4 +1,6 @@
-import "@fontsource/inter/variable.css";
+import { baseDecorator } from "./base";
+
+export const decorators = [baseDecorator];
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
