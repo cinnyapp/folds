@@ -1,9 +1,8 @@
 import React, { MutableRefObject, ReactNode, useCallback, useEffect, useRef } from "react";
-import { Box } from "../box";
 import { Portal } from "../portal";
 import { Align, getRelativeFixedPosition, Position } from "../util";
 
-interface PopOutProps {
+export interface PopOutProps {
   open: boolean;
   position?: Position;
   align?: Align;
@@ -52,8 +51,8 @@ export const PopOut = ({
       {children(anchorRef as MutableRefObject<null>)}
       <Portal>
         {open && (
-          <Box
-            css={{
+          <div
+            style={{
               position: "fixed",
               top: 0,
               right: 0,
@@ -62,17 +61,17 @@ export const PopOut = ({
               zIndex: "$Max",
             }}
           >
-            <Box
+            <div
               ref={popOutRef}
-              css={{
+              style={{
                 display: "inline-block",
                 position: "fixed",
                 maxWidth: "100vw",
               }}
             >
               {content}
-            </Box>
-          </Box>
+            </div>
+          </div>
         )}
       </Portal>
     </>

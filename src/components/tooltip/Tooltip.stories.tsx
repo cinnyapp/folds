@@ -35,7 +35,7 @@ Surface.args = {
 };
 
 export const Interactive = () => (
-  <Box css={{ p: "100px" }}>
+  <Box style={{ padding: "100px" }}>
     <TooltipProvider
       position="right"
       tooltip={

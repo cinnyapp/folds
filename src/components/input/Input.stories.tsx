@@ -23,7 +23,7 @@ export default {
     },
     size: {
       control: "select",
-      options: [300, 400, 500],
+      options: ["300", "400", "500"],
     },
     outlined: {
       control: "boolean",
@@ -37,7 +37,7 @@ export const Surface = Template.bind({});
 Surface.args = {
   before: <Icon size="100" src={Icons.Search} />,
   after: (
-    <IconButton css={{ boR: "$300" }} size="300" variant="Background">
+    <IconButton radii="300" size="300" variant="Background">
       <Icon size="100" src={Icons.Cross} />
     </IconButton>
   ),

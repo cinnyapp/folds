@@ -5,7 +5,7 @@ import { Icon, Icons } from "../icon";
 import { Text } from "../text";
 import { Menu } from "./Menu";
 import { MenuItem } from "./MenuItem";
-import { Box } from "../box";
+import { config } from "../../theme/config.css";
 
 export default {
   title: "Menu",
@@ -18,12 +18,15 @@ export const Surface = Template.bind({});
 Surface.args = {
   children: (
     <Menu>
-      <Header size="300" css={{ borderBottomWidth: "$300", padding: "0 $300" }}>
+      <Header
+        size="300"
+        style={{ borderBottomWidth: config.borderWidth.B300, padding: `0 ${config.space.S300}` }}
+      >
         <Text as="label" size="L400">
           Options
         </Text>
       </Header>
-      <Box css={{ p: "$100" }}>
+      <div style={{ padding: config.space.S100 }}>
         <MenuItem radii="300" before={<Icon size="100" src={Icons.Pencil} />}>
           <Text size="B400">Menu Item 1</Text>
         </MenuItem>
@@ -33,7 +36,7 @@ Surface.args = {
         <MenuItem radii="300" before={<Icon size="100" src={Icons.Pencil} />}>
           <Text size="B400">Menu Item 3</Text>
         </MenuItem>
-      </Box>
+      </div>
     </Menu>
   ),
 };

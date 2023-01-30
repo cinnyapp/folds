@@ -16,13 +16,13 @@ jobs:
         uses: actions/setup-node@v3.5.1
         with:
           node-version: 18.12.1
-          cache: "yarn"
+          cache: "npm"
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
-      - run: yarn lint
-      - run: yarn typecheck
+        run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
       - name: Build storybook
-        run: yarn build-storybook
+        run: npm run build-storybook
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@5da65c9f74c7961c5501a3ba329b8d0912f39c03
         with:

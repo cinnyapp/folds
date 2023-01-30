@@ -3,10 +3,10 @@ import React, { useState } from "react";
 import { ComponentMeta } from "@storybook/react";
 import { Text } from "../text";
 import { PopOut } from "./PopOut";
-import { Box } from "../box";
 import { Menu, MenuItem } from "../menu";
 import { Icon, Icons } from "../icon";
 import { IconButton } from "../icon-button";
+import { config } from "../../theme/config.css";
 
 export default {
   title: "PopOut",
@@ -17,7 +17,7 @@ export const Interactive = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <Box css={{ height: "100vh" }}>
+    <div style={{ height: "100vh" }}>
       <PopOut
         open={open}
         align="start"
@@ -31,7 +31,7 @@ export const Interactive = () => {
               isKeyBackward: (evt: KeyboardEvent) => evt.key === "ArrowUp",
             }}
           >
-            <Menu css={{ p: "$100" }}>
+            <Menu style={{ padding: config.space.S100 }}>
               <MenuItem radii="300" before={<Icon size="100" src={Icons.Pencil} />}>
                 <Text size="B400">Menu Item 1</Text>
               </MenuItem>
@@ -51,6 +51,6 @@ export const Interactive = () => {
           </IconButton>
         )}
       </PopOut>
-    </Box>
+    </div>
   );
 };

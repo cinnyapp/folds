@@ -10,12 +10,12 @@ Folds is the design system made for Cinny matrix client.
 Execute the following commands to start a development server:
 
 ```
-yarn install --frozen-lockfile # Install all dependencies
-yarn storybook # Serve a development version
+npm ci # Install all dependencies
+npm run storybook # Serve a development version
 ```
 
 To build the package:
 
 ```
-yarn build # Build package into dist directory
+npm run build # Build package into dist directory
 ```

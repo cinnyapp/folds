@@ -1,60 +1,39 @@
-import React, { forwardRef, HTMLAttributes, ReactNode } from "react";
-import { CSS, keyframes, styled } from "../../config";
+import React, { ReactNode } from "react";
+import classNames from "classnames";
+import * as css from "./Overlay.css";
 import { Portal } from "../portal";
+import { as } from "../as";
 
-const StyledOverlay = styled("div", {
-  position: "fixed",
-  top: 0,
-  right: 0,
-  bottom: 0,
-  left: 0,
-  zIndex: "$400",
-});
-
-const OverlayBackDropAnime = keyframes({
-  "0%": {
-    opacity: "0",
-  },
-  "100%": {
-    opacity: ".5",
-  },
-});
-
-export const OverlayBackDrop = styled("div", {
-  position: "fixed",
-  top: 0,
-  right: 0,
-  bottom: 0,
-  left: 0,
-  zIndex: -1,
-  backgroundColor: "black",
-  opacity: ".5",
-  animation: `${OverlayBackDropAnime} 100ms`,
-});
-
-export const OverlayCenter = styled("div", {
-  height: "100%",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-});
-
-export interface OverlayProps extends Omit<HTMLAttributes<HTMLDivElement>, "children"> {
-  css?: CSS;
+export type OverlayProps = {
   open: boolean;
   backdrop?: ReactNode;
-  children?: ReactNode;
-}
+};
 
-export const Overlay = forwardRef<HTMLDivElement, OverlayProps>(
-  ({ open, backdrop, children, ...props }, ref) => (
+export const Overlay = as<"div", OverlayProps>(
+  ({ as: AsOverlay = "div", className, open, backdrop, children, ...props }, ref) => (
     <Portal>
       {open ? (
-        <StyledOverlay {...props} ref={ref}>
+        <AsOverlay className={classNames(css.Overlay, className)} {...props} ref={ref}>
           {backdrop}
           {children}
-        </StyledOverlay>
+        </AsOverlay>
       ) : null}
     </Portal>
+  )
+);
+
+export const OverlayBackdrop = as<"div">(
+  ({ as: AsOverlayBackdrop = "div", className, ...props }, ref) => (
+    <AsOverlayBackdrop
+      className={classNames(css.OverlayBackdrop, className)}
+      {...props}
+      ref={ref}
+    />
+  )
+);
+
+export const OverlayCenter = as<"div">(
+  ({ as: AsOverlayCenter = "div", className, ...props }, ref) => (
+    <AsOverlayCenter className={classNames(css.OverlayCenter, className)} {...props} ref={ref} />
   )
 );

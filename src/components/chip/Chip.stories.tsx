@@ -44,6 +44,6 @@ Surface.args = {
   variant: "Surface",
   "aria-selected": false,
   "aria-label": "Apply attachment filter",
-  size: 400,
+  size: "400",
   after: <Icon size="50" src={Icons.Cross} />,
 };

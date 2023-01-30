@@ -1,67 +1,15 @@
-import { CSS, styled, toRem } from "../../config";
-import { MainColor } from "../types";
+import classNames from "classnames";
+import React from "react";
 
-const getVariant = (variant: MainColor): CSS => ({
-  $$BadgeVariant: `$colors$${variant}`,
-  $$BadgeVariantLine: `$colors$${variant}Line`,
-  $$BadgeOnVariant: `$colors$On${variant}`,
+import { as } from "../as";
+import * as css from "./Badge.css";
 
-  $$BadgeVariantContainer: `$colors$${variant}Container`,
-  $$BadgeVariantContainerLine: `$colors$${variant}ContainerLine`,
-  $$BadgeOnVariantContainer: `$colors$On${variant}Container`,
-});
-
-export const Badge = styled("span", {
-  appearance: "none",
-  WebkitTapHighlightColor: "transparent",
-  border: "0 solid currentColor",
-  boxShadow: "none",
-
-  margin: 0,
-  padding: "0 $100",
-  height: toRem(16),
-  display: "inline-flex",
-  alignItems: "center",
-  borderRadius: "$300",
-
-  "&:focus-visible": {
-    outline: "$FocusRing",
-  },
-
-  "&[disabled], &[aria-disabled=true]": {
-    opacity: "$Disabled",
-    cursor: "not-allowed",
-  },
-
-  variants: {
-    variant: {
-      Primary: getVariant("Primary"),
-      Secondary: getVariant("Secondary"),
-      Success: getVariant("Success"),
-      Warning: getVariant("Warning"),
-      Critical: getVariant("Critical"),
-    },
-    fill: {
-      Solid: {
-        backgroundColor: "$$BadgeVariant",
-        color: "$$BadgeOnVariant",
-        borderColor: "$$BadgeVariantLine",
-      },
-      Soft: {
-        backgroundColor: "$$BadgeVariantContainer",
-        color: "$$BadgeOnVariantContainer",
-        borderColor: "$$BadgeVariantContainerLine",
-      },
-    },
-    outlined: {
-      true: {
-        borderWidth: "$300",
-      },
-    },
-  },
-
-  defaultVariants: {
-    variant: "Primary",
-    fill: "Soft",
-  },
-});
+export const Badge = as<"span", css.BadgeVariants>(
+  ({ as: AsBadge = "span", className, variant, fill, outlined, ...props }, ref) => (
+    <AsBadge
+      className={classNames(css.Badge({ variant, fill, outlined }), className)}
+      {...props}
+      ref={ref}
+    />
+  )
+);
