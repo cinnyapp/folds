@@ -45,6 +45,7 @@ jobs:
           node-version: 18.12.1
           cache: "npm"
       - run: npm ci
+      - run: npm run build
       - run: npm run semantic-release
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
