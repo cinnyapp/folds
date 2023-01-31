@@ -1,3 +1,9 @@
+## [1.0.3](https://github.com/cinnyapp/folds/compare/v1.0.2...v1.0.3) (2023-01-31)
+
+### Bug Fixes
+
+- replace stitches with vanilla-extract ([#10](https://github.com/cinnyapp/folds/issues/10)) ([c11b9a4](https://github.com/cinnyapp/folds/commit/c11b9a409c92bf072fb8ee2a94d52eadef3d8c6f))
+
 ## [1.0.2](https://github.com/cinnyapp/folds/compare/v1.0.1...v1.0.2) (2022-12-21)
 
 ### Bug Fixes
