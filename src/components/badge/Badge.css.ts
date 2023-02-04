@@ -6,6 +6,7 @@ import { toRem } from "../../theme/util";
 import { DefaultReset } from "../reset.css";
 import { Disabled, FocusOutline } from "../selectorPreset.css";
 import { MainColor } from "../types";
+import { RadiiVariant } from "../variant.css";
 
 const Main = createVar();
 const MainLine = createVar();
@@ -31,10 +32,11 @@ export const Badge = recipe({
     {
       padding: `0 ${config.space.S100}`,
       height: toRem(16),
+      minWidth: toRem(16),
       display: "inline-flex",
       alignItems: "center",
+      justifyContent: "center",
       flexShrink: 0,
-      borderRadius: config.radii.R300,
     },
     FocusOutline,
     Disabled,
@@ -64,10 +66,12 @@ export const Badge = recipe({
         borderWidth: config.borderWidth.B300,
       },
     },
+    radii: RadiiVariant,
   },
   defaultVariants: {
     variant: "Primary",
     fill: "Soft",
+    radii: "300",
   },
 });
 
