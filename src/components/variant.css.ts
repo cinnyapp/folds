@@ -2,7 +2,7 @@ import { style } from "@vanilla-extract/css";
 import { config } from "../theme/config.css";
 
 export const RadiiVariant = {
-  inherit: style({
+  Inherit: style({
     borderRadius: "inherit",
   }),
   "0": style({

@@ -21,7 +21,7 @@ export const Line = recipe({
   ],
   variants: {
     variant: {
-      inherit: {
+      Inherit: {
         borderColor: "inherit",
       },
       Background: getVariant("Background"),

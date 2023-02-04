@@ -11,7 +11,7 @@ export const Text = recipe({
   ],
   variants: {
     size: {
-      inherit: {},
+      Inherit: {},
       D400: {
         fontSize: config.fontSize.D400,
         lineHeight: config.lineHeight.D400,
