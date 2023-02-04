@@ -1,9 +1,11 @@
-import { ComplexStyleRule } from "@vanilla-extract/css";
+import { ComplexStyleRule, createVar } from "@vanilla-extract/css";
 import { recipe, RecipeVariants } from "@vanilla-extract/recipes";
 import { color } from "../../theme/color.css";
 import { config } from "../../theme/config.css";
 import { DefaultReset } from "../reset.css";
 import { ContainerColor } from "../types";
+
+const BorderWidth = createVar();
 
 const getVariant = (variant: ContainerColor): ComplexStyleRule => ({
   borderColor: color[variant].ContainerLine,
@@ -16,6 +18,7 @@ export const Line = recipe({
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
+      borderStyle: "solid",
       position: "relative",
     },
   ],
@@ -35,30 +38,40 @@ export const Line = recipe({
     },
     direction: {
       Horizontal: {
-        borderBottomStyle: "solid",
+        borderBottomWidth: BorderWidth,
         height: 0,
       },
       Vertical: {
-        borderLeftStyle: "solid",
+        borderLeftWidth: BorderWidth,
         width: 0,
         flexDirection: "column",
       },
     },
     size: {
       "300": {
-        borderWidth: config.borderWidth.B300,
+        vars: {
+          [BorderWidth]: config.borderWidth.B300,
+        },
       },
       "400": {
-        borderWidth: config.borderWidth.B400,
+        vars: {
+          [BorderWidth]: config.borderWidth.B400,
+        },
       },
       "500": {
-        borderWidth: config.borderWidth.B500,
+        vars: {
+          [BorderWidth]: config.borderWidth.B500,
+        },
       },
       "600": {
-        borderWidth: config.borderWidth.B600,
+        vars: {
+          [BorderWidth]: config.borderWidth.B600,
+        },
       },
       "700": {
-        borderWidth: config.borderWidth.B700,
+        vars: {
+          [BorderWidth]: config.borderWidth.B700,
+        },
       },
     },
   },
