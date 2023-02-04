@@ -1,3 +1,9 @@
+## [1.0.4](https://github.com/cinnyapp/folds/compare/v1.0.3...v1.0.4) (2023-02-04)
+
+### Bug Fixes
+
+- various style components ([#11](https://github.com/cinnyapp/folds/issues/11)) ([e94f686](https://github.com/cinnyapp/folds/commit/e94f686c4797b652f6e705a2a5f6959b12660c65))
+
 ## [1.0.3](https://github.com/cinnyapp/folds/compare/v1.0.2...v1.0.3) (2023-01-31)
 
 ### Bug Fixes
