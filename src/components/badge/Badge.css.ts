@@ -31,8 +31,6 @@ export const Badge = recipe({
     DefaultReset,
     {
       padding: `0 ${config.space.S100}`,
-      height: toRem(16),
-      minWidth: toRem(16),
       display: "inline-flex",
       alignItems: "center",
       justifyContent: "center",
@@ -42,6 +40,25 @@ export const Badge = recipe({
     Disabled,
   ],
   variants: {
+    size: {
+      "500": {
+        height: toRem(20),
+        minWidth: toRem(20),
+        padding: `0 ${config.space.S200}`,
+      },
+      "400": {
+        height: toRem(16),
+        minWidth: toRem(16),
+      },
+      "300": {
+        height: toRem(12),
+        minWidth: toRem(12),
+      },
+      "200": {
+        height: toRem(8),
+        minWidth: toRem(8),
+      },
+    },
     variant: {
       Primary: getVariant("Primary"),
       Secondary: getVariant("Secondary"),
@@ -69,6 +86,7 @@ export const Badge = recipe({
     radii: RadiiVariant,
   },
   defaultVariants: {
+    size: "400",
     variant: "Primary",
     fill: "Soft",
     radii: "300",
