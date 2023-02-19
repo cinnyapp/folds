@@ -1,13 +1,13 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { Icon, IconProps, Icons } from ".";
+import { Icon, IconProps, Icons, IconName } from ".";
 import { Text } from "../text";
 import { Box } from "../box";
 
 const StorybookIconGroup = (props: Omit<IconProps, "src">) => (
   <Box direction="Column" wrap="Wrap" gap="700" style={{ padding: "100px" }}>
-    {Object.keys(Icons).map((key) => (
+    {(Object.keys(Icons) as IconName[]).map((key) => (
       <Box gap="600" alignItems="Center" key={key}>
         <Icon src={Icons[key]} {...props} />
         <Text>{key}</Text>
