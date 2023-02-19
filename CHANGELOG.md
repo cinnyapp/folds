@@ -1,3 +1,9 @@
+## [1.0.5](https://github.com/cinnyapp/folds/compare/v1.0.4...v1.0.5) (2023-02-19)
+
+### Bug Fixes
+
+- icons name type ([#12](https://github.com/cinnyapp/folds/issues/12)) ([7742a89](https://github.com/cinnyapp/folds/commit/7742a891d63e57e34fc27a891beaa1694e675152))
+
 ## [1.0.4](https://github.com/cinnyapp/folds/compare/v1.0.3...v1.0.4) (2023-02-04)
 
 ### Bug Fixes
