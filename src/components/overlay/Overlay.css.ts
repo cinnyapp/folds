@@ -10,7 +10,7 @@ export const Overlay = style([
     right: 0,
     bottom: 0,
     left: 0,
-    zIndex: config.zIndex.Z400,
+    zIndex: config.zIndex.Max,
   },
 ]);
 

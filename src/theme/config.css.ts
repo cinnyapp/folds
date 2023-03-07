@@ -116,7 +116,7 @@ export const [configClass, config] = createTheme({
     Z200: "200",
     Z300: "300",
     Z400: "400",
-    Max: "999",
+    Max: "9999",
   },
   shadow: {
     E100: "0px 1px 6px -2px rgba(0, 0, 0, 0.2)",

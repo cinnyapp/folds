@@ -1,4 +1,12 @@
-import React, { MutableRefObject, ReactNode, useCallback, useEffect, useRef } from "react";
+import React, {
+  MutableRefObject,
+  ReactNode,
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+} from "react";
+import { config } from "../../theme";
 import { Portal } from "../portal";
 import { Align, getRelativeFixedPosition, Position } from "../util";
 
@@ -42,7 +50,7 @@ export const PopOut = ({
     };
   }, [positionPopOut]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (open) positionPopOut();
   }, [open, positionPopOut]);
 
@@ -58,7 +66,7 @@ export const PopOut = ({
               right: 0,
               bottom: 0,
               left: 0,
-              zIndex: "$Max",
+              zIndex: config.zIndex.Max,
             }}
           >
             <div
