@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import React, { MutableRefObject, ReactNode, useEffect, useRef, useState } from "react";
+import { config } from "../../theme";
 import { as } from "../as";
 import { Portal } from "../portal";
 import { Align, getRelativeFixedPosition, Position } from "../util";
@@ -109,7 +110,7 @@ export const TooltipProvider = ({
             display: "inline-block",
             position: "fixed",
             maxWidth: "100vw",
-            zIndex: "$Max",
+            zIndex: config.zIndex.Max,
             pointerEvents: "none",
           }}
         >
