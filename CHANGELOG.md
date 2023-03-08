@@ -1,3 +1,9 @@
+## [1.0.6](https://github.com/cinnyapp/folds/compare/v1.0.5...v1.0.6) (2023-03-08)
+
+### Bug Fixes
+
+- zIndex of various overlay components ([#13](https://github.com/cinnyapp/folds/issues/13)) ([f196871](https://github.com/cinnyapp/folds/commit/f1968710ee1e4fdb83c5b2db055cc109de3cac99))
+
 ## [1.0.5](https://github.com/cinnyapp/folds/compare/v1.0.4...v1.0.5) (2023-02-19)
 
 ### Bug Fixes
