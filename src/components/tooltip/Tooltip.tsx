@@ -25,9 +25,10 @@ const useTooltip = (position: Position, align: Align, offset: number, delay: num
   useEffect(() => {
     const trigger = triggerRef.current as HTMLElement;
     const tooltip = tooltipRef.current;
-    let timeoutId: number;
+    let timeoutId: number | undefined;
 
     const openTooltip = (evt: Event) => {
+      if (timeoutId) return;
       const pos = getRelativeFixedPosition(trigger, position, align, offset);
       if (tooltip) {
         tooltip.style.top = pos.top;
@@ -36,11 +37,13 @@ const useTooltip = (position: Position, align: Align, offset: number, delay: num
         tooltip.style.left = pos.left;
         tooltip.style.transform = pos.transform;
       }
+
       if (evt.type === "focus") setOpen(true);
       else timeoutId = window.setTimeout(() => setOpen(true), delay);
     };
     const closeTooltip = () => {
       clearTimeout(timeoutId);
+      timeoutId = undefined;
       setOpen(false);
     };
 
