@@ -1,3 +1,9 @@
+## [1.0.7](https://github.com/cinnyapp/folds/compare/v1.0.6...v1.0.7) (2023-04-12)
+
+### Bug Fixes
+
+- tooltip shows on item click ([#14](https://github.com/cinnyapp/folds/issues/14)) ([270f6de](https://github.com/cinnyapp/folds/commit/270f6de776daa07d0999d7e7880e3bff13cd8d0d))
+
 ## [1.0.6](https://github.com/cinnyapp/folds/compare/v1.0.5...v1.0.6) (2023-03-08)
 
 ### Bug Fixes
