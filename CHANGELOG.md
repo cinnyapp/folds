@@ -1,3 +1,13 @@
+# [1.1.0](https://github.com/cinnyapp/folds/compare/v1.0.7...v1.1.0) (2023-04-22)
+
+### Bug Fixes
+
+- text variant ([#15](https://github.com/cinnyapp/folds/issues/15)) ([d228fe6](https://github.com/cinnyapp/folds/commit/d228fe6e0a048c4b150afd00d40f3b89c5e761ea))
+
+### Features
+
+- export utils ([#16](https://github.com/cinnyapp/folds/issues/16)) ([3cbca38](https://github.com/cinnyapp/folds/commit/3cbca3850a1b68f729815ba27f7d27ecd3172928))
+
 ## [1.0.7](https://github.com/cinnyapp/folds/compare/v1.0.6...v1.0.7) (2023-04-12)
 
 ### Bug Fixes
