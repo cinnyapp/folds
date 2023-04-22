@@ -29,7 +29,12 @@ const useTooltip = (position: Position, align: Align, offset: number, delay: num
 
     const openTooltip = (evt: Event) => {
       if (timeoutId) return;
-      const pos = getRelativeFixedPosition(trigger, position, align, offset);
+      const pos = getRelativeFixedPosition(
+        trigger.getBoundingClientRect(),
+        position,
+        align,
+        offset
+      );
       if (tooltip) {
         tooltip.style.top = pos.top;
         tooltip.style.right = pos.right;

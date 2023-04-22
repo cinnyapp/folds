@@ -1,4 +1,5 @@
 export * from "./types";
+export * from "./util";
 export * from "./as";
 export * from "./reset.css";
 export * from "./selectorPreset.css";
