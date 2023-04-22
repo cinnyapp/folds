@@ -33,7 +33,7 @@ export const PopOut = ({
     const anchor = anchorRef.current as HTMLElement;
     const popOutEl = popOutRef.current;
 
-    const css = getRelativeFixedPosition(anchor, position, align, offset);
+    const css = getRelativeFixedPosition(anchor.getBoundingClientRect(), position, align, offset);
     if (popOutEl) {
       popOutEl.style.top = css.top;
       popOutEl.style.right = css.right;

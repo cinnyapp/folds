@@ -9,12 +9,11 @@ export type Position = "top" | "right" | "bottom" | "left";
 export type Align = "start" | "center" | "end";
 
 export const getRelativeFixedPosition = (
-  element: HTMLElement,
+  domRect: DOMRect,
   position: Position,
   align: Align,
   offset: number
 ): PositionCSS => {
-  const cords = element.getBoundingClientRect();
   const { clientWidth, clientHeight } = document.body;
 
   const css = {
@@ -26,25 +25,25 @@ export const getRelativeFixedPosition = (
   };
 
   if (position === "top" || position === "bottom") {
-    if (position === "top") css.bottom = `${clientHeight - cords.top + offset}px`;
-    else css.top = `${cords.bottom + offset}px`;
+    if (position === "top") css.bottom = `${clientHeight - domRect.top + offset}px`;
+    else css.top = `${domRect.bottom + offset}px`;
 
-    if (align === "start") css.left = `${cords.left}px`;
+    if (align === "start") css.left = `${domRect.left}px`;
     if (align === "center") {
-      css.left = `${cords.left + cords.width / 2}px`;
+      css.left = `${domRect.left + domRect.width / 2}px`;
       css.transform = "translateX(-50%)";
     }
-    if (align === "end") css.right = `${clientWidth - cords.right}px`;
+    if (align === "end") css.right = `${clientWidth - domRect.right}px`;
   } else {
-    if (position === "right") css.left = `${cords.right + offset}px`;
-    else css.right = `${clientWidth - cords.left + offset}px`;
+    if (position === "right") css.left = `${domRect.right + offset}px`;
+    else css.right = `${clientWidth - domRect.left + offset}px`;
 
-    if (align === "start") css.top = `${cords.top}px`;
+    if (align === "start") css.top = `${domRect.top}px`;
     if (align === "center") {
       css.transform = "translateY(-50%)";
-      css.top = `${cords.top + cords.height / 2}px`;
+      css.top = `${domRect.top + domRect.height / 2}px`;
     }
-    if (align === "end") css.bottom = `${clientHeight - cords.bottom}px`;
+    if (align === "end") css.bottom = `${clientHeight - domRect.bottom}px`;
   }
 
   return css;
