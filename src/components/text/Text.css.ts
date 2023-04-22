@@ -143,13 +143,13 @@ export const Text = recipe({
       Initial: {
         opacity: 1,
       },
-      500: {
+      "500": {
         opacity: config.opacity.P500,
       },
-      400: {
+      "400": {
         opacity: config.opacity.P400,
       },
-      300: {
+      "300": {
         opacity: config.opacity.P300,
       },
     },
