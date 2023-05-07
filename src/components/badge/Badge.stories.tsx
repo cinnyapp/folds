@@ -16,7 +16,7 @@ export default {
     },
     fill: {
       control: "select",
-      options: ["Solid", "Soft"],
+      options: ["Solid", "Soft", "None"],
     },
   },
 } as ComponentMeta<typeof Badge>;
