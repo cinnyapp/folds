@@ -77,6 +77,11 @@ export const Badge = recipe({
         color: OnContainer,
         borderColor: ContainerLine,
       },
+      None: {
+        backgroundColor: "inherit",
+        color: Main,
+        borderColor: Main,
+      },
     },
     outlined: {
       true: {
