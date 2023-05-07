@@ -1,3 +1,9 @@
+## [1.1.1](https://github.com/cinnyapp/folds/compare/v1.1.0...v1.1.1) (2023-05-07)
+
+### Bug Fixes
+
+- missing fill option in badge component ([#17](https://github.com/cinnyapp/folds/issues/17)) ([e021107](https://github.com/cinnyapp/folds/commit/e021107ca8a7c8a41022071d0d9c908d52dd0374))
+
 # [1.1.0](https://github.com/cinnyapp/folds/compare/v1.0.7...v1.1.0) (2023-04-22)
 
 ### Bug Fixes
