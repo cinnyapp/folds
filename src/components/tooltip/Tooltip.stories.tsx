@@ -38,6 +38,7 @@ export const Interactive = () => (
   <Box style={{ padding: "100px" }}>
     <TooltipProvider
       position="right"
+      alignOffset={-20}
       tooltip={
         <Tooltip>
           <Text truncate size="T300">

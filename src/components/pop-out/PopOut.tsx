@@ -15,6 +15,7 @@ export interface PopOutProps {
   position?: Position;
   align?: Align;
   offset?: number;
+  alignOffset?: number;
   content: ReactNode;
   children: (anchorRef: MutableRefObject<null>) => ReactNode;
 }
@@ -23,6 +24,7 @@ export const PopOut = ({
   position = "bottom",
   align = "center",
   offset = 10,
+  alignOffset = 0,
   content,
   children,
 }: PopOutProps) => {
@@ -33,7 +35,13 @@ export const PopOut = ({
     const anchor = anchorRef.current as HTMLElement;
     const popOutEl = popOutRef.current;
 
-    const css = getRelativeFixedPosition(anchor.getBoundingClientRect(), position, align, offset);
+    const css = getRelativeFixedPosition(
+      anchor.getBoundingClientRect(),
+      position,
+      align,
+      offset,
+      alignOffset
+    );
     if (popOutEl) {
       popOutEl.style.top = css.top;
       popOutEl.style.right = css.right;
@@ -41,7 +49,7 @@ export const PopOut = ({
       popOutEl.style.left = css.left;
       popOutEl.style.transform = css.transform;
     }
-  }, [position, align, offset]);
+  }, [position, align, offset, alignOffset]);
 
   useEffect(() => {
     window.addEventListener("resize", positionPopOut);
