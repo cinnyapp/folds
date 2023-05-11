@@ -75,6 +75,7 @@ export const PopOut = ({
               bottom: 0,
               left: 0,
               zIndex: config.zIndex.Max,
+              pointerEvents: "none",
             }}
           >
             <div
