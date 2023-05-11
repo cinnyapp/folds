@@ -89,37 +89,48 @@ interface TooltipProviderProps {
   tooltip: ReactNode;
   children: (triggerRef: MutableRefObject<null>) => ReactNode;
 }
-export const TooltipProvider = ({
-  position = "top",
-  align = "center",
-  offset = 10,
-  alignOffset = 0,
-  delay = 200,
-  tooltip,
-  children,
-}: TooltipProviderProps) => {
-  const { tooltipPosition, triggerRef } = useTooltip(position, align, offset, alignOffset, delay);
+export const TooltipProvider = as<"div", TooltipProviderProps>(
+  (
+    {
+      as: AsTooltipProvider = "div",
+      position = "top",
+      align = "center",
+      offset = 10,
+      alignOffset = 0,
+      delay = 200,
+      tooltip,
+      children,
+      style,
+      ...props
+    },
+    ref
+  ) => {
+    const { tooltipPosition, triggerRef } = useTooltip(position, align, offset, alignOffset, delay);
 
-  return (
-    <>
-      {children(triggerRef as MutableRefObject<null>)}
-      {tooltipPosition && (
-        <Portal>
-          <div
-            role="tooltip"
-            style={{
-              display: "inline-block",
-              position: "fixed",
-              maxWidth: "100vw",
-              zIndex: config.zIndex.Max,
-              pointerEvents: "none",
-              ...tooltipPosition,
-            }}
-          >
-            {tooltip}
-          </div>
-        </Portal>
-      )}
-    </>
-  );
-};
+    return (
+      <>
+        {children(triggerRef as MutableRefObject<null>)}
+        {tooltipPosition && (
+          <Portal>
+            <AsTooltipProvider
+              role="tooltip"
+              style={{
+                display: "inline-block",
+                position: "fixed",
+                maxWidth: "100vw",
+                zIndex: config.zIndex.Max,
+                pointerEvents: "none",
+                ...tooltipPosition,
+                ...style,
+              }}
+              {...props}
+              ref={ref}
+            >
+              {tooltip}
+            </AsTooltipProvider>
+          </Portal>
+        )}
+      </>
+    );
+  }
+);
