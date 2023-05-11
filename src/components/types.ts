@@ -1,10 +1,4 @@
-import {
-  ComponentPropsWithoutRef,
-  ComponentPropsWithRef,
-  ElementType,
-  PropsWithChildren,
-  ReactElement,
-} from "react";
+import { ComponentPropsWithRef, ElementType, PropsWithChildren } from "react";
 
 export type MainColor = "Primary" | "Secondary" | "Success" | "Warning" | "Critical";
 
@@ -25,12 +19,5 @@ type AsProp<E extends ElementType> = {
 };
 
 export type AsComponentProps<E extends ElementType> = PropsWithChildren<
-  ComponentPropsWithoutRef<E> & AsProp<E>
-> & {
-  ref?: RefOfType<E>;
-};
-
-export type AsComponentType<
-  DefaultElement extends ElementType,
-  ExtraProps = Record<string, unknown>
-> = (props: AsComponentProps<DefaultElement> & ExtraProps) => ReactElement | null;
+  ComponentPropsWithRef<E> & AsProp<E>
+>;

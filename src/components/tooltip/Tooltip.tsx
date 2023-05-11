@@ -3,7 +3,7 @@ import React, { MutableRefObject, ReactNode, useEffect, useRef, useState } from 
 import { config } from "../../theme";
 import { as } from "../as";
 import { Portal } from "../portal";
-import { Align, getRelativeFixedPosition, Position } from "../util";
+import { Align, getRelativeFixedPosition, Position, PositionCSS } from "../util";
 import * as css from "./Tooltip.css";
 
 export const Tooltip = as<"div", css.TooltipVariants>(
@@ -16,15 +16,18 @@ export const Tooltip = as<"div", css.TooltipVariants>(
   )
 );
 
-const useTooltip = (position: Position, align: Align, offset: number, delay: number) => {
+const useTooltip = (
+  position: Position,
+  align: Align,
+  offset: number,
+  alignOffset: number,
+  delay: number
+) => {
   const triggerRef = useRef<unknown>(null);
-  const tooltipRef = useRef<HTMLDivElement>(null);
-
-  const [open, setOpen] = useState(false);
+  const [tooltipPosition, setTooltipPosition] = useState<PositionCSS>();
 
   useEffect(() => {
     const trigger = triggerRef.current as HTMLElement;
-    const tooltip = tooltipRef.current;
     let timeoutId: number | undefined;
 
     const openTooltip = (evt: Event) => {
@@ -33,35 +36,24 @@ const useTooltip = (position: Position, align: Align, offset: number, delay: num
         trigger.getBoundingClientRect(),
         position,
         align,
-        offset
+        offset,
+        alignOffset
       );
-      if (tooltip) {
-        tooltip.style.top = pos.top;
-        tooltip.style.right = pos.right;
-        tooltip.style.bottom = pos.bottom;
-        tooltip.style.left = pos.left;
-        tooltip.style.transform = pos.transform;
-      }
 
-      if (evt.type === "focus") setOpen(true);
-      else timeoutId = window.setTimeout(() => setOpen(true), delay);
+      if (evt.type === "focus") setTooltipPosition(pos);
+      else timeoutId = window.setTimeout(() => setTooltipPosition(pos), delay);
     };
     const closeTooltip = () => {
       clearTimeout(timeoutId);
       timeoutId = undefined;
-      setOpen(false);
+      setTooltipPosition(undefined);
     };
 
     const onKeyDown = (evt: KeyboardEvent) => {
-      if (
-        evt.key === "Escape" &&
-        document.activeElement === trigger &&
-        tooltip &&
-        tooltip.children.length > 0
-      ) {
+      if (evt.key === "Escape" && document.activeElement === trigger) {
         evt.preventDefault();
         clearTimeout(timeoutId);
-        setOpen(false);
+        setTooltipPosition(undefined);
       }
     };
 
@@ -80,12 +72,11 @@ const useTooltip = (position: Position, align: Align, offset: number, delay: num
       document.removeEventListener("keydown", onKeyDown);
       trigger?.removeEventListener("click", closeTooltip);
     };
-  }, [position, align, offset, delay]);
+  }, [position, align, offset, alignOffset, delay]);
 
   return {
-    open,
+    tooltipPosition,
     triggerRef,
-    tooltipRef,
   };
 };
 
@@ -93,38 +84,53 @@ interface TooltipProviderProps {
   position?: Position;
   align?: Align;
   offset?: number;
+  alignOffset?: number;
   delay?: number;
   tooltip: ReactNode;
   children: (triggerRef: MutableRefObject<null>) => ReactNode;
 }
-export const TooltipProvider = ({
-  position = "top",
-  align = "center",
-  offset = 10,
-  delay = 200,
-  tooltip,
-  children,
-}: TooltipProviderProps) => {
-  const { open, tooltipRef, triggerRef } = useTooltip(position, align, offset, delay);
+export const TooltipProvider = as<"div", TooltipProviderProps>(
+  (
+    {
+      as: AsTooltipProvider = "div",
+      position = "top",
+      align = "center",
+      offset = 10,
+      alignOffset = 0,
+      delay = 200,
+      tooltip,
+      children,
+      style,
+      ...props
+    },
+    ref
+  ) => {
+    const { tooltipPosition, triggerRef } = useTooltip(position, align, offset, alignOffset, delay);
 
-  return (
-    <>
-      {children(triggerRef as MutableRefObject<null>)}
-      <Portal>
-        <div
-          role="tooltip"
-          ref={tooltipRef}
-          style={{
-            display: "inline-block",
-            position: "fixed",
-            maxWidth: "100vw",
-            zIndex: config.zIndex.Max,
-            pointerEvents: "none",
-          }}
-        >
-          {open && tooltip}
-        </div>
-      </Portal>
-    </>
-  );
-};
+    return (
+      <>
+        {children(triggerRef as MutableRefObject<null>)}
+        {tooltipPosition && (
+          <Portal>
+            <AsTooltipProvider
+              role="tooltip"
+              style={{
+                display: "inline-block",
+                position: "fixed",
+                maxWidth: "100vw",
+                zIndex: config.zIndex.Max,
+                pointerEvents: "none",
+                ...tooltipPosition,
+                ...style,
+              }}
+              {...props}
+              ref={ref}
+            >
+              {tooltip}
+            </AsTooltipProvider>
+          </Portal>
+        )}
+      </>
+    );
+  }
+);
