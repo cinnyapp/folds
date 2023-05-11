@@ -1,3 +1,9 @@
+## [1.1.2](https://github.com/cinnyapp/folds/compare/v1.1.1...v1.1.2) (2023-05-11)
+
+### Bug Fixes
+
+- tooltip and popout ([#18](https://github.com/cinnyapp/folds/issues/18)) ([2665446](https://github.com/cinnyapp/folds/commit/26654463f827b22566f741965eeeec16059d1c08))
+
 ## [1.1.1](https://github.com/cinnyapp/folds/compare/v1.1.0...v1.1.1) (2023-05-07)
 
 ### Bug Fixes
