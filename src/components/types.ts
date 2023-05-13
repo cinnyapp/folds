@@ -14,10 +14,8 @@ export type ContainerColor =
 
 export type RefOfType<E extends ElementType> = ComponentPropsWithRef<E>["ref"];
 
-type AsProp<E extends ElementType> = {
+export type AsProp<E extends ElementType> = {
   as?: E;
 };
 
-export type AsComponentProps<E extends ElementType> = PropsWithChildren<
-  ComponentPropsWithRef<E> & AsProp<E>
->;
+export type ComponentProps<E extends ElementType> = PropsWithChildren<ComponentPropsWithRef<E>>;
