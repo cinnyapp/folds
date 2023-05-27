@@ -5,7 +5,7 @@ import { DefaultReset } from "../reset.css";
 export const Overlay = style([
   DefaultReset,
   {
-    position: "fixed",
+    position: "absolute",
     top: 0,
     right: 0,
     bottom: 0,
@@ -26,7 +26,7 @@ const OverlayBackdropAnime = keyframes({
 export const OverlayBackdrop = style([
   DefaultReset,
   {
-    position: "fixed",
+    position: "absolute",
     top: 0,
     right: 0,
     bottom: 0,

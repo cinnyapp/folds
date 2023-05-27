@@ -93,8 +93,8 @@ export const TooltipProvider = as<"div", TooltipProviderProps>(
   (
     {
       as: AsTooltipProvider = "div",
-      position = "top",
-      align = "center",
+      position = "Top",
+      align = "Center",
       offset = 10,
       alignOffset = 0,
       delay = 200,

@@ -25,8 +25,8 @@ export const PopOut = as<"div", PopOutProps>(
     {
       as: AsPopOut = "div",
       open,
-      position = "bottom",
-      align = "center",
+      position = "Bottom",
+      align = "Center",
       offset = 10,
       alignOffset = 0,
       content,

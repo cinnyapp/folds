@@ -20,7 +20,7 @@ export const Interactive = () => {
     <div style={{ height: "100vh" }}>
       <PopOut
         open={open}
-        align="start"
+        align="Start"
         content={
           <FocusTrap
             focusTrapOptions={{

@@ -37,7 +37,7 @@ Surface.args = {
 export const Interactive = () => (
   <Box style={{ padding: "100px" }}>
     <TooltipProvider
-      position="right"
+      position="Right"
       tooltip={
         <Tooltip>
           <Text truncate size="T300">

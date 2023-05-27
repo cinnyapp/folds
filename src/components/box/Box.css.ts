@@ -2,14 +2,19 @@ import { recipe, RecipeVariants } from "@vanilla-extract/recipes";
 import { config } from "../../theme/config.css";
 import { DefaultReset } from "../reset.css";
 
-const getAlignVariant = (
-  prop:
-    | "justifyContent"
-    | "justifyItems"
-    | "justifySelf"
-    | "alignContent"
-    | "alignItems"
-    | "alignSelf"
+const getAlignContentVariant = (prop: "justifyContent" | "alignContent") => ({
+  Inherit: { [prop]: "inherit" },
+  Start: { [prop]: "flex-start" },
+  End: { [prop]: "flex-end" },
+  Stretch: { [prop]: "stretch" },
+  Center: { [prop]: "center" },
+  Baseline: { [prop]: "baseline" },
+  SpaceBetween: { [prop]: "space-between" },
+  SpaceAround: { [prop]: "space-around" },
+  SpaceEvenly: { [prop]: "space-evenly" },
+});
+const getAlignItemVariant = (
+  prop: "justifyItems" | "justifySelf" | "alignItems" | "alignSelf"
 ) => ({
   Inherit: { [prop]: "inherit" },
   Start: { [prop]: "flex-start" },
@@ -17,9 +22,6 @@ const getAlignVariant = (
   Stretch: { [prop]: "stretch" },
   Center: { [prop]: "center" },
   Baseline: { [prop]: "baseline" },
-  SpaceBetween: { [prop]: "spaceBetween" },
-  SpaceAround: { [prop]: "spaceAround" },
-  SpaceEvenly: { [prop]: "spaceEvenly" },
 });
 
 export const Box = recipe({
@@ -48,12 +50,12 @@ export const Box = recipe({
       Wrap: { flexWrap: "wrap" },
       WrapReverse: { flexWrap: "wrap-reverse" },
     },
-    justifyContent: getAlignVariant("justifyContent"),
-    justifyItems: getAlignVariant("justifyItems"),
-    justifySelf: getAlignVariant("justifySelf"),
-    alignContent: getAlignVariant("alignContent"),
-    alignItems: getAlignVariant("alignItems"),
-    alignSelf: getAlignVariant("alignSelf"),
+    justifyContent: getAlignContentVariant("justifyContent"),
+    justifyItems: getAlignItemVariant("justifyItems"),
+    justifySelf: getAlignItemVariant("justifySelf"),
+    alignContent: getAlignContentVariant("alignContent"),
+    alignItems: getAlignItemVariant("alignItems"),
+    alignSelf: getAlignItemVariant("alignSelf"),
     gap: {
       Inherit: { gap: "inherit" },
       "0": { gap: config.space.S0 },
