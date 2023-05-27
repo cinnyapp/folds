@@ -6,12 +6,13 @@ import { as } from "../as";
 
 export type OverlayProps = {
   open: boolean;
+  container?: Element | DocumentFragment;
   backdrop?: ReactNode;
 };
 
 export const Overlay = as<"div", OverlayProps>(
-  ({ as: AsOverlay = "div", className, open, backdrop, children, ...props }, ref) => (
-    <Portal>
+  ({ as: AsOverlay = "div", className, open, container, backdrop, children, ...props }, ref) => (
+    <Portal container={container}>
       {open ? (
         <AsOverlay className={classNames(css.Overlay, className)} {...props} ref={ref}>
           {backdrop}
