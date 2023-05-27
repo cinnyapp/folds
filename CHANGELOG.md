@@ -1,3 +1,9 @@
+# [1.2.0](https://github.com/cinnyapp/folds/compare/v1.1.3...v1.2.0) (2023-05-27)
+
+### Features
+
+- progressbar component ([#20](https://github.com/cinnyapp/folds/issues/20)) ([9a48fea](https://github.com/cinnyapp/folds/commit/9a48feacd6a9d45407f2a0e87172f270f057190b))
+
 ## [1.1.3](https://github.com/cinnyapp/folds/compare/v1.1.2...v1.1.3) (2023-05-13)
 
 ### Bug Fixes
