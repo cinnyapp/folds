@@ -49,3 +49,6 @@ export const getRelativeFixedPosition = (
 
   return css;
 };
+
+export const percent = (min: number, max: number, value: number) =>
+  ((value - min) / (max - min)) * 100;

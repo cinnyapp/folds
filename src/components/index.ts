@@ -22,6 +22,7 @@ export * from "./modal";
 export * from "./overlay";
 export * from "./pop-out";
 export * from "./portal";
+export * from "./progress-bar";
 export * from "./radio-button";
 export * from "./scroll";
 export * from "./spinner";
