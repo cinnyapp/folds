@@ -5,8 +5,8 @@ export interface PositionCSS {
   left: string;
   transform: string;
 }
-export type Position = "top" | "right" | "bottom" | "left";
-export type Align = "start" | "center" | "end";
+export type Position = "Top" | "Right" | "Bottom" | "Left";
+export type Align = "Start" | "Center" | "End";
 
 export const getRelativeFixedPosition = (
   domRect: DOMRect,
@@ -25,26 +25,26 @@ export const getRelativeFixedPosition = (
     transform: "none",
   };
 
-  if (position === "top" || position === "bottom") {
-    if (position === "top") css.bottom = `${clientHeight - domRect.top + offset}px`;
+  if (position === "Top" || position === "Bottom") {
+    if (position === "Top") css.bottom = `${clientHeight - domRect.top + offset}px`;
     else css.top = `${domRect.bottom + offset}px`;
 
-    if (align === "start") css.left = `${domRect.left + alignOffset}px`;
-    if (align === "center") {
+    if (align === "Start") css.left = `${domRect.left + alignOffset}px`;
+    if (align === "Center") {
       css.left = `${domRect.left + domRect.width / 2 + alignOffset}px`;
       css.transform = "translateX(-50%)";
     }
-    if (align === "end") css.right = `${clientWidth - domRect.right + alignOffset}px`;
+    if (align === "End") css.right = `${clientWidth - domRect.right + alignOffset}px`;
   } else {
-    if (position === "right") css.left = `${domRect.right + offset}px`;
+    if (position === "Right") css.left = `${domRect.right + offset}px`;
     else css.right = `${clientWidth - domRect.left + offset}px`;
 
-    if (align === "start") css.top = `${domRect.top + alignOffset}px`;
-    if (align === "center") {
+    if (align === "Start") css.top = `${domRect.top + alignOffset}px`;
+    if (align === "Center") {
       css.transform = "translateY(-50%)";
       css.top = `${domRect.top + domRect.height / 2 + alignOffset}px`;
     }
-    if (align === "end") css.bottom = `${clientHeight - domRect.bottom + alignOffset}px`;
+    if (align === "End") css.bottom = `${clientHeight - domRect.bottom + alignOffset}px`;
   }
 
   return css;
