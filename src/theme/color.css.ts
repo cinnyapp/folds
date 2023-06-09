@@ -90,7 +90,11 @@ export const color = createThemeContract({
     OnContainer: "",
   },
 
-  FocusRing: "",
+  Other: {
+    FocusRing: "",
+    Shadow: "",
+    Overlay: "",
+  },
 });
 
 export const lightTheme = createTheme(color, {
@@ -183,98 +187,9 @@ export const lightTheme = createTheme(color, {
     OnContainer: "#890A0A",
   },
 
-  FocusRing: "rgba(0 0 0 / 50%)",
-});
-
-export const darkTheme = createTheme(color, {
-  Background: {
-    Container: "#1A1A1A",
-    ContainerHover: "#262626",
-    ContainerActive: "#333333",
-    ContainerLine: "#404040",
-    OnContainer: "#FFFFFF",
+  Other: {
+    FocusRing: "rgba(0 0 0 / 50%)",
+    Shadow: "rgba(0 0 0 / 20%)",
+    Overlay: "rgba(0 0 0 / 50%)",
   },
-
-  Surface: {
-    Container: "#262626",
-    ContainerHover: "#333333",
-    ContainerActive: "#404040",
-    ContainerLine: "#4C4C4C",
-    OnContainer: "#FFFFFF",
-  },
-
-  SurfaceVariant: {
-    Container: "#333333",
-    ContainerHover: "#404040",
-    ContainerActive: "#4C4C4C",
-    ContainerLine: "#595959",
-    OnContainer: "#FFFFFF",
-  },
-
-  Primary: {
-    Main: "#A3BCEE",
-    MainHover: "#8BACEA",
-    MainActive: "#80A3E8",
-    MainLine: "#749BE6",
-    OnMain: "#071A40",
-    Container: "#0D3075",
-    ContainerHover: "#0E3580",
-    ContainerActive: "#10398A",
-    ContainerLine: "#113E95",
-    OnContainer: "#E8EEFB",
-  },
-
-  Secondary: {
-    Main: "#FFFFFF",
-    MainHover: "#E5E5E5",
-    MainActive: "#D9D9D9",
-    MainLine: "#CCCCCC",
-    OnMain: "#1A1A1A",
-    Container: "#404040",
-    ContainerHover: "#4C4C4C",
-    ContainerActive: "#595959",
-    ContainerLine: "#666666",
-    OnContainer: "#F2F2F2",
-  },
-
-  Success: {
-    Main: "#99CEB7",
-    MainHover: "#80C1A5",
-    MainActive: "#73BB9D",
-    MainLine: "#66B594",
-    OnMain: "#002817",
-    Container: "#00492A",
-    ContainerHover: "#004F2E",
-    ContainerActive: "#005631",
-    ContainerLine: "#005C35",
-    OnContainer: "#E5F3ED",
-  },
-
-  Warning: {
-    Main: "#DCBB99",
-    MainHover: "#D3A980",
-    MainActive: "#CFA173",
-    MainLine: "#CB9866",
-    OnMain: "#321900",
-    Container: "#5C2E00",
-    ContainerHover: "#653200",
-    ContainerActive: "#6D3700",
-    ContainerLine: "#763B00",
-    OnContainer: "#F6EEE5",
-  },
-
-  Critical: {
-    Main: "#E79F9F",
-    MainHover: "#E18686",
-    MainActive: "#DE7A7A",
-    MainLine: "#DB6E6E",
-    OnMain: "#3A0404",
-    Container: "#6B0808",
-    ContainerHover: "#750808",
-    ContainerActive: "#7F0909",
-    ContainerLine: "#890A0A",
-    OnContainer: "#F9E7E7",
-  },
-
-  FocusRing: "rgba(0 0 0 / 50%)",
 });

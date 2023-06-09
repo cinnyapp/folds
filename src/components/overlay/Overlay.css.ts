@@ -1,4 +1,5 @@
 import { keyframes, style } from "@vanilla-extract/css";
+import { color } from "../../theme";
 import { config } from "../../theme/config.css";
 import { DefaultReset } from "../reset.css";
 
@@ -19,7 +20,7 @@ const OverlayBackdropAnime = keyframes({
     opacity: "0",
   },
   "100%": {
-    opacity: ".5",
+    opacity: "1",
   },
 });
 
@@ -32,8 +33,8 @@ export const OverlayBackdrop = style([
     bottom: 0,
     left: 0,
     zIndex: -1,
-    backgroundColor: "black",
-    opacity: ".5",
+    backgroundColor: color.Other.Overlay,
+    opacity: "1",
     animation: `${OverlayBackdropAnime} 100ms`,
   },
 ]);

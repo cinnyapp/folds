@@ -1,4 +1,5 @@
 import { createTheme } from "@vanilla-extract/css";
+import { color } from "./color.css";
 import { toRem } from "./util";
 
 export const [configClass, config] = createTheme({
@@ -119,10 +120,10 @@ export const [configClass, config] = createTheme({
     Max: "9999",
   },
   shadow: {
-    E100: "0px 1px 6px -2px rgba(0, 0, 0, 0.2)",
-    E200: "0px 1px 12px -3px rgba(0, 0, 0, 0.2)",
-    E300: "0px 2px 16px -4px rgba(0, 0, 0, 0.2)",
-    E400: "0px 4px 26px -6px rgba(0, 0, 0, 0.2)",
+    E100: `0px 1px 6px -2px ${color.Other.Shadow}`,
+    E200: `0px 1px 12px -3px ${color.Other.Shadow}`,
+    E300: `0px 2px 16px -4px ${color.Other.Shadow}`,
+    E400: `0px 4px 26px -6px ${color.Other.Shadow}`,
   },
   size: {
     X50: toRem(16),
