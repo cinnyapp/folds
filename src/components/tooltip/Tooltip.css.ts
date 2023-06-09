@@ -10,6 +10,7 @@ import { RadiiVariant } from "../variant.css";
 const getVariant = (variant: ContainerColor): ComplexStyleRule => ({
   backgroundColor: color[variant].Container,
   color: color[variant].OnContainer,
+  border: `${config.borderWidth.B300} solid ${color[variant].ContainerLine}`,
 });
 
 const TooltipScaleAnime = keyframes({

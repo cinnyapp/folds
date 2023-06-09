@@ -8,6 +8,7 @@ import { ContainerColor } from "../types";
 const getVariant = (variant: ContainerColor): ComplexStyleRule => ({
   backgroundColor: color[variant].Container,
   color: color[variant].OnContainer,
+  border: `${config.borderWidth.B300} solid ${color[variant].ContainerLine}`,
 });
 
 export const Menu = recipe({
