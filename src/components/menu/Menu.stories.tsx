@@ -17,7 +17,7 @@ const Template: ComponentStory<typeof Menu> = (args) => <Menu {...args} />;
 export const Surface = Template.bind({});
 Surface.args = {
   children: (
-    <Menu>
+    <>
       <Header
         size="300"
         style={{ borderBottomWidth: config.borderWidth.B300, padding: `0 ${config.space.S300}` }}
@@ -37,6 +37,6 @@ Surface.args = {
           <Text size="B400">Menu Item 3</Text>
         </MenuItem>
       </div>
-    </Menu>
+    </>
   ),
 };

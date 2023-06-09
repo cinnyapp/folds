@@ -130,6 +130,92 @@ export const Scroll = recipe({
       },
     },
   },
+  compoundVariants: [
+    {
+      variants: {
+        direction: "Horizontal",
+        size: "300",
+      },
+      style: {
+        selectors: {
+          "&[data-x-scrollbar-width='0']": {
+            paddingBottom: toRem(8),
+          },
+        },
+      },
+    },
+    {
+      variants: {
+        direction: "Horizontal",
+        size: "400",
+      },
+      style: {
+        selectors: {
+          "&[data-x-scrollbar-width='0']": {
+            paddingBottom: toRem(16),
+          },
+        },
+      },
+    },
+    {
+      variants: {
+        direction: "Vertical",
+        size: "300",
+      },
+      style: {
+        selectors: {
+          "&[data-y-scrollbar-width='0']": {
+            paddingRight: toRem(8),
+          },
+        },
+      },
+    },
+    {
+      variants: {
+        direction: "Vertical",
+        size: "400",
+      },
+      style: {
+        selectors: {
+          "&[data-y-scrollbar-width='0']": {
+            paddingRight: toRem(16),
+          },
+        },
+      },
+    },
+    {
+      variants: {
+        direction: "Both",
+        size: "300",
+      },
+      style: {
+        selectors: {
+          "&[data-x-scrollbar-width='0']": {
+            paddingBottom: toRem(8),
+          },
+          "&[data-y-scrollbar-width='0']": {
+            paddingRight: toRem(8),
+          },
+        },
+      },
+    },
+    {
+      variants: {
+        direction: "Both",
+        size: "400",
+      },
+      style: {
+        selectors: {
+          "&[data-x-scrollbar-width='0']": {
+            paddingBottom: toRem(16),
+          },
+          "&[data-y-scrollbar-width='0']": {
+            paddingRight: toRem(16),
+          },
+        },
+      },
+    },
+  ],
   defaultVariants: {
     variant: "Surface",
     visibility: "Always",
