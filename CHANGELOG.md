@@ -1,3 +1,9 @@
+# [1.3.0](https://github.com/cinnyapp/folds/compare/v1.2.1...v1.3.0) (2023-06-24)
+
+### Features
+
+- more icons ([#23](https://github.com/cinnyapp/folds/issues/23)) ([4f5edef](https://github.com/cinnyapp/folds/commit/4f5edefe43b86658e5614695f1edcdd343a519f7))
+
 ## [1.2.1](https://github.com/cinnyapp/folds/compare/v1.2.0...v1.2.1) (2023-06-09)
 
 ### Bug Fixes
