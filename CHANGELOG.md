@@ -1,3 +1,9 @@
+# [1.4.0](https://github.com/cinnyapp/folds/compare/v1.3.0...v1.4.0) (2023-08-16)
+
+### Features
+
+- inherit cross size variant option ([#25](https://github.com/cinnyapp/folds/issues/25)) ([b896348](https://github.com/cinnyapp/folds/commit/b896348cc515e148717c1cc35379f659ba0d9704))
+
 # [1.3.0](https://github.com/cinnyapp/folds/compare/v1.2.1...v1.3.0) (2023-06-24)
 
 ### Features
