@@ -126,6 +126,7 @@ export const [configClass, config] = createTheme({
     E400: `0px 4px 26px -6px ${color.Other.Shadow}`,
   },
   size: {
+    XInherit: "1em",
     X50: toRem(16),
     X100: toRem(18),
     X200: toRem(20),

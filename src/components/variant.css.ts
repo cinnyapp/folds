@@ -23,6 +23,10 @@ export const RadiiVariant = {
 };
 
 export const CrossSizeVariant = {
+  Inherit: style({
+    width: config.size.XInherit,
+    height: config.size.XInherit,
+  }),
   "50": style({
     width: config.size.X50,
     height: config.size.X50,
