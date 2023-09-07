@@ -35,6 +35,9 @@ export const Scroll = recipe({
           backgroundColor: "transparent",
           borderRadius: config.radii.Pill,
         },
+        "&::-webkit-scrollbar-corner": {
+          backgroundColor: "transparent",
+        },
       },
     },
   ],
