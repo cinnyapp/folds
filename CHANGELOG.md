@@ -1,3 +1,9 @@
+## [1.4.1](https://github.com/cinnyapp/folds/compare/v1.4.0...v1.4.1) (2023-09-07)
+
+### Bug Fixes
+
+- fix scroll corner color ([#26](https://github.com/cinnyapp/folds/issues/26)) ([fa6ce32](https://github.com/cinnyapp/folds/commit/fa6ce329fd3e08e13070234feebc3258308c6ee0))
+
 # [1.4.0](https://github.com/cinnyapp/folds/compare/v1.3.0...v1.4.0) (2023-08-16)
 
 ### Features
