@@ -1,3 +1,13 @@
+# [1.5.0](https://github.com/cinnyapp/folds/compare/v1.4.1...v1.5.0) (2023-09-28)
+
+### Bug Fixes
+
+- adaptive popout & tooltip position ([#28](https://github.com/cinnyapp/folds/issues/28)) ([3c30e66](https://github.com/cinnyapp/folds/commit/3c30e66c55fe53bf3c34720b3617492a9b7a3ea3))
+
+### Features
+
+- size prop in menu item ([#27](https://github.com/cinnyapp/folds/issues/27)) ([020afd7](https://github.com/cinnyapp/folds/commit/020afd7844b262c16164ba94bfeb92eb5b268e83))
+
 ## [1.4.1](https://github.com/cinnyapp/folds/compare/v1.4.0...v1.4.1) (2023-09-07)
 
 ### Bug Fixes
