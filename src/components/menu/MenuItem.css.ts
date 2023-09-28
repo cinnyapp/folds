@@ -13,6 +13,7 @@ const ContainerHover = createVar();
 const ContainerActive = createVar();
 const ContainerLine = createVar();
 const OnContainer = createVar();
+const UIBeforeAfterSpace = createVar();
 
 const getVariant = (variant: ContainerColor): ComplexStyleRule => ({
   vars: {
@@ -29,12 +30,9 @@ export const MenuItem = recipe({
     DefaultReset,
     {
       width: "100%",
-      height: toRem(40),
-      padding: `0 ${config.space.S400}`,
       display: "flex",
       alignItems: "center",
       justifyContent: "start",
-      gap: config.space.S200,
       cursor: "pointer",
       backgroundColor: Container,
       color: OnContainer,
@@ -50,10 +48,10 @@ export const MenuItem = recipe({
           backgroundColor: ContainerActive,
         },
         "&[data-ui-before=true]": {
-          paddingLeft: config.space.S300,
+          paddingLeft: UIBeforeAfterSpace,
         },
         "&[data-ui-after=true]": {
-          paddingRight: config.space.S300,
+          paddingRight: UIBeforeAfterSpace,
         },
       },
     },
@@ -71,10 +69,29 @@ export const MenuItem = recipe({
       Warning: getVariant("Warning"),
       Critical: getVariant("Critical"),
     },
+    size: {
+      "300": {
+        vars: {
+          [UIBeforeAfterSpace]: config.space.S200,
+        },
+        height: toRem(32),
+        gap: config.space.S100,
+        padding: `0 ${config.space.S300}`,
+      },
+      "400": {
+        vars: {
+          [UIBeforeAfterSpace]: config.space.S300,
+        },
+        height: toRem(40),
+        gap: config.space.S200,
+        padding: `0 ${config.space.S400}`,
+      },
+    },
     radii: RadiiVariant,
   },
   defaultVariants: {
     variant: "Surface",
+    size: "400",
     radii: "0",
   },
 });

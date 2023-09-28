@@ -10,11 +10,21 @@ type MenuItemProps = {
 
 export const MenuItem = as<"button", MenuItemProps & css.MenuItemVariants>(
   (
-    { as: AsMenuItem = "button", className, variant, radii, before, after, children, ...props },
+    {
+      as: AsMenuItem = "button",
+      className,
+      variant,
+      size,
+      radii,
+      before,
+      after,
+      children,
+      ...props
+    },
     ref
   ) => (
     <AsMenuItem
-      className={classNames(css.MenuItem({ variant, radii }), className)}
+      className={classNames(css.MenuItem({ variant, size, radii }), className)}
       data-ui-before={before ? true : undefined}
       data-ui-after={after ? true : undefined}
       {...props}
