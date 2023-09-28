@@ -9,13 +9,14 @@ export type Position = "Top" | "Right" | "Bottom" | "Left";
 export type Align = "Start" | "Center" | "End";
 
 export const getRelativeFixedPosition = (
-  domRect: DOMRect,
+  anchorRect: DOMRect,
   position: Position,
   align: Align,
   offset: number,
-  alignOffset: number
+  alignOffset: number,
+  itemRect: DOMRect
 ): PositionCSS => {
-  const { clientWidth, clientHeight } = document.body;
+  const { clientWidth, clientHeight } = document.documentElement;
 
   const css = {
     top: "unset",
@@ -26,25 +27,51 @@ export const getRelativeFixedPosition = (
   };
 
   if (position === "Top" || position === "Bottom") {
-    if (position === "Top") css.bottom = `${clientHeight - domRect.top + offset}px`;
-    else css.top = `${domRect.bottom + offset}px`;
+    const top = anchorRect.top - offset;
+    const bottom = anchorRect.bottom + offset;
+    const canPositionTop = top >= itemRect.height;
+    const canPositionBottom = bottom + itemRect.height <= clientHeight;
 
-    if (align === "Start") css.left = `${domRect.left + alignOffset}px`;
+    if (position === "Top") {
+      if (canPositionTop) css.bottom = `${clientHeight - top}px`;
+      else if (canPositionBottom) css.top = `${bottom}px`;
+      else css.top = `${offset}px`;
+    }
+    if (position === "Bottom") {
+      if (canPositionBottom) css.top = `${bottom}px`;
+      else if (canPositionTop) css.bottom = `${clientHeight - top}px`;
+      else css.top = `${offset}px`;
+    }
+
+    if (align === "Start") css.left = `${anchorRect.left + alignOffset}px`;
     if (align === "Center") {
-      css.left = `${domRect.left + domRect.width / 2 + alignOffset}px`;
+      css.left = `${anchorRect.left + anchorRect.width / 2 + alignOffset}px`;
       css.transform = "translateX(-50%)";
     }
-    if (align === "End") css.right = `${clientWidth - domRect.right + alignOffset}px`;
+    if (align === "End") css.right = `${clientWidth - anchorRect.right + alignOffset}px`;
   } else {
-    if (position === "Right") css.left = `${domRect.right + offset}px`;
-    else css.right = `${clientWidth - domRect.left + offset}px`;
+    const left = anchorRect.left - offset;
+    const right = anchorRect.right + offset;
+    const canPositionLeft = left >= itemRect.width;
+    const canPositionRight = right + itemRect.width <= clientWidth;
 
-    if (align === "Start") css.top = `${domRect.top + alignOffset}px`;
+    if (position === "Left") {
+      if (canPositionLeft) css.right = `${clientWidth - left}px`;
+      else if (canPositionRight) css.left = `${right}px`;
+      else css.left = `${offset}px`;
+    }
+    if (position === "Right") {
+      if (canPositionRight) css.left = `${right}px`;
+      else if (canPositionLeft) css.right = `${clientWidth - left}px`;
+      else css.left = `${offset}px`;
+    }
+
+    if (align === "Start") css.top = `${anchorRect.top + alignOffset}px`;
     if (align === "Center") {
       css.transform = "translateY(-50%)";
-      css.top = `${domRect.top + domRect.height / 2 + alignOffset}px`;
+      css.top = `${anchorRect.top + anchorRect.height / 2 + alignOffset}px`;
     }
-    if (align === "End") css.bottom = `${clientHeight - domRect.bottom + alignOffset}px`;
+    if (align === "End") css.bottom = `${clientHeight - anchorRect.bottom + alignOffset}px`;
   }
 
   return css;

@@ -3,13 +3,13 @@ import React, {
   ReactNode,
   useCallback,
   useEffect,
+  useLayoutEffect,
   useRef,
-  useState,
 } from "react";
 import { config } from "../../theme";
 import { as } from "../as";
 import { Portal } from "../portal";
-import { Align, getRelativeFixedPosition, Position, PositionCSS } from "../util";
+import { Align, getRelativeFixedPosition, Position } from "../util";
 
 export interface PopOutProps {
   open: boolean;
@@ -37,19 +37,26 @@ export const PopOut = as<"div", PopOutProps>(
     ref
   ) => {
     const anchorRef = useRef<unknown>(null);
-    const [popOutPosition, setPopOutPosition] = useState<PositionCSS>();
+    const baseRef = useRef<HTMLDivElement>(null);
 
     const positionPopOut = useCallback(() => {
       const anchor = anchorRef.current as HTMLElement;
+      const baseEl = baseRef.current;
+      if (!baseEl) return;
 
       const css = getRelativeFixedPosition(
         anchor.getBoundingClientRect(),
         position,
         align,
         offset,
-        alignOffset
+        alignOffset,
+        baseEl.getBoundingClientRect()
       );
-      setPopOutPosition(css);
+      baseEl.style.top = css.top;
+      baseEl.style.bottom = css.bottom;
+      baseEl.style.left = css.left;
+      baseEl.style.right = css.right;
+      baseEl.style.transform = css.transform;
     }, [position, align, offset, alignOffset]);
 
     useEffect(() => {
@@ -59,7 +66,7 @@ export const PopOut = as<"div", PopOutProps>(
       };
     }, [positionPopOut]);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
       if (open) positionPopOut();
     }, [open, positionPopOut]);
 
@@ -67,7 +74,7 @@ export const PopOut = as<"div", PopOutProps>(
       <>
         {children(anchorRef as MutableRefObject<null>)}
         <Portal>
-          {open && popOutPosition && (
+          {open && (
             <AsPopOut
               style={{
                 position: "fixed",
@@ -82,11 +89,12 @@ export const PopOut = as<"div", PopOutProps>(
               ref={ref}
             >
               <div
+                ref={baseRef}
                 style={{
                   display: "inline-block",
                   position: "fixed",
                   maxWidth: "100vw",
-                  ...popOutPosition,
+                  maxHeight: "100vh",
                 }}
               >
                 {content}
