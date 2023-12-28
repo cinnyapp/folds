@@ -1,3 +1,9 @@
+## [1.5.1](https://github.com/cinnyapp/folds/compare/v1.5.0...v1.5.1) (2023-12-28)
+
+### Bug Fixes
+
+- component props bug ([#29](https://github.com/cinnyapp/folds/issues/29)) ([5990788](https://github.com/cinnyapp/folds/commit/5990788b2811e8a9bbf2271813336c84f85f8791))
+
 # [1.5.0](https://github.com/cinnyapp/folds/compare/v1.4.1...v1.5.0) (2023-09-28)
 
 ### Bug Fixes
