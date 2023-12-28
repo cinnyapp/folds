@@ -13,11 +13,16 @@ export const Scroll = as<"div", css.ScrollVariants>(
     useLayoutEffect(() => {
       if (scrollLocalRef.current) {
         const $scroll = scrollLocalRef.current;
-        const xScrollbarWidth = $scroll.offsetHeight - $scroll.clientHeight;
-        const yScrollbarWidth = $scroll.offsetWidth - $scroll.clientWidth;
+        if (size === "0") {
+          $scroll.setAttribute("data-x-scrollbar-width", "0");
+          $scroll.setAttribute("data-y-scrollbar-width", "0");
+        } else {
+          const xScrollbarWidth = $scroll.offsetHeight - $scroll.clientHeight;
+          const yScrollbarWidth = $scroll.offsetWidth - $scroll.clientWidth;
 
-        $scroll.setAttribute("data-x-scrollbar-width", `${xScrollbarWidth}`);
-        $scroll.setAttribute("data-y-scrollbar-width", `${yScrollbarWidth}`);
+          $scroll.setAttribute("data-x-scrollbar-width", `${xScrollbarWidth}`);
+          $scroll.setAttribute("data-y-scrollbar-width", `${yScrollbarWidth}`);
+        }
       }
     }, [size]);
 

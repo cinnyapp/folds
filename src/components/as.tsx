@@ -1,12 +1,12 @@
 import { ElementType, forwardRef, ReactElement } from "react";
-import { ComponentProps, AsProp, RefOfType } from "./types";
+import { AsInProps, AsOutProps, RefOfType } from "./types";
 
-export const as = <T extends ElementType, ExtraProps = unknown>(
+export const as = <DefaultType extends ElementType, ExtraProps = object>(
   fc: (
-    props: Omit<ComponentProps<T>, keyof ExtraProps | keyof AsProp<T>> & AsProp<T> & ExtraProps,
-    ref: RefOfType<T>
-  ) => ReactElement
+    props: AsInProps<DefaultType, ExtraProps>,
+    ref: RefOfType<DefaultType>
+  ) => ReactElement | null
 ) =>
-  forwardRef(fc) as unknown as <E extends ElementType = T>(
-    props: Omit<ComponentProps<E>, keyof ExtraProps | keyof AsProp<E>> & AsProp<E> & ExtraProps
-  ) => ReactElement;
+  forwardRef(fc) as unknown as <T extends ElementType = DefaultType>(
+    props: AsOutProps<T, ExtraProps>
+  ) => ReturnType<typeof fc>;

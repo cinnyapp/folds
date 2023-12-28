@@ -4,7 +4,10 @@ import React, { AllHTMLAttributes, forwardRef } from "react";
 import { Icon, Icons } from "../icon";
 import * as css from "./Checkbox.css";
 
-type CheckboxProps = Omit<AllHTMLAttributes<HTMLInputElement>, "children" | "onChange" | "type"> &
+type CheckboxProps = Omit<
+  AllHTMLAttributes<HTMLInputElement>,
+  "children" | "onChange" | "type" | "size"
+> &
   css.CheckboxVariants & {
     defaultChecked?: boolean;
     checked?: boolean;
