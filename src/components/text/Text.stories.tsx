@@ -3,6 +3,7 @@ import { ComponentMeta } from "@storybook/react";
 
 import { Text } from ".";
 import { config } from "../../theme/config.css";
+import { Icon, Icons } from "../icon";
 
 export default {
   title: "Text",
@@ -40,3 +41,16 @@ export const Button300 = () => <Text size="B300">Typography</Text>;
 export const Label400 = () => <Text size="L400">Label</Text>;
 export const Overline400 = () => <Text size="O400">Typography</Text>;
 export const Caption400 = () => <Text size="C400">{loremIpsum}</Text>;
+export const Truncated = () => (
+  <Text
+    style={{ width: "100px" }}
+    truncateTooltip={{
+      position: "Bottom",
+      align: "Start",
+    }}
+    truncate
+  >
+    <Icon src={Icons.Pencil} size="50" />
+    {loremIpsum}
+  </Text>
+);
