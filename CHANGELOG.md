@@ -1,3 +1,9 @@
+## [1.5.2](https://github.com/cinnyapp/folds/compare/v1.5.1...v1.5.2) (2024-02-04)
+
+### Bug Fixes
+
+- badge outline style ([#32](https://github.com/cinnyapp/folds/issues/32)) ([86d9b0f](https://github.com/cinnyapp/folds/commit/86d9b0f4237511f22de088bf0c681eeb1546eb12))
+
 ## [1.5.1](https://github.com/cinnyapp/folds/compare/v1.5.0...v1.5.1) (2023-12-28)
 
 ### Bug Fixes

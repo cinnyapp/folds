@@ -1,6 +1,6 @@
 {
   "name": "folds",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "author": "Ajay Bura (ajbura)",
   "license": "Apache-2.0",
   "main": "dist/index.js",
