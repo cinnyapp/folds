@@ -17,6 +17,7 @@ export const Header = recipe({
     {
       display: "flex",
       alignItems: "center",
+      flexShrink: 0,
     },
   ],
   variants: {
