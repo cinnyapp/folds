@@ -71,21 +71,25 @@ export const Badge = recipe({
         backgroundColor: Main,
         color: OnMain,
         borderColor: MainLine,
+        outlineColor: MainLine,
       },
       Soft: {
         backgroundColor: Container,
         color: OnContainer,
         borderColor: ContainerLine,
+        outlineColor: ContainerLine,
       },
       None: {
         backgroundColor: "inherit",
         color: Main,
         borderColor: Main,
+        outlineColor: Main,
       },
     },
     outlined: {
       true: {
-        borderWidth: config.borderWidth.B300,
+        outlineWidth: config.borderWidth.B300,
+        outlineStyle: "solid",
       },
     },
     radii: RadiiVariant,
