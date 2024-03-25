@@ -28,6 +28,8 @@ export const Modal = recipe({
       boxShadow: config.shadow.E300,
       width: "100%",
       height: "100%",
+      display: "flex",
+      flexDirection: "column",
       overflow: "hidden",
       animation: `${ModalOpenAnime} 200ms`,
     },
