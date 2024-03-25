@@ -1,3 +1,13 @@
+# [1.6.0](https://github.com/cinnyapp/folds/compare/v1.5.2...v1.6.0) (2024-03-25)
+
+### Bug Fixes
+
+- modal and button component uncertain styles ([#33](https://github.com/cinnyapp/folds/issues/33)) ([62417b9](https://github.com/cinnyapp/folds/commit/62417b981b5e8ee024f0f34167f32ca298a3737f))
+
+### Features
+
+- bookmark, inbox and reload icon ([#34](https://github.com/cinnyapp/folds/issues/34)) ([355a236](https://github.com/cinnyapp/folds/commit/355a236aa30b30dc62265628333c008f3ab76bcf))
+
 ## [1.5.2](https://github.com/cinnyapp/folds/compare/v1.5.1...v1.5.2) (2024-02-04)
 
 ### Bug Fixes
