@@ -53,6 +53,8 @@ export type IconName =
   | "EyeBlind"
   | "Warning"
   | "Funnel"
+  | "Bookmark"
+  | "Inbox"
   | "Hash"
   | "HashLock"
   | "HashGlobe"
@@ -112,7 +114,8 @@ export type IconName =
   | "ArrowDropRight"
   | "ArrowDropLeft"
   | "ArrowDropTop"
-  | "ArrowDropBottom";
+  | "ArrowDropBottom"
+  | "Reload";
 
 export const Icons: Record<IconName, IconSrc> = {
   Home: (filled) =>
@@ -1318,6 +1321,33 @@ export const Icons: Record<IconName, IconSrc> = {
         fill="currentColor"
       />
     ),
+  Bookmark: (filled) =>
+    filled ? (
+      <path d="M6 3H18V21L12 15L6 21V3Z" fill="currentColor" />
+    ) : (
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M18 21V3H6V21L12 15L18 21ZM7.5 17.3787L12 12.8787L16.5 17.3787V4.5H7.5V17.3787Z"
+        fill="currentColor"
+      />
+    ),
+  Inbox: (filled) =>
+    filled ? (
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M19 3V14H21V21H3V14H5V3H19ZM6.5 14V4.5H17.5V14H15C15 15.6569 13.6569 17 12 17C10.3431 17 9 15.6569 9 14H6.5Z"
+        fill="currentColor"
+      />
+    ) : (
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M19 3V14H21V21H3V14H5V3H19ZM6.5 14V4.5H17.5V14H14C14 15.1046 13.1046 16 12 16C10.8954 16 10 15.1046 10 14H6.5ZM19.5 15.5V19.5H4.5V15.5H6.5L8.83682 15.5C9.39855 16.6825 10.6038 17.5 12 17.5C13.3962 17.5 14.6015 16.6825 15.1632 15.5L17.5 15.5H19.5Z"
+        fill="currentColor"
+      />
+    ),
 
   Hash: () => (
     <path
@@ -1908,5 +1938,14 @@ export const Icons: Record<IconName, IconSrc> = {
       d="M12 16.1421L19.0711 9.07108L19 9.00001L4.92894 9.07108L12 16.1421Z"
       fill="currentColor"
     />
+  ),
+  Reload: () => (
+    <>
+      <path
+        d="M20.5 12C20.5 16.6944 16.6944 20.5 12 20.5C7.30558 20.5 3.5 16.6944 3.5 12H2C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C8.29859 2 5.06687 4.01099 3.33782 7H5.1254C6.67093 4.87867 9.17446 3.5 12 3.5C16.6944 3.5 20.5 7.30558 20.5 12Z"
+        fill="currentColor"
+      />
+      <path d="M4.5 3H3V8H8V6.5H4.5V3Z" fill="currentColor" />
+    </>
   ),
 };
