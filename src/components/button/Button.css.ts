@@ -42,6 +42,8 @@ export const Button = recipe({
   base: [
     DefaultReset,
     {
+      minWidth: 0,
+      maxWidth: "100%",
       display: "inline-flex",
       alignItems: "center",
       justifyContent: "center",
