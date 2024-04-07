@@ -36,7 +36,6 @@ export const IconButton = recipe({
       cursor: "pointer",
       textDecoration: "none",
 
-      backgroundColor: Container,
       color: OnContainer,
 
       selectors: {
@@ -79,6 +78,14 @@ export const IconButton = recipe({
       Warning: getVariant("Warning"),
       Critical: getVariant("Critical"),
     },
+    fill: {
+      Soft: {
+        backgroundColor: Container,
+      },
+      None: {
+        backgroundColor: "transparent",
+      },
+    },
     outlined: {
       true: {
         boxShadow: `inset 0 0 0 ${config.borderWidth.B400} ${ContainerLine}`,
@@ -89,6 +96,7 @@ export const IconButton = recipe({
   defaultVariants: {
     size: "400",
     variant: "Surface",
+    fill: "Soft",
     radii: "400",
   },
 });
