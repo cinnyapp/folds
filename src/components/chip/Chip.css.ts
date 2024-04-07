@@ -33,7 +33,6 @@ export const Chip = recipe({
       display: "inline-flex",
       alignItems: "center",
       color: OnContainer,
-      backgroundColor: Container,
       cursor: "pointer",
 
       selectors: {
@@ -86,6 +85,14 @@ export const Chip = recipe({
         gap: config.space.S200,
       },
     },
+    fill: {
+      Soft: {
+        backgroundColor: Container,
+      },
+      None: {
+        backgroundColor: "transparent",
+      },
+    },
     outlined: {
       true: {
         border: `${config.borderWidth.B400} solid ${ContainerLine}`,
@@ -95,6 +102,7 @@ export const Chip = recipe({
   },
   defaultVariants: {
     variant: "Surface",
+    fill: "Soft",
     size: "400",
     radii: "400",
   },

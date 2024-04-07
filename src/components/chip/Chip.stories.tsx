@@ -21,6 +21,10 @@ export default {
         "Critical",
       ],
     },
+    fill: {
+      control: "select",
+      options: ["Soft", "None"],
+    },
     size: {
       control: "select",
       options: ["400", "500"],
