@@ -14,6 +14,7 @@ export const MenuItem = as<"button", MenuItemProps & css.MenuItemVariants>(
       as: AsMenuItem = "button",
       className,
       variant,
+      fill,
       size,
       radii,
       before,
@@ -24,7 +25,7 @@ export const MenuItem = as<"button", MenuItemProps & css.MenuItemVariants>(
     ref
   ) => (
     <AsMenuItem
-      className={classNames(css.MenuItem({ variant, size, radii }), className)}
+      className={classNames(css.MenuItem({ variant, fill, size, radii }), className)}
       data-ui-before={before ? true : undefined}
       data-ui-after={after ? true : undefined}
       {...props}

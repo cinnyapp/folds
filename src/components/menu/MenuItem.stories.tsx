@@ -21,6 +21,10 @@ export default {
         "Critical",
       ],
     },
+    fill: {
+      control: "select",
+      options: ["Soft", "None"],
+    },
     radii: {
       control: "select",
       options: ["inherit", 0, 300, 400, 500, "Pill"],
