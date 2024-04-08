@@ -34,7 +34,6 @@ export const MenuItem = recipe({
       alignItems: "center",
       justifyContent: "start",
       cursor: "pointer",
-      backgroundColor: Container,
       color: OnContainer,
 
       selectors: {
@@ -69,6 +68,14 @@ export const MenuItem = recipe({
       Warning: getVariant("Warning"),
       Critical: getVariant("Critical"),
     },
+    fill: {
+      Soft: {
+        backgroundColor: Container,
+      },
+      None: {
+        backgroundColor: "transparent",
+      },
+    },
     size: {
       "300": {
         vars: {
@@ -91,6 +98,7 @@ export const MenuItem = recipe({
   },
   defaultVariants: {
     variant: "Surface",
+    fill: "Soft",
     size: "400",
     radii: "0",
   },

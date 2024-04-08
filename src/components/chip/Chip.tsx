@@ -15,6 +15,7 @@ export const Chip = as<"button", ChipProps & css.ChipVariants>(
       as: AsChip = "button",
       className,
       variant,
+      fill,
       size,
       outlined,
       radii,
@@ -29,6 +30,7 @@ export const Chip = as<"button", ChipProps & css.ChipVariants>(
       className={classNames(
         css.Chip({
           variant,
+          fill,
           size,
           outlined,
           radii,
