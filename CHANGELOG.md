@@ -1,3 +1,9 @@
+# [1.7.0](https://github.com/cinnyapp/folds/compare/v1.6.0...v1.7.0) (2024-04-08)
+
+### Features
+
+- fill variant in icon button, chip and menu item components ([#35](https://github.com/cinnyapp/folds/issues/35)) ([b074d42](https://github.com/cinnyapp/folds/commit/b074d421b66eb4d8b600dfa55b967e6c4f783044))
+
 # [1.6.0](https://github.com/cinnyapp/folds/compare/v1.5.2...v1.6.0) (2024-03-25)
 
 ### Bug Fixes
