@@ -1,6 +1,6 @@
 import React, {
-  MutableRefObject,
   ReactNode,
+  RefCallback,
   useCallback,
   useEffect,
   useLayoutEffect,
@@ -18,7 +18,7 @@ export interface PopOutProps {
   offset?: number;
   alignOffset?: number;
   content: ReactNode;
-  children: (anchorRef: MutableRefObject<null>) => ReactNode;
+  children: (anchorRef: RefCallback<HTMLElement | SVGElement>) => ReactNode;
 }
 export const PopOut = as<"div", PopOutProps>(
   (
@@ -36,12 +36,13 @@ export const PopOut = as<"div", PopOutProps>(
     },
     ref
   ) => {
-    const anchorRef = useRef<unknown>(null);
+    const anchorRef = useRef<HTMLElement | SVGElement | null>(null);
     const baseRef = useRef<HTMLDivElement>(null);
 
     const positionPopOut = useCallback(() => {
-      const anchor = anchorRef.current as HTMLElement;
+      const anchor = anchorRef.current;
       const baseEl = baseRef.current;
+      if (!anchor) return;
       if (!baseEl) return;
 
       const css = getRelativeFixedPosition(
@@ -70,9 +71,13 @@ export const PopOut = as<"div", PopOutProps>(
       if (open) positionPopOut();
     }, [open, positionPopOut]);
 
+    const handleAnchorRef: RefCallback<HTMLElement | SVGElement> = useCallback((element) => {
+      anchorRef.current = element;
+    }, []);
+
     return (
       <>
-        {children(anchorRef as MutableRefObject<null>)}
+        {children(handleAnchorRef)}
         <Portal>
           {open && (
             <AsPopOut

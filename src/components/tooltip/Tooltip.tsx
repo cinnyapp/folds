@@ -2,6 +2,7 @@ import classNames from "classnames";
 import React, {
   MutableRefObject,
   ReactNode,
+  RefCallback,
   useCallback,
   useEffect,
   useLayoutEffect,
@@ -31,13 +32,14 @@ const useTooltip = (
   alignOffset: number,
   delay: number
 ) => {
-  const triggerRef = useRef<unknown>(null);
-  const baseRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLElement | SVGElement | null>(null);
+  const baseRef = useRef<HTMLElement | SVGElement | null>(null);
   const [open, setOpen] = useState(false);
 
   const positionTooltip = useCallback(() => {
-    const anchor = triggerRef.current as HTMLElement;
+    const anchor = triggerRef.current;
     const baseEl = baseRef.current;
+    if (!anchor) return;
     if (!baseEl) return;
 
     const tooltipCss = getRelativeFixedPosition(
@@ -56,7 +58,7 @@ const useTooltip = (
   }, [position, align, offset, alignOffset]);
 
   useEffect(() => {
-    const trigger = triggerRef.current as HTMLElement;
+    const trigger = triggerRef.current;
     let timeoutId: number | undefined;
 
     const openTooltip = (evt: Event) => {
@@ -101,9 +103,16 @@ const useTooltip = (
     if (open) positionTooltip();
   }, [open, positionTooltip]);
 
+  const handleTriggerRef: RefCallback<HTMLElement | SVGElement> = useCallback((element) => {
+    triggerRef.current = element;
+  }, []);
+  const handleBaseRef: RefCallback<HTMLElement | SVGElement> = useCallback((element) => {
+    baseRef.current = element;
+  }, []);
+
   return {
-    triggerRef,
-    baseRef,
+    triggerRef: handleTriggerRef,
+    baseRef: handleBaseRef,
     open,
   };
 };
@@ -115,7 +124,7 @@ interface TooltipProviderProps {
   alignOffset?: number;
   delay?: number;
   tooltip: ReactNode;
-  children: (triggerRef: MutableRefObject<null>) => ReactNode;
+  children: (triggerRef: RefCallback<HTMLElement | SVGElement>) => ReactNode;
 }
 export const TooltipProvider = as<"div", TooltipProviderProps>(
   (
@@ -137,7 +146,7 @@ export const TooltipProvider = as<"div", TooltipProviderProps>(
 
     return (
       <>
-        {children(triggerRef as MutableRefObject<null>)}
+        {children(triggerRef)}
         {open && (
           <Portal>
             <AsTooltipProvider
@@ -152,12 +161,12 @@ export const TooltipProvider = as<"div", TooltipProviderProps>(
                 ...style,
               }}
               {...props}
-              ref={(el) => {
-                (baseRef as MutableRefObject<HTMLDivElement | null>).current = el;
+              ref={(instance) => {
+                baseRef(instance);
                 if (ref) {
-                  if (typeof ref === "function") ref(el);
+                  if (typeof ref === "function") ref(instance);
                   // eslint-disable-next-line no-param-reassign
-                  else (ref as MutableRefObject<HTMLDivElement | null>).current = el;
+                  else (ref as MutableRefObject<typeof instance>).current = instance;
                 }
               }}
             >
