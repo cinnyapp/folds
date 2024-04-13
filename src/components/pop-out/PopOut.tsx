@@ -47,17 +47,16 @@ export const PopOut = as<"div", PopOutProps>(
 
       const css = getRelativeFixedPosition(
         anchor.getBoundingClientRect(),
+        baseEl.getBoundingClientRect(),
         position,
         align,
         offset,
-        alignOffset,
-        baseEl.getBoundingClientRect()
+        alignOffset
       );
-      baseEl.style.top = css.top;
-      baseEl.style.bottom = css.bottom;
-      baseEl.style.left = css.left;
-      baseEl.style.right = css.right;
-      baseEl.style.transform = css.transform;
+      baseEl.style.top = css.top ?? "unset";
+      baseEl.style.bottom = css.bottom ?? "unset";
+      baseEl.style.left = css.left ?? "unset";
+      baseEl.style.right = css.right ?? "unset";
     }, [position, align, offset, alignOffset]);
 
     useEffect(() => {
