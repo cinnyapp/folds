@@ -9,7 +9,6 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { config } from "../../theme";
 import { as } from "../as";
 import { Portal } from "../portal";
 import { Align, getRelativeFixedPosition, Position } from "../util";
@@ -129,6 +128,7 @@ export const TooltipProvider = as<"div", TooltipProviderProps>(
   (
     {
       as: AsTooltipProvider = "div",
+      className,
       position = "Top",
       align = "Center",
       offset = 10,
@@ -136,7 +136,6 @@ export const TooltipProvider = as<"div", TooltipProviderProps>(
       delay = 200,
       tooltip,
       children,
-      style,
       ...props
     },
     ref
@@ -150,15 +149,7 @@ export const TooltipProvider = as<"div", TooltipProviderProps>(
           <Portal>
             <AsTooltipProvider
               role="tooltip"
-              style={{
-                display: "inline-block",
-                position: "fixed",
-                maxWidth: "100vw",
-                maxHeight: "100vh",
-                zIndex: config.zIndex.Max,
-                pointerEvents: "none",
-                ...style,
-              }}
+              className={classNames(css.TooltipProvider, className)}
               {...props}
               ref={(instance) => {
                 baseRef(instance);

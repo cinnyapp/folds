@@ -1,4 +1,4 @@
-import { ComplexStyleRule, keyframes } from "@vanilla-extract/css";
+import { ComplexStyleRule, keyframes, style } from "@vanilla-extract/css";
 import { recipe, RecipeVariants } from "@vanilla-extract/recipes";
 import { color } from "../../theme/color.css";
 import { config } from "../../theme/config.css";
@@ -53,3 +53,12 @@ export const Tooltip = recipe({
 });
 
 export type TooltipVariants = RecipeVariants<typeof Tooltip>;
+
+export const TooltipProvider = style({
+  display: "inline-block",
+  position: "fixed",
+  maxWidth: "100vw",
+  maxHeight: "100vh",
+  zIndex: config.zIndex.Max,
+  pointerEvents: "none",
+});
