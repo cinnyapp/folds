@@ -1,31 +1,54 @@
 import FocusTrap from "focus-trap-react";
-import React, { useState } from "react";
-import { ComponentMeta } from "@storybook/react";
+import React, { MouseEventHandler, useState } from "react";
+import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { Text } from "../text";
 import { PopOut } from "./PopOut";
 import { Menu, MenuItem } from "../menu";
 import { Icon, Icons } from "../icon";
 import { IconButton } from "../icon-button";
 import { config } from "../../theme/config.css";
+import { Box } from "../box";
+import { RectCords } from "../util";
 
 export default {
   title: "PopOut",
   component: PopOut,
 } as ComponentMeta<typeof PopOut>;
 
-export const Interactive = () => {
-  const [open, setOpen] = useState(false);
+const Template: ComponentStory<typeof PopOut> = (args) => {
+  const [anchor, setAnchor] = useState<RectCords>();
+
+  const handleOpen: MouseEventHandler<HTMLElement> = (evt) => {
+    const rect = evt.currentTarget?.getBoundingClientRect();
+    setAnchor(anchor ? undefined : rect);
+  };
+  const handleContextOpen: MouseEventHandler<HTMLElement> = (evt) => {
+    evt.preventDefault();
+    const rect = {
+      x: evt.clientX,
+      y: evt.clientY,
+      width: 0,
+      height: 0,
+    };
+    setAnchor(anchor ? undefined : rect);
+  };
 
   return (
-    <div style={{ height: "100vh" }}>
+    <Box
+      onContextMenu={handleContextOpen}
+      justifyContent="Center"
+      alignItems="Center"
+      style={{ height: "100vh" }}
+    >
       <PopOut
-        open={open}
-        align="Start"
+        {...args}
+        anchor={anchor}
+        offset={anchor?.width === 0 ? 0 : undefined}
         content={
           <FocusTrap
             focusTrapOptions={{
               initialFocus: false,
-              onDeactivate: () => setOpen(false),
+              onDeactivate: () => setAnchor(undefined),
               clickOutsideDeactivates: true,
               isKeyForward: (evt: KeyboardEvent) => evt.key === "ArrowDown",
               isKeyBackward: (evt: KeyboardEvent) => evt.key === "ArrowUp",
@@ -44,13 +67,12 @@ export const Interactive = () => {
             </Menu>
           </FocusTrap>
         }
-      >
-        {(ref) => (
-          <IconButton variant="SurfaceVariant" onClick={() => setOpen((state) => !state)} ref={ref}>
-            <Icon src={Icons.VerticalDots} />
-          </IconButton>
-        )}
-      </PopOut>
-    </div>
+      />
+      <IconButton variant="SurfaceVariant" onClick={handleOpen}>
+        <Icon src={Icons.VerticalDots} />
+      </IconButton>
+    </Box>
   );
 };
+
+export const Interactive = Template.bind({});
