@@ -1,26 +1,27 @@
 import FocusTrap from "focus-trap-react";
 import React, { useState } from "react";
-import { ComponentMeta } from "@storybook/react";
+import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { Text } from "../text";
 import { PopOut } from "./PopOut";
 import { Menu, MenuItem } from "../menu";
 import { Icon, Icons } from "../icon";
 import { IconButton } from "../icon-button";
 import { config } from "../../theme/config.css";
+import { Box } from "../box";
 
 export default {
   title: "PopOut",
   component: PopOut,
 } as ComponentMeta<typeof PopOut>;
 
-export const Interactive = () => {
+const Template: ComponentStory<typeof PopOut> = (args) => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div style={{ height: "100vh" }}>
+    <Box justifyContent="Center" alignItems="Center" style={{ height: "100vh" }}>
       <PopOut
+        {...args}
         open={open}
-        align="Start"
         content={
           <FocusTrap
             focusTrapOptions={{
@@ -51,6 +52,8 @@ export const Interactive = () => {
           </IconButton>
         )}
       </PopOut>
-    </div>
+    </Box>
   );
 };
+
+export const Interactive = Template.bind({});

@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import React, {
   ReactNode,
   RefCallback,
@@ -6,10 +7,10 @@ import React, {
   useLayoutEffect,
   useRef,
 } from "react";
-import { config } from "../../theme";
 import { as } from "../as";
 import { Portal } from "../portal";
 import { Align, getRelativeFixedPosition, Position } from "../util";
+import * as css from "./PopOut.css";
 
 export interface PopOutProps {
   open: boolean;
@@ -24,6 +25,7 @@ export const PopOut = as<"div", PopOutProps>(
   (
     {
       as: AsPopOut = "div",
+      className,
       open,
       position = "Bottom",
       align = "Center",
@@ -31,7 +33,6 @@ export const PopOut = as<"div", PopOutProps>(
       alignOffset = 0,
       content,
       children,
-      style,
       ...props
     },
     ref
@@ -45,19 +46,18 @@ export const PopOut = as<"div", PopOutProps>(
       if (!anchor) return;
       if (!baseEl) return;
 
-      const css = getRelativeFixedPosition(
+      const pCSS = getRelativeFixedPosition(
         anchor.getBoundingClientRect(),
+        baseEl.getBoundingClientRect(),
         position,
         align,
         offset,
-        alignOffset,
-        baseEl.getBoundingClientRect()
+        alignOffset
       );
-      baseEl.style.top = css.top;
-      baseEl.style.bottom = css.bottom;
-      baseEl.style.left = css.left;
-      baseEl.style.right = css.right;
-      baseEl.style.transform = css.transform;
+      baseEl.style.top = pCSS.top ?? "unset";
+      baseEl.style.bottom = pCSS.bottom ?? "unset";
+      baseEl.style.left = pCSS.left ?? "unset";
+      baseEl.style.right = pCSS.right ?? "unset";
     }, [position, align, offset, alignOffset]);
 
     useEffect(() => {
@@ -80,28 +80,8 @@ export const PopOut = as<"div", PopOutProps>(
         {children(handleAnchorRef)}
         <Portal>
           {open && (
-            <AsPopOut
-              style={{
-                position: "fixed",
-                top: 0,
-                right: 0,
-                bottom: 0,
-                left: 0,
-                zIndex: config.zIndex.Max,
-                ...style,
-              }}
-              {...props}
-              ref={ref}
-            >
-              <div
-                ref={baseRef}
-                style={{
-                  display: "inline-block",
-                  position: "fixed",
-                  maxWidth: "100vw",
-                  maxHeight: "100vh",
-                }}
-              >
+            <AsPopOut className={classNames(css.PopOut, className)} {...props} ref={ref}>
+              <div ref={baseRef} className={css.PopOutContainer}>
                 {content}
               </div>
             </AsPopOut>

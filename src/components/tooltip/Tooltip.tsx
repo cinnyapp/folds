@@ -9,7 +9,6 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { config } from "../../theme";
 import { as } from "../as";
 import { Portal } from "../portal";
 import { Align, getRelativeFixedPosition, Position } from "../util";
@@ -44,17 +43,16 @@ const useTooltip = (
 
     const tooltipCss = getRelativeFixedPosition(
       anchor.getBoundingClientRect(),
+      baseEl.getBoundingClientRect(),
       position,
       align,
       offset,
-      alignOffset,
-      baseEl.getBoundingClientRect()
+      alignOffset
     );
-    baseEl.style.top = tooltipCss.top;
-    baseEl.style.bottom = tooltipCss.bottom;
-    baseEl.style.left = tooltipCss.left;
-    baseEl.style.right = tooltipCss.right;
-    baseEl.style.transform = tooltipCss.transform;
+    baseEl.style.top = tooltipCss.top ?? "unset";
+    baseEl.style.bottom = tooltipCss.bottom ?? "unset";
+    baseEl.style.left = tooltipCss.left ?? "unset";
+    baseEl.style.right = tooltipCss.right ?? "unset";
   }, [position, align, offset, alignOffset]);
 
   useEffect(() => {
@@ -130,6 +128,7 @@ export const TooltipProvider = as<"div", TooltipProviderProps>(
   (
     {
       as: AsTooltipProvider = "div",
+      className,
       position = "Top",
       align = "Center",
       offset = 10,
@@ -137,7 +136,6 @@ export const TooltipProvider = as<"div", TooltipProviderProps>(
       delay = 200,
       tooltip,
       children,
-      style,
       ...props
     },
     ref
@@ -151,15 +149,7 @@ export const TooltipProvider = as<"div", TooltipProviderProps>(
           <Portal>
             <AsTooltipProvider
               role="tooltip"
-              style={{
-                display: "inline-block",
-                position: "fixed",
-                maxWidth: "100vw",
-                maxHeight: "100vh",
-                zIndex: config.zIndex.Max,
-                pointerEvents: "none",
-                ...style,
-              }}
+              className={classNames(css.TooltipProvider, className)}
               {...props}
               ref={(instance) => {
                 baseRef(instance);
