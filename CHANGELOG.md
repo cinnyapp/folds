@@ -1,3 +1,17 @@
+# [2.0.0](https://github.com/cinnyapp/folds/compare/v1.7.0...v2.0.0) (2024-04-14)
+
+### Bug Fixes
+
+- types and api of tooltip provide and popout component ([#36](https://github.com/cinnyapp/folds/issues/36)) ([637f9be](https://github.com/cinnyapp/folds/commit/637f9beefa9529b2fb8a279a35806436b99050dc))
+
+### Features
+
+- open popout with anchor coordinates ([#40](https://github.com/cinnyapp/folds/issues/40)) ([86b66d9](https://github.com/cinnyapp/folds/commit/86b66d96d7a7632c1efddd56d8070ce667311eed))
+
+### BREAKING CHANGES
+
+- popout children forward ref and open prop is now removed with anchor prop
+
 # [1.7.0](https://github.com/cinnyapp/folds/compare/v1.6.0...v1.7.0) (2024-04-08)
 
 ### Features
