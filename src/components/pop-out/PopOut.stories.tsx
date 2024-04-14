@@ -1,5 +1,5 @@
 import FocusTrap from "focus-trap-react";
-import React, { useState } from "react";
+import React, { MouseEventHandler, useState } from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { Text } from "../text";
 import { PopOut } from "./PopOut";
@@ -8,6 +8,7 @@ import { Icon, Icons } from "../icon";
 import { IconButton } from "../icon-button";
 import { config } from "../../theme/config.css";
 import { Box } from "../box";
+import { RectCords } from "../util";
 
 export default {
   title: "PopOut",
@@ -15,18 +16,39 @@ export default {
 } as ComponentMeta<typeof PopOut>;
 
 const Template: ComponentStory<typeof PopOut> = (args) => {
-  const [open, setOpen] = useState(false);
+  const [anchor, setAnchor] = useState<RectCords>();
+
+  const handleOpen: MouseEventHandler<HTMLElement> = (evt) => {
+    const rect = evt.currentTarget?.getBoundingClientRect();
+    setAnchor(anchor ? undefined : rect);
+  };
+  const handleContextOpen: MouseEventHandler<HTMLElement> = (evt) => {
+    evt.preventDefault();
+    const rect = {
+      x: evt.clientX,
+      y: evt.clientY,
+      width: 0,
+      height: 0,
+    };
+    setAnchor(anchor ? undefined : rect);
+  };
 
   return (
-    <Box justifyContent="Center" alignItems="Center" style={{ height: "100vh" }}>
+    <Box
+      onContextMenu={handleContextOpen}
+      justifyContent="Center"
+      alignItems="Center"
+      style={{ height: "100vh" }}
+    >
       <PopOut
         {...args}
-        open={open}
+        anchor={anchor}
+        offset={anchor?.width === 0 ? 0 : undefined}
         content={
           <FocusTrap
             focusTrapOptions={{
               initialFocus: false,
-              onDeactivate: () => setOpen(false),
+              onDeactivate: () => setAnchor(undefined),
               clickOutsideDeactivates: true,
               isKeyForward: (evt: KeyboardEvent) => evt.key === "ArrowDown",
               isKeyBackward: (evt: KeyboardEvent) => evt.key === "ArrowUp",
@@ -45,13 +67,10 @@ const Template: ComponentStory<typeof PopOut> = (args) => {
             </Menu>
           </FocusTrap>
         }
-      >
-        {(ref) => (
-          <IconButton variant="SurfaceVariant" onClick={() => setOpen((state) => !state)} ref={ref}>
-            <Icon src={Icons.VerticalDots} />
-          </IconButton>
-        )}
-      </PopOut>
+      />
+      <IconButton variant="SurfaceVariant" onClick={handleOpen}>
+        <Icon src={Icons.VerticalDots} />
+      </IconButton>
     </Box>
   );
 };
