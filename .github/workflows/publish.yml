@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3.2.0
+        uses: actions/checkout@v3.6.0
       - name: Setup node
         uses: actions/setup-node@v3.5.1
         with:
@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3.2.0
+        uses: actions/checkout@v3.6.0
       - name: Setup node
         uses: actions/setup-node@v3.5.1
         with:
@@ -38,7 +38,7 @@ jobs:
     needs: [lint, typecheck]
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3.2.0
+        uses: actions/checkout@v3.6.0
       - name: Setup node
         uses: actions/setup-node@v3.5.1
         with:
