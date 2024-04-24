@@ -45,7 +45,7 @@ jobs:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID_PR_FOLDS }}
         timeout-minutes: 1
       - name: Comment preview on PR
-        uses: thollander/actions-comment-pull-request@c22fb302208b7b170d252a61a505d2ea27245eff
+        uses: thollander/actions-comment-pull-request@bc14ce351a6a25022a490f2be0570c700083a7fe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
