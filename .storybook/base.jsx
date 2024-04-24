@@ -1,4 +1,4 @@
-import "@fontsource/inter/variable.css";
+import "@fontsource-variable/inter";
 import { lightTheme, configClass, config, varsClass } from "../src";
 
 export const baseDecorator = (Story) => {
