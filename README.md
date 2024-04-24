@@ -19,3 +19,4 @@ To build the package:
 ```
 npm run build # Build package into dist directory
 ```
+ 
