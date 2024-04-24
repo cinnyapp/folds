@@ -4,7 +4,7 @@ import { toRem } from "./util";
 
 export const [configClass, config] = createTheme({
   font: {
-    Inter: "InterVariable, 'Inter', -apple-system, 'Segoe UI', 'Helvetica', 'Arial', sans-serif",
+    Inter: "Inter Variable, 'Inter', -apple-system, 'Segoe UI', 'Helvetica', 'Arial', sans-serif",
   },
   fontSize: {
     D400: toRem(45),
