@@ -24,7 +24,7 @@ jobs:
       - name: Build storybook
         run: npm run build-storybook
       - name: Deploy to Netlify
-        uses: nwtgck/actions-netlify@4cbaf4c08f1a7bfa537d6113472ef4424e4eb654
+        uses: nwtgck/actions-netlify@3bde29c2864aa514dee9926f248abc95fe934d38
         with:
           publish-dir: storybook-static
           deploy-message: "Main deploy ${{ github.sha }}"
