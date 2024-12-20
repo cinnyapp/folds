@@ -28,4 +28,5 @@ export * from "./scroll";
 export * from "./spinner";
 export * from "./switch";
 export * from "./text";
+export * from "./text-area";
 export * from "./tooltip";
