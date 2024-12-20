@@ -28,7 +28,7 @@ export default {
     },
     resize: {
       control: "select",
-      options: ["Vertical", "Horizontal", "Both", "None", "block", "inline"],
+      options: ["Vertical", "Horizontal", "Both", "None", "Block", "Inline"],
     },
   },
 } as ComponentMeta<typeof TextArea>;
