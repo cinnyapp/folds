@@ -26,6 +26,10 @@ export default {
     outlined: {
       control: "boolean",
     },
+    resize: {
+      control: "select",
+      options: ["Vertical", "Horizontal", "Both", "None", "block", "inline"],
+    },
   },
 } as ComponentMeta<typeof TextArea>;
 

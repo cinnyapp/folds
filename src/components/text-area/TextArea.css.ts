@@ -43,7 +43,6 @@ export const TextArea = recipe({
       width: "100%",
       maxWidth: "100%",
       flexGrow: 1,
-      resize: "vertical",
 
       color: OnContainer,
       backgroundColor: Container,
@@ -159,11 +158,32 @@ export const TextArea = recipe({
       },
     },
     radii: RadiiVariant,
+    resize: {
+      Vertical: {
+        resize: "vertical",
+      },
+      Horizontal: {
+        resize: "horizontal",
+      },
+      Both: {
+        resize: "both",
+      },
+      None: {
+        resize: "none",
+      },
+      Block: {
+        resize: "block",
+      },
+      Inline: {
+        resize: "inline",
+      },
+    },
   },
   defaultVariants: {
     variant: "Background",
     size: "400",
     radii: "400",
+    resize: "Vertical",
   },
 });
 
