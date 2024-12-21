@@ -1,3 +1,9 @@
+# [2.1.0](https://github.com/cinnyapp/folds/compare/v2.0.0...v2.1.0) (2024-12-21)
+
+### Features
+
+- text area component ([#61](https://github.com/cinnyapp/folds/issues/61)) ([3adf384](https://github.com/cinnyapp/folds/commit/3adf384038d7b87d99fcabae38bf86cde7818875))
+
 # [2.0.0](https://github.com/cinnyapp/folds/compare/v1.7.0...v2.0.0) (2024-04-14)
 
 ### Bug Fixes
