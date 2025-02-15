@@ -1,4 +1,5 @@
 dist
+.github/dependabot.yml
 storybook-static
 node_modules
 yarn.lock
