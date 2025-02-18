@@ -47,10 +47,10 @@ jobs:
       - name: Comment preview on PR
         uses: thollander/actions-comment-pull-request@24bffb9b452ba05a4f3f77933840a6a841d1b32b
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
         with:
-          pr_number: ${{ steps.pr.outputs.id }}
-          comment_tag: ${{ steps.pr.outputs.id }}
+          pr-number: ${{ steps.pr.outputs.id }}
+          comment-tag: ${{ steps.pr.outputs.id }}
           message: |
             Preview: ${{ steps.netlify.outputs.deploy-url }}
             ⚠️ Exercise caution. Use test accounts. ⚠️
