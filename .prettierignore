@@ -1,5 +1,6 @@
 dist
 .github/dependabot.yml
+.github/renovate.json
 storybook-static
 node_modules
 yarn.lock
