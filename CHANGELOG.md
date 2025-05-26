@@ -1,3 +1,13 @@
+# [2.2.0](https://github.com/cinnyapp/folds/compare/v2.1.0...v2.2.0) (2025-05-26)
+
+### Bug Fixes
+
+- textarea size prop ([#84](https://github.com/cinnyapp/folds/issues/84)) ([05eb8e6](https://github.com/cinnyapp/folds/commit/05eb8e6a491cba84f126a259061f8d7c7faa878f))
+
+### Features
+
+- icons for thread, monitor, server, mic, video camera, prohibited and no entry ([#83](https://github.com/cinnyapp/folds/issues/83)) ([0c2e0fa](https://github.com/cinnyapp/folds/commit/0c2e0fa077bcfe831ea97a8f1fc740d897d644d5))
+
 # [2.1.0](https://github.com/cinnyapp/folds/compare/v2.0.0...v2.1.0) (2024-12-21)
 
 ### Features
