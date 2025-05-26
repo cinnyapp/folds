@@ -6,11 +6,20 @@ import { Text } from "../text";
 import { Box } from "../box";
 
 const StorybookIconGroup = (props: Omit<IconProps, "src">) => (
-  <Box direction="Column" wrap="Wrap" gap="700" style={{ padding: "100px" }}>
+  <Box wrap="Wrap" gap="700" style={{ padding: "100px" }}>
     {(Object.keys(Icons) as IconName[]).map((key) => (
-      <Box gap="600" alignItems="Center" key={key}>
+      <Box
+        style={{ width: 80 }}
+        direction="Column"
+        gap="300"
+        alignItems="Center"
+        justifyContent="Center"
+        key={key}
+      >
         <Icon src={Icons[key]} {...props} />
-        <Text>{key}</Text>
+        <Text align="Center" size="T200">
+          {key}
+        </Text>
       </Box>
     ))}
   </Box>
