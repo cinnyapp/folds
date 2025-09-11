@@ -16,9 +16,7 @@ import { Portal } from "../portal";
 import { Align, getRelativeFixedPosition, Position } from "../util";
 import * as css from "./Tooltip.css";
 
-export const TooltipContainerContext = createContext<Element | DocumentFragment | undefined>(
-  undefined
-);
+const TooltipContainerContext = createContext<Element | DocumentFragment | undefined>(undefined);
 export const TooltipContainerProvider = TooltipContainerContext.Provider;
 export const useTooltipContainer = (): Element | DocumentFragment | undefined => {
   const container = useContext(TooltipContainerContext);

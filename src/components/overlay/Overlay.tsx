@@ -4,9 +4,7 @@ import * as css from "./Overlay.css";
 import { Portal } from "../portal";
 import { as } from "../as";
 
-export const OverlayContainerContext = createContext<Element | DocumentFragment | undefined>(
-  undefined
-);
+const OverlayContainerContext = createContext<Element | DocumentFragment | undefined>(undefined);
 export const OverlayContainerProvider = OverlayContainerContext.Provider;
 export const useOverlayContainer = (): Element | DocumentFragment | undefined => {
   const container = useContext(OverlayContainerContext);

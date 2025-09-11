@@ -13,9 +13,7 @@ import { Portal } from "../portal";
 import { Align, getRelativeFixedPosition, Position, RectCords } from "../util";
 import * as css from "./PopOut.css";
 
-export const PopOutContainerContext = createContext<Element | DocumentFragment | undefined>(
-  undefined
-);
+const PopOutContainerContext = createContext<Element | DocumentFragment | undefined>(undefined);
 export const PopOutContainerProvider = PopOutContainerContext.Provider;
 export const usePopOutContainer = (): Element | DocumentFragment | undefined => {
   const container = useContext(PopOutContainerContext);
