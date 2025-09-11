@@ -6,7 +6,6 @@ import { DefaultReset } from "../reset.css";
 import { ContainerColor } from "../types";
 
 const getVariant = (variant: ContainerColor): ComplexStyleRule => ({
-  backgroundColor: color[variant].Container,
   color: color[variant].OnContainer,
   border: `0 solid ${color[variant].ContainerLine}`,
 });
