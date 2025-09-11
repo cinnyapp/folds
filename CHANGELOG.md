@@ -1,3 +1,13 @@
+# [2.3.0](https://github.com/cinnyapp/folds/compare/v2.2.0...v2.3.0) (2025-09-11)
+
+### Bug Fixes
+
+- remove background color from header ([#93](https://github.com/cinnyapp/folds/issues/93)) ([e9674b3](https://github.com/cinnyapp/folds/commit/e9674b3df35b69fc7dc1d35d18a3732d4c51de4a))
+
+### Features
+
+- container context for tooltip, popout and overlay component ([#92](https://github.com/cinnyapp/folds/issues/92)) ([da1adb5](https://github.com/cinnyapp/folds/commit/da1adb52fcc1027e9a39059022f6ba5d3e607a11))
+
 # [2.2.0](https://github.com/cinnyapp/folds/compare/v2.1.0...v2.2.0) (2025-05-26)
 
 ### Bug Fixes
