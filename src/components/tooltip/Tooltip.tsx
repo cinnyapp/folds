@@ -1,9 +1,11 @@
 import classNames from "classnames";
 import React, {
+  createContext,
   MutableRefObject,
   ReactNode,
   RefCallback,
   useCallback,
+  useContext,
   useEffect,
   useLayoutEffect,
   useRef,
@@ -13,6 +15,16 @@ import { as } from "../as";
 import { Portal } from "../portal";
 import { Align, getRelativeFixedPosition, Position } from "../util";
 import * as css from "./Tooltip.css";
+
+export const TooltipContainerContext = createContext<Element | DocumentFragment | undefined>(
+  undefined
+);
+export const TooltipContainerProvider = TooltipContainerContext.Provider;
+export const useTooltipContainer = (): Element | DocumentFragment | undefined => {
+  const container = useContext(TooltipContainerContext);
+
+  return container;
+};
 
 export const Tooltip = as<"div", css.TooltipVariants>(
   ({ as: AsTooltip = "div", className, variant, radii, ...props }, ref) => (
@@ -123,6 +135,7 @@ interface TooltipProviderProps {
   delay?: number;
   tooltip: ReactNode;
   children: (triggerRef: RefCallback<HTMLElement | SVGElement>) => ReactNode;
+  container?: Element | DocumentFragment;
 }
 export const TooltipProvider = as<"div", TooltipProviderProps>(
   (
@@ -136,17 +149,19 @@ export const TooltipProvider = as<"div", TooltipProviderProps>(
       delay = 200,
       tooltip,
       children,
+      container,
       ...props
     },
     ref
   ) => {
+    const contextContainer = useTooltipContainer();
     const { open, triggerRef, baseRef } = useTooltip(position, align, offset, alignOffset, delay);
 
     return (
       <>
         {children(triggerRef)}
         {open && (
-          <Portal>
+          <Portal container={container ?? contextContainer}>
             <AsTooltipProvider
               role="tooltip"
               className={classNames(css.TooltipProvider, className)}
