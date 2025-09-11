@@ -1,8 +1,16 @@
-import React, { ReactNode } from "react";
+import React, { createContext, ReactNode, useContext } from "react";
 import classNames from "classnames";
 import * as css from "./Overlay.css";
 import { Portal } from "../portal";
 import { as } from "../as";
+
+const OverlayContainerContext = createContext<Element | DocumentFragment | undefined>(undefined);
+export const OverlayContainerProvider = OverlayContainerContext.Provider;
+export const useOverlayContainer = (): Element | DocumentFragment | undefined => {
+  const container = useContext(OverlayContainerContext);
+
+  return container;
+};
 
 export type OverlayProps = {
   open: boolean;
@@ -11,16 +19,20 @@ export type OverlayProps = {
 };
 
 export const Overlay = as<"div", OverlayProps>(
-  ({ as: AsOverlay = "div", className, open, container, backdrop, children, ...props }, ref) => (
-    <Portal container={container}>
-      {open ? (
-        <AsOverlay className={classNames(css.Overlay, className)} {...props} ref={ref}>
-          {backdrop}
-          {children}
-        </AsOverlay>
-      ) : null}
-    </Portal>
-  )
+  ({ as: AsOverlay = "div", className, open, container, backdrop, children, ...props }, ref) => {
+    const contextContainer = useOverlayContainer();
+
+    return (
+      <Portal container={container ?? contextContainer}>
+        {open ? (
+          <AsOverlay className={classNames(css.Overlay, className)} {...props} ref={ref}>
+            {backdrop}
+            {children}
+          </AsOverlay>
+        ) : null}
+      </Portal>
+    );
+  }
 );
 
 export const OverlayBackdrop = as<"div">(

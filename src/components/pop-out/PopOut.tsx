@@ -1,9 +1,25 @@
 import classNames from "classnames";
-import React, { ReactNode, useCallback, useEffect, useLayoutEffect, useRef } from "react";
+import React, {
+  createContext,
+  ReactNode,
+  useCallback,
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+} from "react";
 import { as } from "../as";
 import { Portal } from "../portal";
 import { Align, getRelativeFixedPosition, Position, RectCords } from "../util";
 import * as css from "./PopOut.css";
+
+const PopOutContainerContext = createContext<Element | DocumentFragment | undefined>(undefined);
+export const PopOutContainerProvider = PopOutContainerContext.Provider;
+export const usePopOutContainer = (): Element | DocumentFragment | undefined => {
+  const container = useContext(PopOutContainerContext);
+
+  return container;
+};
 
 export interface PopOutProps {
   anchor?: RectCords;
@@ -12,6 +28,7 @@ export interface PopOutProps {
   offset?: number;
   alignOffset?: number;
   content: ReactNode;
+  container?: Element | DocumentFragment;
 }
 export const PopOut = as<"div", PopOutProps>(
   (
@@ -25,11 +42,13 @@ export const PopOut = as<"div", PopOutProps>(
       alignOffset = 0,
       content,
       children,
+      container,
       ...props
     },
     ref
   ) => {
     const baseRef = useRef<HTMLDivElement>(null);
+    const contextContainer = usePopOutContainer();
 
     const positionPopOut = useCallback(() => {
       const baseEl = baseRef.current;
@@ -64,7 +83,7 @@ export const PopOut = as<"div", PopOutProps>(
       <>
         {children}
         {anchor && (
-          <Portal>
+          <Portal container={container ?? contextContainer}>
             <AsPopOut className={classNames(css.PopOut, className)} {...props} ref={ref}>
               <div ref={baseRef} className={css.PopOutContainer}>
                 {content}
