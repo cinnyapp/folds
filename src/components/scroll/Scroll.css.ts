@@ -87,7 +87,11 @@ export const Scroll = recipe({
     },
     size: {
       "0": {
-        scrollbarWidth: "none",
+        "@supports": {
+          "(scrollbar-color: transparent transparent)": {
+            scrollbarWidth: "none",
+          },
+        },
         selectors: {
           "&::-webkit-scrollbar": {
             display: "none",
@@ -95,7 +99,13 @@ export const Scroll = recipe({
         },
       },
       "300": {
-        scrollbarWidth: "thin",
+        "@supports": {
+          "(scrollbar-color: transparent transparent)": {
+            // only apply scrollbarWidth if scrollbar-color is supported,
+            // otherwise it breaks the colors in some browser like safari.
+            scrollbarWidth: "thin",
+          },
+        },
         selectors: {
           "&::-webkit-scrollbar": {
             width: toRem(8),
@@ -108,7 +118,11 @@ export const Scroll = recipe({
         },
       },
       "400": {
-        scrollbarWidth: "auto",
+        "@supports": {
+          "(scrollbar-color: transparent transparent)": {
+            scrollbarWidth: "auto",
+          },
+        },
         selectors: {
           "&::-webkit-scrollbar": {
             width: toRem(16),
