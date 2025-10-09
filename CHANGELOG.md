@@ -1,3 +1,13 @@
+# [2.4.0](https://github.com/cinnyapp/folds/compare/v2.3.0...v2.4.0) (2025-10-09)
+
+### Bug Fixes
+
+- broken thin scrollbar color in browser without scrollbar-color support ([#95](https://github.com/cinnyapp/folds/issues/95)) ([6fcdcec](https://github.com/cinnyapp/folds/commit/6fcdcece814e848bed9d24e2f0be67d4eff83709))
+
+### Features
+
+- clock icon ([#96](https://github.com/cinnyapp/folds/issues/96)) ([bdb19b1](https://github.com/cinnyapp/folds/commit/bdb19b1f05cc91e5f5b29e7411d234bcdd27da1c))
+
 # [2.3.0](https://github.com/cinnyapp/folds/compare/v2.2.0...v2.3.0) (2025-09-11)
 
 ### Bug Fixes
