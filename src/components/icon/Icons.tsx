@@ -61,6 +61,7 @@ export type IconName =
   | "ThreadPlus"
   | "ThreadUnread"
   | "Monitor"
+  | "ScreenShare"
   | "Server"
   | "Prohibited"
   | "NoEntry"
@@ -1498,6 +1499,30 @@ export const Icons: Record<IconName, IconSrc> = {
           fill="currentColor"
         />
         <circle cx="12" cy="15" r="1" fill="currentColor" />
+      </>
+    ),
+  ScreenShare: (filled) =>
+    filled ? (
+      <>
+        <rect x="8" y="20" width="8" height="2" fill="black" />
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M18 3C20.2091 3 22 4.79086 22 7V15C22 17.2091 20.2091 19 18 19H6C3.79086 19 2 17.2091 2 15V7C2 4.79086 3.79086 3 6 3H18ZM7.29297 11.293L8.70703 12.707L11 10.4141V15H13V10.4141L15.293 12.707L16.707 11.293L12 6.58594L7.29297 11.293Z"
+          fill="black"
+        />
+      </>
+    ) : (
+      <>
+        <rect x="8" y="19" width="8" height="3" fill="black" />
+        <path
+          d="M18 17.5V19H6V17.5H18ZM20.5 15V7C20.5 5.61929 19.3807 4.5 18 4.5H6C4.61929 4.5 3.5 5.61929 3.5 7V15C3.5 16.3807 4.61929 17.5 6 17.5V19L5.79395 18.9951C3.68056 18.8879 2 17.14 2 15V7C2 4.79086 3.79086 3 6 3H18C20.2091 3 22 4.79086 22 7V15C22 17.2091 20.2091 19 18 19V17.5C19.3807 17.5 20.5 16.3807 20.5 15Z"
+          fill="black"
+        />
+        <path
+          d="M16.707 11.293L15.293 12.707L13 10.4141V15H11V10.4141L8.70703 12.707L7.29297 11.293L12 6.58594L16.707 11.293Z"
+          fill="black"
+        />
       </>
     ),
   Server: (filled) =>
