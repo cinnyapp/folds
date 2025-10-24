@@ -60,6 +60,7 @@ export type IconName =
   | "Thread"
   | "ThreadPlus"
   | "ThreadUnread"
+  | "ThreadReply"
   | "Monitor"
   | "ScreenShare"
   | "Server"
@@ -1480,6 +1481,28 @@ export const Icons: Record<IconName, IconSrc> = {
         />
       </>
     ),
+  ThreadReply: (filled) =>
+    filled ? (
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M16 2C18.7614 2 21 4.23858 21 7V22L16 20H8C5.23858 20 3 17.7614 3 15V7C3 4.23858 5.23858 2 8 2H16ZM7.58594 11L11.293 14.707L12.707 13.293L11.4141 12H13C14.1046 12 15 12.8954 15 14H17C17 11.7909 15.2091 10 13 10H11.4141L12.707 8.70703L11.293 7.29297L7.58594 11Z"
+        fill="currentColor"
+      />
+    ) : (
+      <>
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M16 20H8C5.23858 20 3 17.7614 3 15V7C3 4.23858 5.23858 2 8 2H16C18.7614 2 21 4.23858 21 7V22L16 20ZM19.5 19.7845L16.2889 18.5H8C6.067 18.5 4.5 16.933 4.5 15V7C4.5 5.067 6.067 3.5 8 3.5H16C17.933 3.5 19.5 5.067 19.5 7V19.7845Z"
+          fill="currentColor"
+        />
+        <path
+          d="M12.707 8.70703L11.4141 10H13C15.2091 10 17 11.7909 17 14H15C15 12.8954 14.1046 12 13 12H11.4141L12.707 13.293L11.293 14.707L7.58594 11L11.293 7.29297L12.707 8.70703Z"
+          fill="currentColor"
+        />
+      </>
+    ),
   Monitor: (filled) =>
     filled ? (
       <>
@@ -1504,24 +1527,24 @@ export const Icons: Record<IconName, IconSrc> = {
   ScreenShare: (filled) =>
     filled ? (
       <>
-        <rect x="8" y="20" width="8" height="2" fill="black" />
+        <rect x="8" y="20" width="8" height="2" fill="currentColor" />
         <path
           fillRule="evenodd"
           clipRule="evenodd"
           d="M18 3C20.2091 3 22 4.79086 22 7V15C22 17.2091 20.2091 19 18 19H6C3.79086 19 2 17.2091 2 15V7C2 4.79086 3.79086 3 6 3H18ZM7.29297 11.293L8.70703 12.707L11 10.4141V15H13V10.4141L15.293 12.707L16.707 11.293L12 6.58594L7.29297 11.293Z"
-          fill="black"
+          fill="currentColor"
         />
       </>
     ) : (
       <>
-        <rect x="8" y="19" width="8" height="3" fill="black" />
+        <rect x="8" y="19" width="8" height="3" fill="currentColor" />
         <path
           d="M18 17.5V19H6V17.5H18ZM20.5 15V7C20.5 5.61929 19.3807 4.5 18 4.5H6C4.61929 4.5 3.5 5.61929 3.5 7V15C3.5 16.3807 4.61929 17.5 6 17.5V19L5.79395 18.9951C3.68056 18.8879 2 17.14 2 15V7C2 4.79086 3.79086 3 6 3H18C20.2091 3 22 4.79086 22 7V15C22 17.2091 20.2091 19 18 19V17.5C19.3807 17.5 20.5 16.3807 20.5 15Z"
-          fill="black"
+          fill="currentColor"
         />
         <path
           d="M16.707 11.293L15.293 12.707L13 10.4141V15H11V10.4141L8.70703 12.707L7.29297 11.293L12 6.58594L16.707 11.293Z"
-          fill="black"
+          fill="currentColor"
         />
       </>
     ),
