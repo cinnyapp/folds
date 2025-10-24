@@ -1,3 +1,9 @@
+# [2.5.0](https://github.com/cinnyapp/folds/compare/v2.4.0...v2.5.0) (2025-10-24)
+
+### Features
+
+- phone down, headphone mute, globe, screen share icons and fix mic and phone icons ([#98](https://github.com/cinnyapp/folds/issues/98)) ([7f5c22f](https://github.com/cinnyapp/folds/commit/7f5c22f5a8b576ff4b2b4b29484bdac17e32f58d))
+
 # [2.4.0](https://github.com/cinnyapp/folds/compare/v2.3.0...v2.4.0) (2025-10-09)
 
 ### Bug Fixes
