@@ -1750,6 +1750,39 @@ export const Icons: Record<IconName, IconSrc> = {
       </>
     ),
 
+  BlockQuote: (filled) =>
+    filled ? (
+      <>
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M2 20H11V11H3.5C3.5 7.96243 5.96243 5.5 9 5.5H11V4H9C5.13401 4 2 7.13401 2 11V20Z"
+          fill="currentColor"
+        />
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M13 20H22V11H14.5C14.5 7.96243 16.9624 5.5 20 5.5H22V4H20C16.134 4 13 7.13401 13 11V20Z"
+          fill="currentColor"
+        />
+      </>
+    ) : (
+      <>
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M2 20H11V11H3.5C3.5 7.96243 5.96243 5.5 9 5.5H11V4H9C5.13401 4 2 7.13401 2 11V20ZM9.5 12.5H3.5V18.5H9.5V12.5Z"
+          fill="currentColor"
+        />
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M13 20H22V11H14.5C14.5 7.96243 16.9624 5.5 20 5.5H22V4H20C16.134 4 13 7.13401 13 11V20ZM20.5 12.5H14.5V18.5H20.5V12.5Z"
+          fill="currentColor"
+        />
+      </>
+    ),
+
   Hash: () => (
     <path
       fillRule="evenodd"
@@ -2223,23 +2256,6 @@ export const Icons: Record<IconName, IconSrc> = {
       />
       <path
         d="M13 3H16C17.6569 3 19 4.34315 19 6V10C19 10.5523 19.4477 11 20 11H21V12.5H20C19.4477 12.5 19 12.9477 19 13.5V17.5C19 19.1569 17.6569 20.5 16 20.5H13V19H16C16.8284 19 17.5 18.3284 17.5 17.5V13.5C17.5 12.8186 17.7726 12.2009 18.2146 11.75C17.7726 11.2991 17.5 10.6814 17.5 10V6C17.5 5.17157 16.8284 4.5 16 4.5H13V3Z"
-        fill="currentColor"
-      />
-    </>
-  ),
-
-  BlockQuote: () => (
-    <>
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M21 6H18C15.2386 6 13 8.23858 13 11V20H21V12H14.5V11C14.5 9.067 16.067 7.5 18 7.5H21V6ZM19.5 13.5H14.5V18.5H19.5V13.5Z"
-        fill="currentColor"
-      />
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M3 20H11V12H4.5V11C4.5 9.067 6.067 7.5 8 7.5H11V6H8C5.23858 6 3 8.23858 3 11V20ZM9.5 13.5H4.5V18.5H9.5V13.5Z"
         fill="currentColor"
       />
     </>
