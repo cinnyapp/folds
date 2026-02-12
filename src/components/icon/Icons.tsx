@@ -47,6 +47,7 @@ export type IconName =
   | "Cup"
   | "Pin"
   | "VolumeHigh"
+  | "VolumeHighLock"
   | "VolumeMute"
   | "File"
   | "Category"
@@ -1178,6 +1179,50 @@ export const Icons: Record<IconName, IconSrc> = {
         />
         <path
           d="M14 20C18.4183 20 22 16.4183 22 12C22 7.58172 18.4183 4 14 4V5.5C17.5899 5.5 20.5 8.41015 20.5 12C20.5 15.5899 17.5899 18.5 14 18.5V20Z"
+          fill="currentColor"
+        />
+      </>
+    ),
+
+  VolumeHighLock: (filled) =>
+    filled ? (
+      <>
+        <path d="M2 16V8H6L12 3V21L6 16H2Z" fill="currentColor" />
+        <path
+          d="M14 16C16.2091 16 18 14.2091 18 12H16.5C16.5 13.3807 15.3807 14.5 14 14.5V16Z"
+          fill="currentColor"
+        />
+        <path
+          d="M14 20C18.4183 20 22 16.4183 22 12H20.5C20.5 15.5899 17.5899 18.5 14 18.5V20Z"
+          fill="currentColor"
+        />
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M15 4V3C15 1.34315 16.3431 0 18 0C19.6569 0 21 1.34315 21 3V4H22V10H14V4H15ZM19.5 3V4H16.5V3C16.5 2.17157 17.1716 1.5 18 1.5C18.8284 1.5 19.5 2.17157 19.5 3Z"
+          fill="currentColor"
+        />
+      </>
+    ) : (
+      <>
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M6 8H2V16H6L12 21V3L6 8ZM10.5 6.20256L6.54308 9.5H3.5V14.5H6.54308L10.5 17.7974V6.20256Z"
+          fill="currentColor"
+        />
+        <path
+          d="M14 16C16.2091 16 18 14.2091 18 12H16.5C16.5 13.3807 15.3807 14.5 14 14.5V16Z"
+          fill="currentColor"
+        />
+        <path
+          d="M14 20C18.4183 20 22 16.4183 22 12H20.5C20.5 15.5899 17.5899 18.5 14 18.5V20Z"
+          fill="currentColor"
+        />
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M15 4V3C15 1.34315 16.3431 0 18 0C19.6569 0 21 1.34315 21 3V4H22V10H14V4H15ZM19.5 3V4H16.5V3C16.5 2.17157 17.1716 1.5 18 1.5C18.8284 1.5 19.5 2.17157 19.5 3Z"
           fill="currentColor"
         />
       </>
