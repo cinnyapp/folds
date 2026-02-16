@@ -1,3 +1,9 @@
+# [2.6.0](https://github.com/cinnyapp/folds/compare/v2.5.0...v2.6.0) (2026-02-16)
+
+### Features
+
+- volume high lock and globe icon ([#108](https://github.com/cinnyapp/folds/issues/108)) ([13b509c](https://github.com/cinnyapp/folds/commit/13b509c9ad2fddd5cdf300aa42e66f9287738c71))
+
 # [2.5.0](https://github.com/cinnyapp/folds/compare/v2.4.0...v2.5.0) (2025-10-24)
 
 ### Features
