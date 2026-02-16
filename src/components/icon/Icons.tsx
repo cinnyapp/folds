@@ -47,6 +47,8 @@ export type IconName =
   | "Cup"
   | "Pin"
   | "VolumeHigh"
+  | "VolumeHighLock"
+  | "VolumeHighGlobe"
   | "VolumeMute"
   | "File"
   | "Category"
@@ -1183,6 +1185,102 @@ export const Icons: Record<IconName, IconSrc> = {
       </>
     ),
 
+  VolumeHighLock: (filled) =>
+    filled ? (
+      <>
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M6 8H2V16H6L12 21V3L6 8Z"
+          fill="currentColor"
+        />
+        <path
+          d="M22 12C22 16.4183 18.4183 20 14 20V18.5C17.5899 18.5 20.5 15.5899 20.5 12H22Z"
+          fill="currentColor"
+        />
+        <path
+          d="M18 12C18 14.2091 16.2091 16 14 16V14.5C15.3807 14.5 16.5 13.3807 16.5 12H18Z"
+          fill="currentColor"
+        />
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M15 4V3C15 1.34315 16.3431 0 18 0C19.6569 0 21 1.34315 21 3V4H22V10H14V4H15ZM19.5 3V4H16.5V3C16.5 2.17157 17.1716 1.5 18 1.5C18.8284 1.5 19.5 2.17157 19.5 3Z"
+          fill="currentColor"
+        />
+      </>
+    ) : (
+      <>
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M6 8H2V16H6L12 21V3L6 8ZM10.5 6.20256L6.54308 9.5H3.5V14.5H6.54308L10.5 17.7974V6.20256Z"
+          fill="currentColor"
+        />
+        <path
+          d="M22 12C22 16.4183 18.4183 20 14 20V18.5C17.5899 18.5 20.5 15.5899 20.5 12H22Z"
+          fill="currentColor"
+        />
+        <path
+          d="M18 12C18 14.2091 16.2091 16 14 16V14.5C15.3807 14.5 16.5 13.3807 16.5 12H18Z"
+          fill="currentColor"
+        />
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M15 4V3C15 1.34315 16.3431 0 18 0C19.6569 0 21 1.34315 21 3V4H22V10H14V4H15ZM19.5 3V4H16.5V3C16.5 2.17157 17.1716 1.5 18 1.5C18.8284 1.5 19.5 2.17157 19.5 3Z"
+          fill="currentColor"
+        />
+      </>
+    ),
+  VolumeHighGlobe: (filled) =>
+    filled ? (
+      <>
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M6 8H2V16H6L12 21V3L6 8Z"
+          fill="currentColor"
+        />
+        <path
+          d="M22 12C22 16.4183 18.4183 20 14 20V18.5C17.5899 18.5 20.5 15.5899 20.5 12H22Z"
+          fill="currentColor"
+        />
+        <path
+          d="M18 12C18 14.2091 16.2091 16 14 16V14.5C15.3807 14.5 16.5 13.3807 16.5 12H18Z"
+          fill="currentColor"
+        />
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M24 5C24 7.76142 21.7614 10 19 10C16.2386 10 14 7.76142 14 5C14 2.23858 16.2386 0 19 0C21.7614 0 24 2.23858 24 5ZM17 7.87266V5L15.7354 3.73543C15.5834 4.12764 15.5 4.55408 15.5 5C15.5 6.18937 16.0933 7.24018 17 7.87266ZM22.5 5C22.5 6.18937 21.9067 7.24018 21 7.87266V6.5H19V5H20V3.5H21V2.12734C21.9067 2.75982 22.5 3.81063 22.5 5Z"
+          fill="currentColor"
+        />
+      </>
+    ) : (
+      <>
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M6 8H2V16H6L12 21V3L6 8ZM10.5 6.20256L6.54308 9.5H3.5V14.5H6.54308L10.5 17.7974V6.20256Z"
+          fill="currentColor"
+        />
+        <path
+          d="M22 12C22 16.4183 18.4183 20 14 20V18.5C17.5899 18.5 20.5 15.5899 20.5 12H22Z"
+          fill="currentColor"
+        />
+        <path
+          d="M18 12C18 14.2091 16.2091 16 14 16V14.5C15.3807 14.5 16.5 13.3807 16.5 12H18Z"
+          fill="currentColor"
+        />
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M24 5C24 7.76142 21.7614 10 19 10C16.2386 10 14 7.76142 14 5C14 2.23858 16.2386 0 19 0C21.7614 0 24 2.23858 24 5ZM17 7.87266V5L15.7354 3.73543C15.5834 4.12764 15.5 4.55408 15.5 5C15.5 6.18937 16.0933 7.24018 17 7.87266ZM22.5 5C22.5 6.18937 21.9067 7.24018 21 7.87266V6.5H19V5H20V3.5H21V2.12734C21.9067 2.75982 22.5 3.81063 22.5 5Z"
+          fill="currentColor"
+        />
+      </>
+    ),
   VolumeMute: (filled) =>
     filled ? (
       <>
