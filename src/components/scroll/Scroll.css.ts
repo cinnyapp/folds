@@ -23,7 +23,12 @@ export const Scroll = recipe({
       width: "100%",
       height: "100%",
       overflow: "hidden",
-      scrollbarColor: "transparent transparent",
+
+      "@supports": {
+        "not selector(::-webkit-scrollbar)": {
+          scrollbarColor: "transparent transparent",
+        },
+      },
 
       selectors: {
         "&::-webkit-scrollbar-thumb": {
@@ -54,7 +59,11 @@ export const Scroll = recipe({
     },
     visibility: {
       Always: {
-        scrollbarColor: `${ScrollThumbColor} ${ScrollTrackColor}`,
+        "@supports": {
+          "not selector(::-webkit-scrollbar)": {
+            scrollbarColor: `${ScrollThumbColor} ${ScrollTrackColor}`,
+          },
+        },
         selectors: {
           "&::-webkit-scrollbar-thumb": {
             backgroundColor: ScrollThumbColor,
@@ -65,10 +74,16 @@ export const Scroll = recipe({
         },
       },
       Hover: {
-        selectors: {
-          "&:hover": {
-            scrollbarColor: `${ScrollThumbColor} ${ScrollTrackColor}`,
+        "@supports": {
+          "not selector(::-webkit-scrollbar)": {
+            selectors: {
+              "&:hover": {
+                scrollbarColor: `${ScrollThumbColor} ${ScrollTrackColor}`,
+              },
+            },
           },
+        },
+        selectors: {
           "&:hover::-webkit-scrollbar-thumb": {
             backgroundColor: ScrollThumbColor,
           },
@@ -88,7 +103,7 @@ export const Scroll = recipe({
     size: {
       "0": {
         "@supports": {
-          "(scrollbar-color: transparent transparent)": {
+          "not selector(::-webkit-scrollbar)": {
             scrollbarWidth: "none",
           },
         },
@@ -100,9 +115,7 @@ export const Scroll = recipe({
       },
       "300": {
         "@supports": {
-          "(scrollbar-color: transparent transparent)": {
-            // only apply scrollbarWidth if scrollbar-color is supported,
-            // otherwise it breaks the colors in some browser like safari.
+          "not selector(::-webkit-scrollbar)": {
             scrollbarWidth: "thin",
           },
         },
@@ -119,7 +132,7 @@ export const Scroll = recipe({
       },
       "400": {
         "@supports": {
-          "(scrollbar-color: transparent transparent)": {
+          "not selector(::-webkit-scrollbar)": {
             scrollbarWidth: "auto",
           },
         },
