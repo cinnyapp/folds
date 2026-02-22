@@ -1,3 +1,9 @@
+## [2.6.1](https://github.com/cinnyapp/folds/compare/v2.6.0...v2.6.1) (2026-02-22)
+
+### Bug Fixes
+
+- broken scrollbar color in safari ([#111](https://github.com/cinnyapp/folds/issues/111)) ([31ffd17](https://github.com/cinnyapp/folds/commit/31ffd17d751c78d8399f53039dae6386f9bae992))
+
 # [2.6.0](https://github.com/cinnyapp/folds/compare/v2.5.0...v2.6.0) (2026-02-16)
 
 ### Features
