@@ -1,5 +1,5 @@
 name: Deploy PR to Netlify
-run-name: "${{ github.event.workflow_run.head_branch }} → Netlify"
+run-name: "Deploy PR to Netlify (${{ github.event.workflow_run.head_branch }})"
 
 on:
   workflow_run:
