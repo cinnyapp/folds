@@ -69,40 +69,59 @@ const useTooltip = (
     const trigger = triggerRef.current;
     let timeoutId: number | undefined;
 
-    const openTooltip = (evt: Event) => {
-      if (timeoutId) return;
-
-      if (evt.type === "focus") setOpen(true);
-      else timeoutId = window.setTimeout(() => setOpen(true), delay);
-    };
-
-    const closeTooltip = () => {
+    const openTooltip = (_?: unknown, skipDelay?: boolean) => {
       clearTimeout(timeoutId);
-      timeoutId = undefined;
-      setOpen(false);
+
+      if (skipDelay) {
+        setOpen(true);
+        return;
+      }
+      timeoutId = window.setTimeout(() => {
+        setOpen(true);
+        timeoutId = undefined;
+      }, delay);
     };
 
-    const onKeyDown = (evt: KeyboardEvent) => {
-      if (evt.key === "Escape" && document.activeElement === trigger) {
-        evt.preventDefault();
+    const closeTooltip = (_?: unknown, skipDelay?: boolean) => {
+      clearTimeout(timeoutId);
+
+      if (skipDelay) {
+        setOpen(false);
+        return;
+      }
+      timeoutId = window.setTimeout(() => {
+        setOpen(false);
+        timeoutId = undefined;
+      }, 100);
+    };
+
+    const onKeyUp = (evt: Event) => {
+      if (document.activeElement !== trigger) return;
+
+      if ((evt as unknown as KeyboardEvent).key === "Escape") {
         clearTimeout(timeoutId);
         setOpen(false);
+        return;
       }
+
+      openTooltip(undefined, true);
+    };
+
+    const onBlur = () => {
+      closeTooltip(undefined, true);
     };
 
     trigger?.addEventListener("mouseenter", openTooltip);
+    trigger?.addEventListener("keyup", onKeyUp);
     trigger?.addEventListener("mouseleave", closeTooltip);
-    trigger?.addEventListener("focus", openTooltip);
-    trigger?.addEventListener("blur", closeTooltip);
-    document.addEventListener("keydown", onKeyDown);
+    trigger?.addEventListener("blur", onBlur);
     trigger?.addEventListener("click", closeTooltip);
     return () => {
       clearTimeout(timeoutId);
       trigger?.removeEventListener("mouseenter", openTooltip);
+      trigger?.removeEventListener("keyup", onKeyUp);
       trigger?.removeEventListener("mouseleave", closeTooltip);
-      trigger?.removeEventListener("focus", openTooltip);
-      trigger?.removeEventListener("blur", closeTooltip);
-      document.removeEventListener("keydown", onKeyDown);
+      trigger?.removeEventListener("blur", onBlur);
       trigger?.removeEventListener("click", closeTooltip);
     };
   }, [position, align, offset, alignOffset, delay]);
