@@ -1,3 +1,9 @@
+## [2.6.2](https://github.com/cinnyapp/folds/compare/v2.6.1...v2.6.2) (2026-03-10)
+
+### Bug Fixes
+
+- programmatic focus makes tooltip appear ([#128](https://github.com/cinnyapp/folds/issues/128)) ([602244f](https://github.com/cinnyapp/folds/commit/602244f2c87bc119424e7bb2344ccb6c443e8cab))
+
 ## [2.6.1](https://github.com/cinnyapp/folds/compare/v2.6.0...v2.6.1) (2026-02-22)
 
 ### Bug Fixes
