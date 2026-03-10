@@ -89,10 +89,13 @@ const useTooltip = (
         setOpen(false);
         return;
       }
-      timeoutId = window.setTimeout(() => {
-        setOpen(false);
-        timeoutId = undefined;
-      }, 100);
+      timeoutId = window.setTimeout(
+        () => {
+          setOpen(false);
+          timeoutId = undefined;
+        },
+        delay < 100 ? delay : 100
+      );
     };
 
     const onKeyUp = (evt: Event) => {
