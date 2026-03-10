@@ -8,21 +8,7 @@
   "labels": ["Dependencies"],
   "packageRules": [
     {
-      "matchUpdateTypes": [
-        "major",
-        "minor",
-        "patch",
-        "lockFileMaintenance"
-      ]
-    },
-    {
-      "matchPackageNames": [
-        "actions/checkout",
-        "actions/setup-node",
-        "actions/upload-artifact"
-      ],
-      "groupName": "GitHub Actions",
-      "groupSlug": "github-actions"
+      "matchUpdateTypes": ["lockFileMaintenance"]
     }
   ],
   "lockFileMaintenance": {
