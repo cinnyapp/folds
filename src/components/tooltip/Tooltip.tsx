@@ -96,11 +96,9 @@ const useTooltip = (
     };
 
     const onKeyUp = (evt: Event) => {
-      if (document.activeElement !== trigger) return;
-
-      if ((evt as unknown as KeyboardEvent).key === "Escape") {
-        clearTimeout(timeoutId);
-        setOpen(false);
+      const { key } = evt as unknown as KeyboardEvent;
+      if (key === "Escape" || key === "Enter" || key === " ") {
+        closeTooltip(undefined, true);
         return;
       }
 
