@@ -8,7 +8,7 @@ import * as css from "./ProgressBar.css";
 type ProgressBarProps = {
   value: number;
   min?: number;
-  max: number;
+  max?: number;
 };
 
 export const ProgressBar = as<"span", ProgressBarProps & css.ProgressBarVariant>(
@@ -37,7 +37,11 @@ export const ProgressBar = as<"span", ProgressBarProps & css.ProgressBarVariant>
       {...props}
       ref={ref}
     >
-      <span className={css.ProgressBarFill} style={{ width: `${percent(min, max, value)}%` }} />
+      {typeof max === "number" ? (
+        <span className={css.ProgressBarFill} style={{ width: `${percent(min, max, value)}%` }} />
+      ) : (
+        <span className={css.ProgressBarPacket} />
+      )}
     </AsProgressBar>
   )
 );

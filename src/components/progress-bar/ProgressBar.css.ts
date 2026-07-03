@@ -1,4 +1,4 @@
-import { ComplexStyleRule, createVar, style } from "@vanilla-extract/css";
+import { ComplexStyleRule, createVar, keyframes, style } from "@vanilla-extract/css";
 import { recipe, RecipeVariants } from "@vanilla-extract/recipes";
 import { color, config, toRem } from "../../theme";
 import { DefaultReset } from "../reset.css";
@@ -88,5 +88,29 @@ export const ProgressBarFill = style([
     display: "inline-block",
     backgroundColor: "currentcolor",
     height: "100%",
+  },
+]);
+
+const slidePacket = keyframes({
+  "0%": {
+    transform: "translateX(0%)",
+    width: "0%",
+  },
+  "50%": {
+    transform: "translateX(100%)",
+    width: "50%",
+  },
+  "100%": {
+    transform: "translateX(200%)",
+    width: "50%",
+  },
+});
+export const ProgressBarPacket = style([
+  DefaultReset,
+  {
+    display: "inline-block",
+    backgroundColor: "currentcolor",
+    height: "100%",
+    animation: `${slidePacket} 2s linear infinite`,
   },
 ]);
