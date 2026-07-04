@@ -1,3 +1,13 @@
+# [2.7.0](https://github.com/cinnyapp/folds/compare/v2.6.2...v2.7.0) (2026-07-04)
+
+### Bug Fixes
+
+- tooltip appears on any key press ([#147](https://github.com/cinnyapp/folds/issues/147)) ([b8cd194](https://github.com/cinnyapp/folds/commit/b8cd194e9ce45bb556c3a5681d4c37494f4f8af1))
+
+### Features
+
+- progress bar packet animation when max param is missing ([#146](https://github.com/cinnyapp/folds/issues/146)) ([0dfab3c](https://github.com/cinnyapp/folds/commit/0dfab3c2badf07c992695a988cbf393417078456))
+
 ## [2.6.2](https://github.com/cinnyapp/folds/compare/v2.6.1...v2.6.2) (2026-03-10)
 
 ### Bug Fixes
