@@ -33,8 +33,6 @@ const Template: ComponentStory<typeof ProgressBar> = (args) => <ProgressBar {...
 export const Secondary = Template.bind({});
 Secondary.args = {
   variant: "Secondary",
-  min: 0,
-  max: 100,
   value: 26,
   outlined: false,
 };
