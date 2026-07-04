@@ -82,34 +82,25 @@ const useTooltip = (
       }, delay);
     };
 
-    const closeTooltip = (_?: unknown, skipDelay?: boolean) => {
+    const closeTooltip = () => {
       clearTimeout(timeoutId);
-
-      if (skipDelay) {
-        setOpen(false);
-        return;
-      }
-      timeoutId = window.setTimeout(
-        () => {
-          setOpen(false);
-          timeoutId = undefined;
-        },
-        delay < 100 ? delay : 100
-      );
+      setOpen(false);
     };
 
     const onKeyUp = (evt: Event) => {
       const { key } = evt as unknown as KeyboardEvent;
-      if (key === "Escape" || key === "Enter" || key === " ") {
-        closeTooltip(undefined, true);
+      if (key === "Escape") {
+        closeTooltip();
         return;
       }
 
-      openTooltip(undefined, true);
+      if (key === "Tab" || key.startsWith("Arrow")) {
+        openTooltip(undefined, true);
+      }
     };
 
     const onBlur = () => {
-      closeTooltip(undefined, true);
+      closeTooltip();
     };
 
     trigger?.addEventListener("mouseenter", openTooltip);
