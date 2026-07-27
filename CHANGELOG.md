@@ -1,3 +1,9 @@
+## [2.7.1](https://github.com/cinnyapp/folds/compare/v2.7.0...v2.7.1) (2026-07-27)
+
+### Bug Fixes
+
+- scrollbar color for firefox ^153 ([#151](https://github.com/cinnyapp/folds/issues/151)) ([d832ff8](https://github.com/cinnyapp/folds/commit/d832ff819d2efb10247040e06d210c0146a512df))
+
 # [2.7.0](https://github.com/cinnyapp/folds/compare/v2.6.2...v2.7.0) (2026-07-04)
 
 ### Bug Fixes
