@@ -25,7 +25,7 @@ export const Scroll = recipe({
       overflow: "hidden",
 
       "@supports": {
-        "not selector(::-webkit-scrollbar)": {
+        "(-moz-appearance: none)": {
           scrollbarColor: "transparent transparent",
         },
       },
@@ -60,7 +60,7 @@ export const Scroll = recipe({
     visibility: {
       Always: {
         "@supports": {
-          "not selector(::-webkit-scrollbar)": {
+          "(-moz-appearance: none)": {
             scrollbarColor: `${ScrollThumbColor} ${ScrollTrackColor}`,
           },
         },
@@ -75,7 +75,7 @@ export const Scroll = recipe({
       },
       Hover: {
         "@supports": {
-          "not selector(::-webkit-scrollbar)": {
+          "(-moz-appearance: none)": {
             selectors: {
               "&:hover": {
                 scrollbarColor: `${ScrollThumbColor} ${ScrollTrackColor}`,
@@ -103,7 +103,7 @@ export const Scroll = recipe({
     size: {
       "0": {
         "@supports": {
-          "not selector(::-webkit-scrollbar)": {
+          "(-moz-appearance: none)": {
             scrollbarWidth: "none",
           },
         },
@@ -115,7 +115,7 @@ export const Scroll = recipe({
       },
       "300": {
         "@supports": {
-          "not selector(::-webkit-scrollbar)": {
+          "(-moz-appearance: none)": {
             scrollbarWidth: "thin",
           },
         },
@@ -132,7 +132,7 @@ export const Scroll = recipe({
       },
       "400": {
         "@supports": {
-          "not selector(::-webkit-scrollbar)": {
+          "(-moz-appearance: none)": {
             scrollbarWidth: "auto",
           },
         },
