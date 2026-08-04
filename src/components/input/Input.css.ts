@@ -33,7 +33,6 @@ export const Input = recipe({
     DefaultReset,
     {
       display: "flex",
-      flexWrap: "wrap",
       alignItems: "center",
       color: OnContainer,
       backgroundColor: Container,
