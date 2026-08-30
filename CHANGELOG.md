@@ -1,3 +1,9 @@
+## [2.7.2](https://github.com/cinnyapp/folds/compare/v2.7.1...v2.7.2) (2026-08-30)
+
+### Bug Fixes
+
+- input after content breaks into newline ([#152](https://github.com/cinnyapp/folds/issues/152)) ([7d6d627](https://github.com/cinnyapp/folds/commit/7d6d627c0c232563f7fc78c51611405a4e2aef7e))
+
 ## [2.7.1](https://github.com/cinnyapp/folds/compare/v2.7.0...v2.7.1) (2026-07-27)
 
 ### Bug Fixes
