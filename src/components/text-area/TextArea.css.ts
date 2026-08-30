@@ -37,7 +37,6 @@ export const TextArea = recipe({
         [BorderWidth]: config.borderWidth.B400,
       },
       display: "flex",
-      flexWrap: "wrap",
       alignItems: "center",
       minWidth: 0,
       width: "100%",
