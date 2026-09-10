@@ -74,7 +74,7 @@
     "eslint-plugin-storybook": "0.6.0",
     "focus-trap-react": "10.0.2",
     "husky": "8.0.1",
-    "lint-staged": "13.0.2",
+    "lint-staged": "13.3.0",
     "prettier": "2.8.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
