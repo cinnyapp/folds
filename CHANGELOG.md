@@ -1,3 +1,9 @@
+## [2.7.3](https://github.com/cinnyapp/folds/compare/v2.7.2...v2.7.3) (2026-10-14)
+
+### Bug Fixes
+
+- port existing setup to trusted publishing ([#164](https://github.com/cinnyapp/folds/issues/164)) ([e9522f6](https://github.com/cinnyapp/folds/commit/e9522f614312b10db988476dd8dcab1e636f3126))
+
 ## [2.7.2](https://github.com/cinnyapp/folds/compare/v2.7.1...v2.7.2) (2026-08-30)
 
 ### Bug Fixes
