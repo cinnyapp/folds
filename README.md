@@ -22,7 +22,7 @@ npm run build # Build package into dist directory
 
 ## License
 Cinny Project  
-Copyright © 2024–present Ajay Bura  
+Copyright © 2022–present Ajay Bura  
 https://cinny.in
 
 Folds is licensed under the Apache License, Version 2.0.
